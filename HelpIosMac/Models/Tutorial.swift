@@ -15,12 +15,14 @@ class Tutorial: NSObject {
     let details: String
     let pathImage: String
     let makeTutorial: String
+    let imagesUrl: Array<String>
     
-    init(name: String, details: String, pathImage: String = "", makeTutorial: String = ""){
+    init(name: String, details: String, pathImage: String = "", makeTutorial: String = "", imagesUrl: Array<String> = []){
         self.name = name
         self.details = details
         self.pathImage = pathImage
         self.makeTutorial = makeTutorial
+        self.imagesUrl = imagesUrl
         
     }
 }

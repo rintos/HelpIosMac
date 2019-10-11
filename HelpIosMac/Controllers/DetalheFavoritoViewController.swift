@@ -53,6 +53,8 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
             self.tituloLabel.text = tutorialFavorito.name
             self.textoTextView.text = tutorialFavorito.textDetails
             self.editarTextView.text = tutorialFavorito.makeTutorial
+            print("Caminho Imagem do Favorito armazenado\(String(describing: tutorialFavorito.imagesUrl))")
+        
         }
 
     }
@@ -80,12 +82,17 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return listImage.count
+        guard let arrayImages = tutorial?.imagesUrl else { return 0 }
+        let favoriteImages = arrayImages as! Array<String>
+        
+        return favoriteImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "images", for: indexPath) as! DetalhesCollectionViewCell
-        let pathImage = listImage[indexPath.row]
+        guard let arrayImages = tutorial?.imagesUrl else { return cell }
+        let favoriteImages = arrayImages as! Array<String>
+        let pathImage = favoriteImages[indexPath.row]
         
         cell.imagensTutorial.image = UIImage(named: pathImage)
         

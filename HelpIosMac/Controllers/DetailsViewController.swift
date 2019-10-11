@@ -24,6 +24,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
     var titleDetail = ""
     var descriptionDetail = ""
     var listImages = TutorialDAO().returnListImages()
+    var tutorialDetail: Tutorial? // recebe o tutorial selecionado da viewConroller
         
     var tutorials:Tutorials?
     
@@ -46,16 +47,22 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
         self.titleTextLabel.text = titleDetail
         self.descriptionTextView.text = descriptionDetail
         
+        if let pathArrayImage = tutorialDetail?.imagesUrl{
+            print("Meu array HAAHAHA \(String(describing: pathArrayImage.first))")
+        }
+        
     }
     
     
     @objc func recuperaTutorial()->Tutorial?{
-        
+                
         if let titulo = titleTextLabel?.text{
             if let texto = descriptionTextView?.text{
-                let tutorial = Tutorial(name: titulo, details: texto)
-                print("Sanvando os dados titulo: \(tutorial.name) texto: \(tutorial.details)")
-                return tutorial
+                if let pathArrayImage = tutorialDetail?.imagesUrl {
+                    let tutorial = Tutorial(name: titulo, details: texto, imagesUrl: pathArrayImage)
+                    //  print("Sanvando os dados titulo: \(tutorial.name) texto: \(tutorial.details)")
+                    return tutorial
+                }
             }
         }
         return nil
@@ -68,7 +75,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
         }
         
         if let tutorialFavorito = recuperaTutorial(){
-            print(tutorialFavorito.name)
+       //     print(tutorialFavorito.name)
                         
 //            let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //            let controller = storyboard.instantiateViewController(withIdentifier: "favorito") as! FavoritosTableViewController
@@ -76,6 +83,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
             
             tutorials?.name = titleDetail
             tutorials?.textDetails = descriptionDetail
+            tutorials?.imagesUrl = tutorialFavorito.imagesUrl as NSObject
             
             do{
                 try contexo.save()
@@ -92,15 +100,16 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return listImages.count
+        guard let imageList = tutorialDetail?.imagesUrl else {return 0}
+        return imageList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageHome", for: indexPath) as! CollectionViewCell
-        let imagePath = listImages[indexPath.row]
+        guard let imageList = tutorialDetail?.imagesUrl else {return cell}
         
-        cell.imagesCollectionView.image = UIImage(named:imagePath )
-        
+        let pathImage = imageList[indexPath.row]
+        cell.imagesCollectionView.image = UIImage(named: pathImage)
         
         return cell
     }

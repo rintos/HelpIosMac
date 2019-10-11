@@ -51,8 +51,14 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         let tutorial = contentList[indexPath.item]
         cell.tituloLabel.text = tutorial.name
         cell.descricaoTextView.text = tutorial.details
-        cell.imagemTutorial.image = UIImage(named: tutorial.pathImage)
+      //  cell.imagemTutorial.image = UIImage(named: tutorial.pathImage)
         cell.layer.borderWidth = 3
+        
+        if let pathArrayImage = tutorial.imagesUrl.first {
+            //print("Caminho da imagem pegando um item do array manualmente: \(String(describing: pathArrayImage))")
+            cell.imagemTutorial.image = UIImage(named: pathArrayImage)
+
+        }
         
 //        let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(showTutorial))
 //        cell.addGestureRecognizer(recognizer)
@@ -62,10 +68,11 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let tutorial = contentList[indexPath.item]
-        print(tutorial.details)
+      //  print(tutorial.details)
         
         detalheController.titleDetail = tutorial.name
         detalheController.descriptionDetail = tutorial.details
+        detalheController.tutorialDetail = tutorial
         
 //        let controllerDetalhes = DetailsViewController()
 //        if let navigation = navigationController {
@@ -91,7 +98,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
                     navigation.pushViewController(detailsController, animated: true)
                 }
                 
-                print(tutorial.name)
+              //  print(tutorial.name)
             }
         }
     }
