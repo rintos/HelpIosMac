@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5055956C235140F8004A166C /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055956B235140F7004A166C /* FavoriteTableViewCell.swift */; };
 		50613AB8232D39F5000B27D8 /* CriarTutorialDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50613AB7232D39F5000B27D8 /* CriarTutorialDelegate.swift */; };
 		50825AEF23174592001040E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50825AEE23174592001040E7 /* AppDelegate.swift */; };
 		50825AF123174592001040E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50825AF023174592001040E7 /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5055956B235140F7004A166C /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		50613AB7232D39F5000B27D8 /* CriarTutorialDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarTutorialDelegate.swift; sourceTree = "<group>"; };
 		50825AEB23174592001040E7 /* HelpIosMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpIosMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50825AEE23174592001040E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				508B140A2328B0EE005F14AE /* TutorialCollectionViewCell.swift */,
 				50C601C5234D8262005DB696 /* DetalhesCollectionViewCell.swift */,
 				50C601C7234EB281005DB696 /* CollectionViewCell.swift */,
+				5055956B235140F7004A166C /* FavoriteTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				508B1414232C5E08005F14AE /* DetalheFavoritoViewController.swift in Sources */,
 				50613AB8232D39F5000B27D8 /* CriarTutorialDelegate.swift in Sources */,
 				50825B2B23174F0F001040E7 /* DetailsViewController.swift in Sources */,
+				5055956C235140F8004A166C /* FavoriteTableViewCell.swift in Sources */,
 				50825B5D2318B4DE001040E7 /* TutorialDAO.swift in Sources */,
 				508B14112329E4C3005F14AE /* FavoritosTableViewController.swift in Sources */,
 				50825B5B2318B3C0001040E7 /* Tutorial.swift in Sources */,

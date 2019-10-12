@@ -87,10 +87,17 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FavoriteTableViewCell
         guard let listaTutorials = gerenciadorDeResultados?.fetchedObjects![indexPath.row] else { return cell }
         
-        cell.textLabel?.text = listaTutorials.name
+        cell.favoriteTitleLabel.text = listaTutorials.name
+        cell.favoriteTextLabel.text = listaTutorials.textDetails
+        let imagePath = listaTutorials.imagesUrl as! Array<String>
+        
+        if let image = imagePath.first{
+            cell.imageTutorial.image = UIImage(named: image)
+        }
+        //cell.textLabel?.text = listaTutorials.name
         
         return cell
     }
@@ -117,7 +124,7 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
         detalheFavoritoController.tutorial = listaTutorials
 
         }
-        
+    
         
     //MARK: - Fetched Results Controller Delegate
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {

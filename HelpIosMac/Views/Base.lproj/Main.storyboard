@@ -159,7 +159,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="MNU-gF-V0d"/>
                                         </constraints>
-                                        <mutableString key="text">Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto </mutableString>
+                                        <string key="text">Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto Conteudo do texto </string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -194,14 +194,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="GI1-Km-Gaz">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="150" id="GI1-Km-Gaz" customClass="FavoriteTableViewCell" customModule="HelpIosMac" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GI1-Km-Gaz" id="Ntf-Sa-og9">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GI1-Km-Gaz" id="Ntf-Sa-og9">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uaB-l2-O4N">
+                                            <rect key="frame" x="2" y="22" width="140" height="105"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="105" id="JXJ-kJ-Kxd"/>
+                                                <constraint firstAttribute="width" constant="140" id="fvn-et-UBC"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBc-2K-z8o">
+                                            <rect key="frame" x="163" y="25" width="130" height="40"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Texto" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIJ-Xn-tGv">
+                                            <rect key="frame" x="167" y="79" width="126" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="PiX-pg-a7b"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="uaB-l2-O4N" firstAttribute="leading" secondItem="Ntf-Sa-og9" secondAttribute="leading" constant="2" id="BVa-xP-ulz"/>
+                                        <constraint firstItem="BIJ-Xn-tGv" firstAttribute="top" secondItem="Ntf-Sa-og9" secondAttribute="top" constant="79" id="EBL-ys-uvL"/>
+                                        <constraint firstItem="uaB-l2-O4N" firstAttribute="top" secondItem="Ntf-Sa-og9" secondAttribute="top" constant="22" id="Mua-HP-LIH"/>
+                                        <constraint firstAttribute="bottom" secondItem="uaB-l2-O4N" secondAttribute="bottom" constant="22.5" id="VZd-RK-ARK"/>
+                                        <constraint firstItem="BIJ-Xn-tGv" firstAttribute="top" secondItem="sBc-2K-z8o" secondAttribute="bottom" constant="14" id="adC-xT-8eV"/>
+                                        <constraint firstItem="sBc-2K-z8o" firstAttribute="leading" secondItem="uaB-l2-O4N" secondAttribute="trailing" constant="21" id="ckt-pV-q77"/>
+                                        <constraint firstItem="BIJ-Xn-tGv" firstAttribute="leading" secondItem="uaB-l2-O4N" secondAttribute="trailing" constant="25" id="div-IW-LJ0"/>
+                                        <constraint firstAttribute="trailing" secondItem="BIJ-Xn-tGv" secondAttribute="trailing" constant="27" id="ihD-kf-tIX"/>
+                                        <constraint firstItem="sBc-2K-z8o" firstAttribute="top" secondItem="Ntf-Sa-og9" secondAttribute="top" constant="25" id="jRq-K2-nBO"/>
+                                        <constraint firstAttribute="trailing" secondItem="sBc-2K-z8o" secondAttribute="trailing" constant="27" id="s81-ZX-AoR"/>
+                                        <constraint firstAttribute="bottom" secondItem="BIJ-Xn-tGv" secondAttribute="bottom" constant="22.5" id="vpU-Kq-gRY"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="favoriteTextLabel" destination="BIJ-Xn-tGv" id="fPn-yN-VNr"/>
+                                    <outlet property="favoriteTitleLabel" destination="sBc-2K-z8o" id="X0M-U4-aP4"/>
+                                    <outlet property="imageTutorial" destination="uaB-l2-O4N" id="Cuw-0a-b1a"/>
                                     <segue destination="1Ii-ew-2mF" kind="show" identifier="detalhe" id="s2u-2K-qQD"/>
                                 </connections>
                             </tableViewCell>
@@ -216,7 +256,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEb-m7-i25" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="915" y="962"/>
+            <point key="canvasLocation" x="915" y="961.26760563380287"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5zN-Fz-vDA">
@@ -316,7 +356,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Conteudo tutorial" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sG3-hn-Nw1">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Conteudo tutorial" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sG3-hn-Nw1">
                                         <rect key="frame" x="0.0" y="289" width="320" height="140"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
