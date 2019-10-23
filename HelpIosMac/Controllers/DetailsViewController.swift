@@ -23,10 +23,13 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
     //Variaveis que recebem dados da ViewController
     var titleDetail = ""
     var descriptionDetail = ""
+    var linkVideo = ""
     var listImages = TutorialDAO().returnListImages()
     var tutorialDetail: Tutorial? // recebe o tutorial selecionado da viewConroller
         
     var tutorials:Tutorials?
+    
+    var detailVideo = DetailVideoViewController()
     
     var contexo:NSManagedObjectContext{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -34,7 +37,11 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
         return appDelegate.persistentContainer.viewContext
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "video"){
+            detailVideo = (segue.destination as? DetailVideoViewController)!
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,12 +53,20 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
         
         self.titleTextLabel.text = titleDetail
         self.descriptionTextView.text = descriptionDetail
+       
+        print("Myvideo111: \(linkVideo)")//verificando string
         
         if let pathArrayImage = tutorialDetail?.imagesUrl{
             print("Meu array HAAHAHA \(String(describing: pathArrayImage.first))")
         }
         
     }
+    
+    //action que envia string do video para proxima tela
+    @IBAction func sendLinkVideo(_ sender: Any) {
+        detailVideo.urlVideo = linkVideo
+    }
+    
     
     
     @objc func recuperaTutorial()->Tutorial?{

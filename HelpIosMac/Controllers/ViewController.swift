@@ -9,13 +9,15 @@
 import Foundation
 import UIKit
 
-class ViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
+class ViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate,UISearchBarDelegate {
 
     
     
     var contentList: Array<Tutorial> = TutorialDAO().returnListTutorial()
     
     @IBOutlet weak var collectionViewTutorial:UICollectionView!
+    
+    @IBOutlet weak var searchTutorial: UISearchBar!
     
     var listFavorite: Array<Tutorial> = []
     var detalheController = DetailsViewController()
@@ -73,6 +75,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         detalheController.titleDetail = tutorial.name
         detalheController.descriptionDetail = tutorial.details
         detalheController.tutorialDetail = tutorial
+        detalheController.linkVideo = tutorial.linkVideo
         
 //        let controllerDetalhes = DetailsViewController()
 //        if let navigation = navigationController {

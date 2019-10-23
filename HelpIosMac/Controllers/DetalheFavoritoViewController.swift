@@ -8,12 +8,15 @@
 
 import UIKit
 import CoreData
+import Foundation
 
 class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSource {
 
     @IBOutlet weak var tituloLabel:UILabel!
     @IBOutlet weak var textoTextView:UITextView!
     @IBOutlet weak var editarTextView:UITextView!
+    @IBOutlet weak var tutorialScroll:UIScrollView!
+    
     
     
     @IBOutlet weak var imagensTutorialCollectionView: UICollectionView!
@@ -33,15 +36,46 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         imagensTutorialCollectionView.dataSource = self
         imagensTutorialCollectionView.reloadData()
         
         print(tutorial as Any)
         self.setupSubirCodigo()
         
+        
+        //configurando view com teclado
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        //ao clicar esconde teclado
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        //ao clicar esconde teclado
+        view.addGestureRecognizer(tap)
+        
     }
     
+    //ao clicar esconde teclado
+    @objc func dismissKeyboard(){
+        view.endEditing(true)
+    }
+    
+    //funcao view teclado
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    //funcao view teclado
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+        
     func setupSubirCodigo(){
         
         
