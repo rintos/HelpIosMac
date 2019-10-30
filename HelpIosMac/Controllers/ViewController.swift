@@ -15,6 +15,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     var contentList: Array<Tutorial> = TutorialDAO().returnListTutorial()
     
+    var currentList: Array<Tutorial> = TutorialDAO().returnListTutorial()
+    
     @IBOutlet weak var collectionViewTutorial:UICollectionView!
     
     @IBOutlet weak var searchTutorial: UISearchBar!
@@ -33,10 +35,16 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpSerachBar()
+
         
         collectionViewTutorial.dataSource = self
         collectionViewTutorial.delegate = self
         
+    }
+    
+    private func setUpSerachBar(){
+        searchTutorial.delegate = self
     }
     
     func addTutorial(_ tutorial: Tutorial) {
@@ -45,12 +53,12 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return contentList.count
+        return currentList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! TutorialCollectionViewCell
-        let tutorial = contentList[indexPath.item]
+        let tutorial = currentList[indexPath.item]
         cell.tituloLabel.text = tutorial.name
         cell.descricaoTextView.text = tutorial.details
       //  cell.imagemTutorial.image = UIImage(named: tutorial.pathImage)
@@ -69,7 +77,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let tutorial = contentList[indexPath.item]
+        let tutorial = currentList[indexPath.item]
       //  print(tutorial.details)
         
         detalheController.titleDetail = tutorial.name
@@ -92,7 +100,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             let cell = recognizer.view as! TutorialCollectionViewCell
             if let indexPath = collectionViewTutorial.indexPath(for: cell){
                 let row = indexPath.item
-                let tutorial = contentList[row]
+                let tutorial = currentList[row]
                 
                 let detailsController = DetailsViewController()
                 if let navigation = navigationController{
@@ -113,6 +121,19 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
      
      */
 
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {
+            currentList = contentList
+            collectionViewTutorial.reloadData()
+            return
+        }
+        currentList = contentList.filter({ (conteudo) -> Bool in
+            (conteudo.details.lowercased().contains(searchText.lowercased()))
+        })
+        collectionViewTutorial.reloadData()
+    }
+    
+    
     
 }
 
