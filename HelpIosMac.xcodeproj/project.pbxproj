@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220F0B5F2373A0DF00B3BC99 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F0B5E2373A0DF00B3BC99 /* ShareViewController.swift */; };
+		220F0B622373A0DF00B3BC99 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 220F0B602373A0DF00B3BC99 /* MainInterface.storyboard */; };
+		220F0B662373A0DF00B3BC99 /* ImageShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 220F0B5C2373A0DF00B3BC99 /* ImageShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22B4ED7C235FD2D500D7DFFF /* DetailVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4ED7B235FD2D500D7DFFF /* DetailVideoViewController.swift */; };
 		22B4ED80235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4ED7F235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift */; };
 		22B4ED8223600CB100D7DFFF /* YoutubePlayer_in_WKWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B4ED8123600CB100D7DFFF /* YoutubePlayer_in_WKWebView.framework */; };
@@ -34,6 +37,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		220F0B642373A0DF00B3BC99 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50825AE323174592001040E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 220F0B5B2373A0DF00B3BC99;
+			remoteInfo = ImageShare;
+		};
 		50825B03231745B0001040E7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 50825AE323174592001040E7 /* Project object */;
@@ -50,9 +60,28 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		220F0B6A2373A0DF00B3BC99 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				220F0B662373A0DF00B3BC99 /* ImageShare.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0FE16BB3199CCB8C6130B1E9 /* Pods-HelpIosMac-HelpIosMacUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpIosMac-HelpIosMacUITests.release.xcconfig"; path = "Target Support Files/Pods-HelpIosMac-HelpIosMacUITests/Pods-HelpIosMac-HelpIosMacUITests.release.xcconfig"; sourceTree = "<group>"; };
 		14A738D0205951CC1575137A /* Pods_HelpIosMacTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelpIosMacTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		220F0B5723726E3F00B3BC99 /* HelpIosMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelpIosMac.entitlements; sourceTree = "<group>"; };
+		220F0B5C2373A0DF00B3BC99 /* ImageShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ImageShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		220F0B5E2373A0DF00B3BC99 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		220F0B612373A0DF00B3BC99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		220F0B632373A0DF00B3BC99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22B4ED7B235FD2D500D7DFFF /* DetailVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVideoViewController.swift; sourceTree = "<group>"; };
 		22B4ED7F235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVideoFavoriteViewController.swift; sourceTree = "<group>"; };
 		22B4ED8123600CB100D7DFFF /* YoutubePlayer_in_WKWebView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YoutubePlayer_in_WKWebView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +119,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		220F0B592373A0DF00B3BC99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50825AE823174592001040E7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -118,12 +154,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220F0B5D2373A0DF00B3BC99 /* ImageShare */ = {
+			isa = PBXGroup;
+			children = (
+				220F0B5E2373A0DF00B3BC99 /* ShareViewController.swift */,
+				220F0B602373A0DF00B3BC99 /* MainInterface.storyboard */,
+				220F0B632373A0DF00B3BC99 /* Info.plist */,
+			);
+			path = ImageShare;
+			sourceTree = "<group>";
+		};
 		50825AE223174592001040E7 = {
 			isa = PBXGroup;
 			children = (
 				50825AED23174592001040E7 /* HelpIosMac */,
 				50825B05231745B0001040E7 /* HelpIosMacTests */,
 				50825B10231745B0001040E7 /* HelpIosMacUITests */,
+				220F0B5D2373A0DF00B3BC99 /* ImageShare */,
 				50825AEC23174592001040E7 /* Products */,
 				9819AB23E4097AF6070B0D91 /* Pods */,
 				BFF37250F5EF477CADE15E81 /* Frameworks */,
@@ -136,6 +183,7 @@
 				50825AEB23174592001040E7 /* HelpIosMac.app */,
 				50825B02231745B0001040E7 /* HelpIosMacTests.xctest */,
 				50825B0D231745B0001040E7 /* HelpIosMacUITests.xctest */,
+				220F0B5C2373A0DF00B3BC99 /* ImageShare.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,6 +191,7 @@
 		50825AED23174592001040E7 /* HelpIosMac */ = {
 			isa = PBXGroup;
 			children = (
+				220F0B5723726E3F00B3BC99 /* HelpIosMac.entitlements */,
 				50825B26231748B5001040E7 /* Views */,
 				50825B2523174899001040E7 /* Controllers */,
 				50825B242317488B001040E7 /* Models */,
@@ -235,6 +284,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		220F0B5B2373A0DF00B3BC99 /* ImageShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 220F0B672373A0DF00B3BC99 /* Build configuration list for PBXNativeTarget "ImageShare" */;
+			buildPhases = (
+				220F0B582373A0DF00B3BC99 /* Sources */,
+				220F0B592373A0DF00B3BC99 /* Frameworks */,
+				220F0B5A2373A0DF00B3BC99 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ImageShare;
+			productName = ImageShare;
+			productReference = 220F0B5C2373A0DF00B3BC99 /* ImageShare.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		50825AEA23174592001040E7 /* HelpIosMac */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50825B16231745B0001040E7 /* Build configuration list for PBXNativeTarget "HelpIosMac" */;
@@ -244,10 +310,12 @@
 				50825AE823174592001040E7 /* Frameworks */,
 				50825AE923174592001040E7 /* Resources */,
 				E30037A5DA5879B8BA207D7E /* [CP] Embed Pods Frameworks */,
+				220F0B6A2373A0DF00B3BC99 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				220F0B652373A0DF00B3BC99 /* PBXTargetDependency */,
 			);
 			name = HelpIosMac;
 			productName = HelpIosMac;
@@ -299,10 +367,16 @@
 		50825AE323174592001040E7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				KnownAssetTags = (
+					New,
+				);
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Rinver;
 				TargetAttributes = {
+					220F0B5B2373A0DF00B3BC99 = {
+						CreatedOnToolsVersion = 11.2;
+					};
 					50825AEA23174592001040E7 = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -332,11 +406,20 @@
 				50825AEA23174592001040E7 /* HelpIosMac */,
 				50825B01231745B0001040E7 /* HelpIosMacTests */,
 				50825B0C231745B0001040E7 /* HelpIosMacUITests */,
+				220F0B5B2373A0DF00B3BC99 /* ImageShare */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		220F0B5A2373A0DF00B3BC99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				220F0B622373A0DF00B3BC99 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50825AE923174592001040E7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -467,6 +550,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		220F0B582373A0DF00B3BC99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				220F0B5F2373A0DF00B3BC99 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50825AE723174592001040E7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -508,6 +599,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		220F0B652373A0DF00B3BC99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 220F0B5B2373A0DF00B3BC99 /* ImageShare */;
+			targetProxy = 220F0B642373A0DF00B3BC99 /* PBXContainerItemProxy */;
+		};
 		50825B04231745B0001040E7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 50825AEA23174592001040E7 /* HelpIosMac */;
@@ -521,6 +617,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		220F0B602373A0DF00B3BC99 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				220F0B612373A0DF00B3BC99 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		50825AF223174592001040E7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -540,6 +644,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		220F0B682373A0DF00B3BC99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N66VHCWZLN;
+				INFOPLIST_FILE = ImageShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.vsantoryu.HelpIosMac.ImageShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		220F0B692373A0DF00B3BC99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N66VHCWZLN;
+				INFOPLIST_FILE = ImageShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.vsantoryu.HelpIosMac.ImageShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		50825B14231745B0001040E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -660,7 +806,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 49EFFFE2DD373D56720CDE5F /* Pods-HelpIosMac.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HelpIosMac/HelpIosMac.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N66VHCWZLN;
@@ -681,7 +829,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8A399DEC83E77AE40617A5C4 /* Pods-HelpIosMac.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HelpIosMac/HelpIosMac.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N66VHCWZLN;
@@ -787,6 +937,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		220F0B672373A0DF00B3BC99 /* Build configuration list for PBXNativeTarget "ImageShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				220F0B682373A0DF00B3BC99 /* Debug */,
+				220F0B692373A0DF00B3BC99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		50825AE623174592001040E7 /* Build configuration list for PBXProject "HelpIosMac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -35,8 +35,9 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpSerachBar()
-
+        collectionViewTutorial.keyboardDismissMode = .onDrag
         
         collectionViewTutorial.dataSource = self
         collectionViewTutorial.delegate = self

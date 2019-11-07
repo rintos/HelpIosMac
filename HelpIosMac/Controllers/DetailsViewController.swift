@@ -48,6 +48,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
         let barButton =  UIBarButtonItem(title: "Salvar", style: UIBarButtonItem.Style.done, target: self, action: #selector(saveTutorial))
         navigationItem.rightBarButtonItem = barButton
         
+        
         imagesCollectionView.dataSource = self
         imagesCollectionView.reloadData()
         
@@ -67,7 +68,34 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
         detailVideo.urlVideo = linkVideo
     }
     
+    //funcao para compartilhar conteudos
+
+    @IBAction func shareContent(_ sender: Any) {
+        print("TestTando Botao ahahah")
+        guard let imageList = tutorialDetail?.imagesUrl else {return}
+        
+        var imagem: UIImage?
+        if let image = imageList.first{
+            imagem = UIImage(named:image)
+        }
     
+        print("Quantidade de fotos compartilhada: \(String(describing: imagem))")
+        
+        let activityController = UIActivityViewController(activityItems: [imagem], applicationActivities: nil)
+        
+        activityController.completionWithItemsHandler = {(nil, completed, _, error)
+            in
+            if completed{
+                print("completou o Share")
+            }else{
+                print("cancelado o share Mano")
+            }
+        }
+        
+        present(activityController, animated: true){
+            print("apresentado meu share")
+        }
+    }
     
     @objc func recuperaTutorial()->Tutorial?{
                 
