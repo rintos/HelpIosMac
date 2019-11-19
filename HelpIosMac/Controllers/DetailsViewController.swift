@@ -60,6 +60,26 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
         if let pathArrayImage = tutorialDetail?.imagesUrl{
             print("Meu array HAAHAHA \(String(describing: pathArrayImage.first))")
         }
+                
+    }
+    
+    //MARK: - Metodos
+    
+    //retorna array de lista de imagens para compartilhar
+    func extraiImagens() -> Array<UIImage>{
+        
+        var imagemArray:Array<UIImage> = []
+        
+        if let imagens = tutorialDetail?.imagesUrl{
+            
+            for img in imagens{
+                imagemArray.append((UIImage(named: img))!)
+            }
+            print("contagem de imagens adicionadas:\(imagemArray.count)")
+        }
+        
+        
+        return imagemArray
         
     }
     
@@ -72,17 +92,11 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
 
     @IBAction func shareContent(_ sender: Any) {
         print("TestTando Botao ahahah")
-        guard let imageList = tutorialDetail?.imagesUrl else {return}
+                
+        let imagensLista = extraiImagens()
         
-        var imagem: UIImage?
-        if let image = imageList.first{
-            imagem = UIImage(named:image)
-        }
-    
-        print("Quantidade de fotos compartilhada: \(String(describing: imagem))")
-        
-        let activityController = UIActivityViewController(activityItems: [imagem], applicationActivities: nil)
-        
+        let activityController = UIActivityViewController(activityItems: imagensLista as [Any], applicationActivities: nil)
+                        
         activityController.completionWithItemsHandler = {(nil, completed, _, error)
             in
             if completed{
