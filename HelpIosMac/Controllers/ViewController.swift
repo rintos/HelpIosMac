@@ -10,11 +10,8 @@ import Foundation
 import UIKit
 
 class ViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate,UISearchBarDelegate {
-
-    
     
     var contentList: Array<Tutorial> = TutorialDAO().returnListTutorial()
-    
     var currentList: Array<Tutorial> = TutorialDAO().returnListTutorial()
     
     @IBOutlet weak var collectionViewTutorial:UICollectionView!
@@ -23,8 +20,6 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     var listFavorite: Array<Tutorial> = []
     var detalheController = DetailsViewController()
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showDetail"){
@@ -79,21 +74,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let tutorial = currentList[indexPath.item]
-      //  print(tutorial.details)
-        
-        detalheController.titleDetail = tutorial.name
-        detalheController.descriptionDetail = tutorial.details
         detalheController.tutorialDetail = tutorial
-        detalheController.linkVideo = tutorial.linkVideo
-        
-//        let controllerDetalhes = DetailsViewController()
-//        if let navigation = navigationController {
-//            controllerDetalhes.titleDetail = tutorial.name
-//            controllerDetalhes.descriptionDetail = tutorial.details
-//            navigation.pushViewController(controllerDetalhes, animated: true)
-//
-//        }
-        
     }
     
     @objc func showTutorial( recognizer: UILongPressGestureRecognizer){
@@ -105,8 +86,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
                 
                 let detailsController = DetailsViewController()
                 if let navigation = navigationController{
-                    detailsController.titleDetail = tutorial.name
-                    detailsController.descriptionDetail = tutorial.details
+                    detailsController.tutorialDetail = tutorial
                     navigation.pushViewController(detailsController, animated: true)
                 }
                 

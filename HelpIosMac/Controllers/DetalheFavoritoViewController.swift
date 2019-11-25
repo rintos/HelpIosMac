@@ -40,9 +40,7 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         imagensTutorialCollectionView.dataSource = self
         imagensTutorialCollectionView.reloadData()
         
-        print(tutorial as Any)
         self.setupSubirCodigo()
-        
         
         //configurando view com teclado
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -86,9 +84,7 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         if let tutorialFavorito = tutorial{
             self.tituloLabel.text = tutorialFavorito.name
             self.textoTextView.text = tutorialFavorito.textDetails
-            self.editarTextView.text = tutorialFavorito.makeTutorial
-            print("Caminho Imagem do Favorito armazenado\(String(describing: tutorialFavorito.imagesUrl))")
-        
+            self.editarTextView.text = tutorialFavorito.makeTutorial        
         }
 
     }

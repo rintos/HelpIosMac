@@ -19,11 +19,8 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
 
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     
-    
+    //MARK: - Variaveis
     //Variaveis que recebem dados da ViewController
-    var titleDetail = ""
-    var descriptionDetail = ""
-    var linkVideo = ""
     var listImages = TutorialDAO().returnListImages()
     var tutorialDetail: Tutorial? // recebe o tutorial selecionado da viewConroller
         
@@ -48,22 +45,21 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
         let barButton =  UIBarButtonItem(title: "Salvar", style: UIBarButtonItem.Style.done, target: self, action: #selector(saveTutorial))
         navigationItem.rightBarButtonItem = barButton
         
-        
         imagesCollectionView.dataSource = self
         imagesCollectionView.reloadData()
         
-        self.titleTextLabel.text = titleDetail
-        self.descriptionTextView.text = descriptionDetail
-       
-        print("Myvideo111: \(linkVideo)")//verificando string
-        
-        if let pathArrayImage = tutorialDetail?.imagesUrl{
-            print("Meu array HAAHAHA \(String(describing: pathArrayImage.first))")
-        }
+        setupDadosView()
                 
     }
     
     //MARK: - Metodos
+    
+    func setupDadosView(){
+        guard let detalheTutorial = tutorialDetail else { return }
+        self.titleTextLabel.text = detalheTutorial.name
+        self.descriptionTextView.text = detalheTutorial.details
+    }
+    
     
     //retorna array de lista de imagens para compartilhar
     func extraiImagens() -> Array<UIImage>{
@@ -75,23 +71,20 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
             for img in imagens{
                 imagemArray.append((UIImage(named: img))!)
             }
-            print("contagem de imagens adicionadas:\(imagemArray.count)")
         }
         
-        
         return imagemArray
-        
     }
     
     //action que envia string do video para proxima tela
     @IBAction func sendLinkVideo(_ sender: Any) {
-        detailVideo.urlVideo = linkVideo
+        guard let linkYoutube = tutorialDetail?.linkVideo else { return }
+        detailVideo.urlVideo = linkYoutube
     }
     
     //funcao para compartilhar conteudos
 
     @IBAction func shareContent(_ sender: Any) {
-        print("TestTando Botao ahahah")
                 
         let imagensLista = extraiImagens()
         
@@ -111,6 +104,27 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
         }
     }
     
+    @IBAction func compartilharTextoLinkVideo(_ sender: Any){
+        
+        guard let conteudoTutorial = tutorialDetail else { return }
+        let video = "https://www.youtube.com/watch?v=\(conteudoTutorial.linkVideo)"
+        
+        let activityController = UIActivityViewController(activityItems: [video as Any,conteudoTutorial.name as Any, conteudoTutorial.details as Any], applicationActivities: nil)
+        
+        activityController.completionWithItemsHandler = {(nil, completed, _, error)
+            in
+            if completed{
+                print("compartilhamento realizado com sucesso")
+            }else{
+                print("cancelado o compartilhamento")
+            }
+        }
+        
+        present(activityController, animated: true)
+        print("Compartilhamento apresentado com sucesso")
+        
+    }
+    
     @objc func recuperaTutorial()->Tutorial?{
                 
         if let titulo = titleTextLabel?.text{
@@ -127,19 +141,15 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
     
     @objc func saveTutorial(){
         
+        guard let detalheTutorial = tutorialDetail else { return }
+
         if tutorials == nil{
             tutorials = Tutorials(context: contexo)
         }
         
         if let tutorialFavorito = recuperaTutorial(){
-       //     print(tutorialFavorito.name)
-                        
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let controller = storyboard.instantiateViewController(withIdentifier: "favorito") as! FavoritosTableViewController
-          //  controller.conteudoTutorial = tutorialFavorito
-            
-            tutorials?.name = titleDetail
-            tutorials?.textDetails = descriptionDetail
+            tutorials?.name = detalheTutorial.name
+            tutorials?.textDetails = detalheTutorial.details
             tutorials?.imagesUrl = tutorialFavorito.imagesUrl as NSObject
             
             do{
@@ -152,7 +162,6 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
             }catch{
                 print(error.localizedDescription)
             }
-
         }
     }
     
