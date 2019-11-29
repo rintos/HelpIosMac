@@ -10,6 +10,9 @@
 		220F0B5F2373A0DF00B3BC99 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F0B5E2373A0DF00B3BC99 /* ShareViewController.swift */; };
 		220F0B622373A0DF00B3BC99 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 220F0B602373A0DF00B3BC99 /* MainInterface.storyboard */; };
 		220F0B662373A0DF00B3BC99 /* ImageShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 220F0B5C2373A0DF00B3BC99 /* ImageShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		225A50CE238C463E00C198CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 225A50CD238C463E00C198CE /* GoogleService-Info.plist */; };
+		225A50D0238C60B300C198CE /* FireBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A50CF238C60B300C198CE /* FireBase.swift */; };
+		225A50D2238D6D2400C198CE /* TutorialAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A50D1238D6D2400C198CE /* TutorialAPI.swift */; };
 		22B4ED7C235FD2D500D7DFFF /* DetailVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4ED7B235FD2D500D7DFFF /* DetailVideoViewController.swift */; };
 		22B4ED80235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4ED7F235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift */; };
 		22B4ED8223600CB100D7DFFF /* YoutubePlayer_in_WKWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B4ED8123600CB100D7DFFF /* YoutubePlayer_in_WKWebView.framework */; };
@@ -82,6 +85,9 @@
 		220F0B5E2373A0DF00B3BC99 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		220F0B612373A0DF00B3BC99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		220F0B632373A0DF00B3BC99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		225A50CD238C463E00C198CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		225A50CF238C60B300C198CE /* FireBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBase.swift; sourceTree = "<group>"; };
+		225A50D1238D6D2400C198CE /* TutorialAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialAPI.swift; sourceTree = "<group>"; };
 		22B4ED7B235FD2D500D7DFFF /* DetailVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVideoViewController.swift; sourceTree = "<group>"; };
 		22B4ED7F235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVideoFavoriteViewController.swift; sourceTree = "<group>"; };
 		22B4ED8123600CB100D7DFFF /* YoutubePlayer_in_WKWebView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YoutubePlayer_in_WKWebView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +170,14 @@
 			path = ImageShare;
 			sourceTree = "<group>";
 		};
+		225A50CC238C374A00C198CE /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				225A50CF238C60B300C198CE /* FireBase.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		50825AE223174592001040E7 = {
 			isa = PBXGroup;
 			children = (
@@ -193,12 +207,14 @@
 			children = (
 				220F0B5723726E3F00B3BC99 /* HelpIosMac.entitlements */,
 				50825B26231748B5001040E7 /* Views */,
-				50825B2523174899001040E7 /* Controllers */,
 				50825B242317488B001040E7 /* Models */,
+				50825B2523174899001040E7 /* Controllers */,
+				225A50CC238C374A00C198CE /* Firebase */,
 				50825AEE23174592001040E7 /* AppDelegate.swift */,
 				50825AF8231745AF001040E7 /* Assets.xcassets */,
 				50825AFA231745AF001040E7 /* LaunchScreen.storyboard */,
 				50825AFD231745AF001040E7 /* Info.plist */,
+				225A50CD238C463E00C198CE /* GoogleService-Info.plist */,
 				50825AF523174593001040E7 /* HelpIosMac.xcdatamodeld */,
 			);
 			path = HelpIosMac;
@@ -228,6 +244,7 @@
 				50825B5A2318B3C0001040E7 /* Tutorial.swift */,
 				50825B5C2318B4DE001040E7 /* TutorialDAO.swift */,
 				50613AB7232D39F5000B27D8 /* CriarTutorialDelegate.swift */,
+				225A50D1238D6D2400C198CE /* TutorialAPI.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -379,13 +396,16 @@
 					};
 					50825AEA23174592001040E7 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1120;
 					};
 					50825B01231745B0001040E7 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1120;
 						TestTargetID = 50825AEA23174592001040E7;
 					};
 					50825B0C231745B0001040E7 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1120;
 						TestTargetID = 50825AEA23174592001040E7;
 					};
 				};
@@ -425,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50825AFC231745AF001040E7 /* LaunchScreen.storyboard in Resources */,
+				225A50CE238C463E00C198CE /* GoogleService-Info.plist in Resources */,
 				50825AF9231745AF001040E7 /* Assets.xcassets in Resources */,
 				50825AF423174592001040E7 /* Main.storyboard in Resources */,
 			);
@@ -563,6 +584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50825AF723174593001040E7 /* HelpIosMac.xcdatamodeld in Sources */,
+				225A50D2238D6D2400C198CE /* TutorialAPI.swift in Sources */,
 				22B4ED7C235FD2D500D7DFFF /* DetailVideoViewController.swift in Sources */,
 				50825AF123174592001040E7 /* ViewController.swift in Sources */,
 				50C601C8234EB281005DB696 /* CollectionViewCell.swift in Sources */,
@@ -572,6 +594,7 @@
 				50825B2B23174F0F001040E7 /* DetailsViewController.swift in Sources */,
 				5055956C235140F8004A166C /* FavoriteTableViewCell.swift in Sources */,
 				50825B5D2318B4DE001040E7 /* TutorialDAO.swift in Sources */,
+				225A50D0238C60B300C198CE /* FireBase.swift in Sources */,
 				508B14112329E4C3005F14AE /* FavoritosTableViewController.swift in Sources */,
 				22B4ED80235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift in Sources */,
 				50825B5B2318B3C0001040E7 /* Tutorial.swift in Sources */,
@@ -820,7 +843,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.vsantoryu.HelpIosMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -843,7 +866,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.vsantoryu.HelpIosMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -864,7 +887,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.vsantoryu.HelpIosMacTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelpIosMac.app/HelpIosMac";
 			};
@@ -886,7 +909,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.vsantoryu.HelpIosMacTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelpIosMac.app/HelpIosMac";
 			};
@@ -907,7 +930,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.vsantoryu.HelpIosMacUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = HelpIosMac;
 			};
@@ -928,7 +951,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.vsantoryu.HelpIosMacUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = HelpIosMac;
 			};

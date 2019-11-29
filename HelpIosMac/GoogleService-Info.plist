@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>954109159369-p323om17ibjcl8g5r7055c69tr9997bk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.954109159369-p323om17ibjcl8g5r7055c69tr9997bk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDEIWe7WUbxr-ABJ3BDWP0bLWP0JosxU0k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>954109159369</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>br.com.vsantoryu.HelpIosMac</string>
+	<key>PROJECT_ID</key>
+	<string>helpiosmac</string>
+	<key>STORAGE_BUCKET</key>
+	<string>helpiosmac.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:954109159369:ios:e794ee03017e01afb06a18</string>
+	<key>DATABASE_URL</key>
+	<string>https://helpiosmac.firebaseio.com</string>
+</dict>
+</plist>

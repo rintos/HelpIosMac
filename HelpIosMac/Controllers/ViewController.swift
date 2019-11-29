@@ -8,19 +8,22 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class ViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate,UISearchBarDelegate {
-    
-    var contentList: Array<Tutorial> = TutorialDAO().returnListTutorial()
-    var currentList: Array<Tutorial> = TutorialDAO().returnListTutorial()
-    
+        
     @IBOutlet weak var collectionViewTutorial:UICollectionView!
     
     @IBOutlet weak var searchTutorial: UISearchBar!
     
+    //MARK: Variavel
+    
     var listFavorite: Array<Tutorial> = []
     var detalheController = DetailsViewController()
-    
+    var contentList: Array<Tutorial> = TutorialDAO().returnListTutorial()
+    var currentList: Array<Tutorial> = TutorialDAO().returnListTutorial()
+    var lista = [Tutorial]()
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showDetail"){
             detalheController = (segue.destination as? DetailsViewController)!
@@ -37,6 +40,28 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         collectionViewTutorial.dataSource = self
         collectionViewTutorial.delegate = self
         
+         setupDadosFirebase { listaTutorials in
+            for listaTutorial in listaTutorials {
+                print(listaTutorial.details)
+                self.currentList.append(listaTutorial)
+                self.collectionViewTutorial.reloadData()
+            }
+        }
+    }
+    
+    
+    
+
+    func recebeDadosFirebase(_ tutorial: Tutorial){
+        var listaTutorial: Array<Tutorial> = []
+        listaTutorial.append(tutorial)
+      //  print("contagem\(listaTutorial.count)")
+    }
+
+    func setupDadosFirebase(_ callback:@escaping(_ listaTutorial: Array<Tutorial> ) -> Void){
+        FireBase().getDadosFirebase { (listaTutorial) in
+            callback(listaTutorial)
+        }
     }
     
     private func setUpSerachBar(){
@@ -94,13 +119,6 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             }
         }
     }
-    
-    //            if let indexPath = tableView.indexPath(for: cell){
-    /*
-     let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(showDetails))
-     cell.addGestureRecognizer(recognizer)
-     
-     */
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else {
