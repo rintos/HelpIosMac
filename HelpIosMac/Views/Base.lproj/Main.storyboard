@@ -20,11 +20,23 @@
                                 <rect key="frame" x="0.0" y="44" width="320" height="475"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="pesquise" translatesAutoresizingMaskIntoConstraints="NO" id="ela-jc-lfe">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="GLV-de-AxQ"/>
+                                        </constraints>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="pLM-t0-Sc7">
+                                        <rect key="frame" x="0.0" y="45" width="320" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="iM8-pl-Bkf"/>
+                                        </constraints>
+                                        <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NOd-Lg-eOz">
-                                        <rect key="frame" x="0.0" y="56" width="320" height="419"/>
+                                        <rect key="frame" x="0.0" y="80" width="320" height="395"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QMw-Gz-DgV">
                                             <size key="itemSize" width="250" height="350"/>
@@ -104,6 +116,7 @@
                     <navigationItem key="navigationItem" id="ytW-ZL-3G9"/>
                     <connections>
                         <outlet property="collectionViewTutorial" destination="NOd-Lg-eOz" id="WJD-l7-lqJ"/>
+                        <outlet property="loadingSpinner" destination="pLM-t0-Sc7" id="oyv-Ob-vmA"/>
                         <outlet property="searchTutorial" destination="ela-jc-lfe" id="Fnw-Fm-7Yw"/>
                     </connections>
                 </viewController>

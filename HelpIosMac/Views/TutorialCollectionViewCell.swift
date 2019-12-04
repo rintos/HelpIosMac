@@ -14,5 +14,6 @@ class TutorialCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imagemTutorial:UIImageView!
     @IBOutlet weak var tituloLabel: UILabel!
     @IBOutlet weak var descricaoTextView: UITextView!
+
     
 }

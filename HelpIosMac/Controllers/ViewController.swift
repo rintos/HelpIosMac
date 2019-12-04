@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Firebase
 
 class ViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate,UISearchBarDelegate {
         
@@ -16,13 +15,15 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     @IBOutlet weak var searchTutorial: UISearchBar!
     
+    
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView?
+    
     //MARK: Variavel
     
     var listFavorite: Array<Tutorial> = []
     var detalheController = DetailsViewController()
     var contentList: Array<Tutorial> = TutorialDAO().returnListTutorial()
     var currentList: Array<Tutorial> = TutorialDAO().returnListTutorial()
-    var lista = [Tutorial]()
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showDetail"){
@@ -33,6 +34,9 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator()
+        
+        loadingSpinner?.startAnimating()
         
         setUpSerachBar()
         collectionViewTutorial.keyboardDismissMode = .onDrag
@@ -42,15 +46,19 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         
          setupDadosFirebase { listaTutorials in
             for listaTutorial in listaTutorials {
-                print(listaTutorial.details)
+               // print(listaTutorial.details)
                 self.currentList.append(listaTutorial)
+                self.contentList.append(listaTutorial)
                 self.collectionViewTutorial.reloadData()
+                self.loadingSpinner?.stopAnimating()
             }
         }
     }
     
     
-    
+    func activityIndicator(){
+        loadingSpinner?.hidesWhenStopped = true
+    }
 
     func recebeDadosFirebase(_ tutorial: Tutorial){
         var listaTutorial: Array<Tutorial> = []
@@ -62,6 +70,12 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         FireBase().getDadosFirebase { (listaTutorial) in
             callback(listaTutorial)
         }
+    }
+    
+    func setupImage(_ completion:@escaping(_ image:UIImage) -> Void){
+        FireBase().getImage({ image in
+            completion(image)
+        })
     }
     
     private func setUpSerachBar(){
@@ -85,14 +99,13 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
       //  cell.imagemTutorial.image = UIImage(named: tutorial.pathImage)
         cell.layer.borderWidth = 3
         
-        if let pathArrayImage = tutorial.imagesUrl.first {
-            //print("Caminho da imagem pegando um item do array manualmente: \(String(describing: pathArrayImage))")
-            cell.imagemTutorial.image = UIImage(named: pathArrayImage)
-
+        setupImage { (image) in
+            cell.imagemTutorial.image = image
         }
-        
-//        let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(showTutorial))
-//        cell.addGestureRecognizer(recognizer)
+//        if let pathArrayImage = tutorial.imagesUrl.first {
+//            //print("Caminho da imagem pegando um item do array manualmente: \(String(describing: pathArrayImage))")
+//            cell.imagemTutorial.image = UIImage(named: pathArrayImage)
+//        }
         
         return cell
     }
