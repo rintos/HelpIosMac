@@ -16,6 +16,7 @@ class FireBase: NSObject {
     var fireBaseReferente: DatabaseReference!
     var database: Database!
     var storage: Storage!
+    var imageURL: Array<String> = []
     
     
     func getDadosFirebase(_ completion:@escaping(_ listaTutorial: Array<Tutorial>) -> Void ) {
@@ -31,25 +32,23 @@ class FireBase: NSObject {
             guard let dadosLinkVideo = dadosTutorial?["linkVideo"] as? String else { return }
             guard let dadosPathImage = dadosTutorial?["pathImage"] as? String else { return }
             
+            self.imageURL = dadosImagesUrl
+            
             let tutorial = Tutorial(name: dadosTitle, details: dadosDetail, pathImage: dadosPathImage, imagesUrl: dadosImagesUrl, linkVideo: dadosLinkVideo)
             lista.append(tutorial)
             completion(lista)
-
+           // print("caminho gerado:\(self.imageURL)")
             }
         })
         
     }
 
     
-    func getImage(_ completion:@escaping(_ image: UIImage) -> Void){
-        var storage = Storage.storage()
-        storage = Storage.storage(url: "gs://helpiosmac.appspot.com")
-        let storageReference = storage.reference()
-       // let imagesReference = storageReference.child("images")
-        let spaceReference = storageReference.child("images/img2.jpg")
-     //   let storagePath = "\(storage)/images/img10.jpg"
+    func getImage(_ folderPath: String = "images", fileName: String, completion:@escaping(_ image: UIImage) ->(), failure:@escaping(_ error: Error) -> () ){
         
-        spaceReference.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+        let reference = Storage.storage().reference(withPath: "\(folderPath)/\(fileName)")
+
+        reference.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
             if let error = error {
                 print(error)
             }else {
@@ -60,5 +59,6 @@ class FireBase: NSObject {
             }
         }
     }
+    
 
 }

@@ -55,7 +55,6 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         }
     }
     
-    
     func activityIndicator(){
         loadingSpinner?.hidesWhenStopped = true
     }
@@ -72,10 +71,12 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         }
     }
     
-    func setupImage(_ completion:@escaping(_ image:UIImage) -> Void){
-        FireBase().getImage({ image in
+    func setupImage(_ fileName: String, completion:@escaping(_ image:UIImage) -> Void){
+        FireBase().getImage(fileName: fileName, completion: { (image) in
             completion(image)
-        })
+        }) { (error) in
+            print(error)
+        }
     }
     
     private func setUpSerachBar(){
@@ -99,13 +100,11 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
       //  cell.imagemTutorial.image = UIImage(named: tutorial.pathImage)
         cell.layer.borderWidth = 3
         
-        setupImage { (image) in
-            cell.imagemTutorial.image = image
+        if let pathArrayImage = tutorial.imagesUrl.first {
+            setupImage(pathArrayImage) { (image) in
+                cell.imagemTutorial.image = image
+            }
         }
-//        if let pathArrayImage = tutorial.imagesUrl.first {
-//            //print("Caminho da imagem pegando um item do array manualmente: \(String(describing: pathArrayImage))")
-//            cell.imagemTutorial.image = UIImage(named: pathArrayImage)
-//        }
         
         return cell
     }
