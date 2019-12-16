@@ -92,12 +92,13 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
         
         cell.favoriteTitleLabel.text = listaTutorials.name
         cell.favoriteTextLabel.text = listaTutorials.textDetails
-        let imagePath = listaTutorials.imagesUrl as! Array<String>
+
         
-        if let image = imagePath.first{
-            cell.imageTutorial.image = UIImage(named: image)
+        if let imagens = listaTutorials.images as? Array<UIImage>{
+            let image = imagens.first
+            cell.imageTutorial.image = image
+            print("imagem salva:\(String(describing: image))")
         }
-        //cell.textLabel?.text = listaTutorials.name
         
         return cell
     }

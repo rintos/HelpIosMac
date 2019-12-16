@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import Foundation
 import CoreData
+import Firebase
+import SDWebImage
 
-class DetailsViewController: UIViewController,UICollectionViewDataSource {
-
-
+class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate {
     
     @IBOutlet weak var titleTextLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -23,10 +22,12 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
     //Variaveis que recebem dados da ViewController
     var listImages = TutorialDAO().returnListImages()
     var tutorialDetail: Tutorial? // recebe o tutorial selecionado da viewConroller
+    var tutorialsDetails: Tutorials? // segundo que recebe o tutorial
         
     var tutorials:Tutorials?
-    
     var detailVideo = DetailVideoViewController()
+    var listImagesToSave: Array<UIImage> = []
+
     
     var contexo:NSManagedObjectContext{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -45,14 +46,21 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
         let barButton =  UIBarButtonItem(title: "Salvar", style: UIBarButtonItem.Style.done, target: self, action: #selector(saveTutorial))
         navigationItem.rightBarButtonItem = barButton
         
+        
         imagesCollectionView.dataSource = self
         imagesCollectionView.reloadData()
         
+        
         setupDadosView()
-                
+        
+        print("Contagem de imagens passada entre telas: \(tutorialDetail?.imgData.count as Any)")
+        
+        print("Dados da imagem \(tutorialDetail?.imgData as Any)")
+                        
     }
     
     //MARK: - Metodos
+    
     
     func setupDadosView(){
         guard let detalheTutorial = tutorialDetail else { return }
@@ -60,6 +68,15 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
         self.descriptionTextView.text = detalheTutorial.details
     }
     
+
+    func setupImage(_ fileName: String, completion:@escaping(_ image:UIImage) -> Void){
+//        FireBaseImages().getImageToSave(fileName: fileName, completion: { (image) in
+//            completion(image)
+//        }) { (error) in
+//            print(error)
+//        }
+    }
+
     
     //retorna array de lista de imagens para compartilhar
     func extraiImagens() -> Array<UIImage>{
@@ -130,7 +147,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
         if let titulo = titleTextLabel?.text{
             if let texto = descriptionTextView?.text{
                 if let pathArrayImage = tutorialDetail?.imagesUrl {
-                    let tutorial = Tutorial(name: titulo, details: texto, imagesUrl: pathArrayImage)
+                    let tutorial = Tutorial(name: titulo, details: texto, imagesUrl: pathArrayImage, images: [])
                     //  print("Sanvando os dados titulo: \(tutorial.name) texto: \(tutorial.details)")
                     return tutorial
                 }
@@ -139,43 +156,84 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource {
         return nil
     }
     
+    // MARK: - CoreData Save
+    
     @objc func saveTutorial(){
-        
+                
         guard let detalheTutorial = tutorialDetail else { return }
+        
 
         if tutorials == nil{
             tutorials = Tutorials(context: contexo)
         }
-        
+                
         if let tutorialFavorito = recuperaTutorial(){
+                        
             tutorials?.name = detalheTutorial.name
             tutorials?.textDetails = detalheTutorial.details
             tutorials?.imagesUrl = tutorialFavorito.imagesUrl as NSObject
+                        
+           // let imgObject = dataObject as NSObject
             
-            do{
-                try contexo.save()
+            
+            
+            let folderPath = "images"
+            
+            for namesOfImage in tutorialFavorito.imagesUrl{
                 
-                if let navigation = navigationController{
-                    navigation.popViewController(animated: true)
-                }
+                let reference = Storage.storage().reference(withPath: "\(folderPath)/\(namesOfImage)")
 
-            }catch{
-                print(error.localizedDescription)
+                
+                reference.getData(maxSize: 1 * 1024 * 1024, completion: {(data, error)in
+                    print("Endereco da URL:\(String(describing: data))")
+                        if error != nil{
+                            print("Gerou erro para fazer download da imagem\(error as Any)")
+                        }else{
+                            if let imageData = data {
+                                guard let image = UIImage(data: imageData) else { return }
+                                self.listImagesToSave.append(image)
+                            }
+                        
+                       }
+                    
+                    self.tutorials?.images = self.listImagesToSave as NSObject
+
+                         do{
+                            try self.contexo.save()
+                             
+                            if let navigation = self.navigationController{
+                                 navigation.popViewController(animated: true)
+                             }
+
+                         }catch{
+                             print(error.localizedDescription)
+                         }
+                    
+                    })
+                
             }
+            
+            
+            
+            
+        //    let img = detalheTutorial.imgData as NSObject?
+            
+     
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let imageList = tutorialDetail?.imagesUrl else {return 0}
-        return imageList.count
+        guard let images = tutorialDetail?.imagesUrl.count else { return 0 }
+        return images
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageHome", for: indexPath) as! CollectionViewCell
-        guard let imageList = tutorialDetail?.imagesUrl else {return cell}
         
-        let pathImage = imageList[indexPath.row]
-        cell.imagesCollectionView.image = UIImage(named: pathImage)
+        guard let namesOfImage = tutorialDetail?.imagesUrl[indexPath.row] else { return cell }
+        
+        cell.configCell(namesOfImage)
         
         return cell
     }

@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Foundation
 
-class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSource {
+class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var tituloLabel:UILabel!
     @IBOutlet weak var textoTextView:UITextView!
@@ -30,8 +30,10 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         return appDelegate.persistentContainer.viewContext
     }
     
+    var count: Int = 0
     
-    let listImage = TutorialDAO().returnListImages()
+    
+   // let listImage = TutorialDAO().returnListImages()
     
     
     override func viewDidLoad() {
@@ -112,19 +114,25 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let arrayImages = tutorial?.imagesUrl else { return 0 }
-        let favoriteImages = arrayImages as! Array<String>
-        
-        return favoriteImages.count
+        guard let arrayImages = tutorial?.images else { return 0 }
+        let listImages = arrayImages as! Array<UIImage>
+
+        count = listImages.count
+        return listImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "images", for: indexPath) as! DetalhesCollectionViewCell
-        guard let arrayImages = tutorial?.imagesUrl else { return cell }
-        let favoriteImages = arrayImages as! Array<String>
-        let pathImage = favoriteImages[indexPath.row]
+        guard let arrayImages = tutorial?.images else { return cell }
+        let favoriteImages = arrayImages as! Array<UIImage>
+        let image = favoriteImages[indexPath.row]
         
-        cell.imagensTutorial.image = UIImage(named: pathImage)
+        print("alterando index path\(count - indexPath.row))")
+        
+        cell.imagensTutorial.image = image
+        
+      //  cell.labelRowNumber!.text = String(count - indexPath.row)
+
         
         return cell
     }

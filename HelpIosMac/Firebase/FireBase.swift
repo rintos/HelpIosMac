@@ -17,14 +17,22 @@ class FireBase: NSObject {
     var database: Database!
     var storage: Storage!
     var imageURL: Array<String> = []
+    //var images
+    var allTasks: [StorageDownloadTask] = []
+    var nameOfImages: Array<String> = []
+    var listImage: [UIImage] = []
+    var ImagensDeUmObjeto: [UIImage] = []
+
+
     
-    
-    func getDadosFirebase(_ completion:@escaping(_ listaTutorial: Array<Tutorial>) -> Void ) {
+    func getDadosFirebase(_ completion:@escaping(_ listaTutorial: Array<Tutorial>) -> ()) {
         referenceFirebase = Database.database().reference()
 
         textDatabaseHandler = referenceFirebase?.child("tutorials").observe(DataEventType.value, with: { dataSnapshot in
         for dados in dataSnapshot.children.allObjects as! [DataSnapshot]{
+            
             var lista: Array<Tutorial> = []
+            
             let dadosTutorial = dados.value as? [String: AnyObject]
             guard let dadosTitle = dadosTutorial?["name"] as? String else { return }
             guard let dadosDetail = dadosTutorial?["details"] as? String else { return }
@@ -34,31 +42,128 @@ class FireBase: NSObject {
             
             self.imageURL = dadosImagesUrl
             
-            let tutorial = Tutorial(name: dadosTitle, details: dadosDetail, pathImage: dadosPathImage, imagesUrl: dadosImagesUrl, linkVideo: dadosLinkVideo)
+            let tutorial = Tutorial(name: dadosTitle, details: dadosDetail, pathImage: dadosPathImage, imagesUrl: dadosImagesUrl, linkVideo: dadosLinkVideo, images: [], imgData: [])
             lista.append(tutorial)
             completion(lista)
            // print("caminho gerado:\(self.imageURL)")
+            
+            
+            
+            let folderPath:String = "images"
+            
+            for nameOfImage in dadosImagesUrl {
+                
+                let reference = Storage.storage().reference(withPath: "\(folderPath)/\(nameOfImage)")
+
+                
+                reference.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+
+                         if let error = error {
+                             print(error)
+                         } else {
+                             if let imageData =  data {
+                                 guard let image = UIImage(data: imageData ) else { return }
+                                 self.listImage.append(image)
+                                 
+                             }
+                         }
+                   //     callback(self.listImage)
+                     }
+                }
+                            
             }
         })
         
     }
-
     
-    func getImage(_ folderPath: String = "images", fileName: String, completion:@escaping(_ image: UIImage) ->(), failure:@escaping(_ error: Error) -> () ){
-        
-        let reference = Storage.storage().reference(withPath: "\(folderPath)/\(fileName)")
-
-        reference.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
-            if let error = error {
-                print(error)
-            }else {
-                if let imageData =  data {
-                    let image = UIImage(data: imageData )
-                    completion(image!)
-                }
-            }
-        }
-    }
+    
+//    func getImageToSave(_ folderPath: String = "images", listNameImage: Array<String> , completion:@escaping(_ listImage: [UIImage]) ->() , failure:@escaping(_ error: Error) -> (), tasks:@escaping(_ allTasks: [StorageDownloadTask] ) -> () ){
+//
+//        nameOfImages = listNameImage
+//
+//        for nameImage in nameOfImages {
+//
+//            let reference = Storage.storage().reference(withPath: "\(folderPath)/\(nameImage)")
+//
+//            let task = reference.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+//
+//                if let error = error {
+//                    print(error)
+//                } else {
+//                    if let imageData =  data {
+//                        guard let image = UIImage(data: imageData ) else { return }
+//                        self.listImage.append(image)
+//
+//                    }
+//                }
+//                completion(self.listImage)
+//            }
+//
+//
+//            allTasks.append(task)
+//
+//        }
+//
+//
+//        tasks(allTasks)
+//
+//       //       task.pause()
+//    //        task.cancel()
+//    //        task.resume()
+//
+//        }
+//
+//
+//
+//    func getImages(_ folderPath: String = "images", tutorial: Tutorial , completion:@escaping(_ listImage: [UIImage]) ->() ,_ callback:@escaping(_ tutorialPopulado: Array<Tutorial>) -> (), failure:@escaping(_ error: Error) -> (), tasks:@escaping(_ allTasks: [StorageDownloadTask] ) -> () ){
+//
+//        var images: [UIImage] = []
+//        var lista: Array<Tutorial> = []
+//
+//
+//        let dadoTutorial = tutorial
+//
+//
+//        nameOfImages = dadoTutorial.imagesUrl
+//
+//        for nameImage in nameOfImages {
+//
+//            let reference = Storage.storage().reference(withPath: "\(folderPath)/\(nameImage)")
+//
+//            let task = reference.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+//
+//                if let error = error {
+//                    print(error)
+//                } else {
+//                    if let imageData =  data {
+//                        guard let image = UIImage(data: imageData ) else { return }
+//                        images.append(image)
+//                    let tutorial = Tutorial(name: dadoTutorial.name, details: dadoTutorial.details, pathImage: dadoTutorial.pathImage, imagesUrl: dadoTutorial.imagesUrl, linkVideo: dadoTutorial.linkVideo, images: [], imgData: images)
+//                        lista.append(tutorial)
+//
+//
+//                    }
+//                }
+//
+//                completion(images)
+//                callback(lista)
+//            }
+//
+//
+//            allTasks.append(task)
+//
+//        }
+//
+//
+//
+//
+//        tasks(allTasks)
+//
+//       //       task.pause()
+//    //        task.cancel()
+//    //        task.resume()
+//
+//        }
     
 
 }
