@@ -27,6 +27,11 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
     var tutorials:Tutorials?
     var detailVideo = DetailVideoViewController()
     var listImagesToSave: Array<UIImage> = []
+    
+    //ImagePicker to save
+    //static var shared = ImageController()
+    let fileManager = FileManager.default
+    let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
     
     var contexo:NSManagedObjectContext{
@@ -156,6 +161,51 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         return nil
     }
     
+//    func getImage(_ imageName: String, callback:@escaping(_ image: UIImage) -> Void ){
+//
+//     //   var images: Array<UIImage> = []
+//        
+//        let folderPath = "images"
+//        
+//        let reference = Storage.storage().reference(withPath: "\(folderPath)/\(imageName)")
+//
+//        reference.getData(maxSize: 1 * 1024 * 1024) { (data, erro) in
+//            if erro != nil {
+//                if let error = erro {
+//                    print(error.localizedDescription)
+//                }
+//            } else {
+//                if let data = data {
+//                 //   images.append(UIImage(data: data)!)
+//                    if let imageData = UIImage(data: data) {
+//                        callback(imageData)
+//                    }
+//                }
+//            }
+//        }
+//
+//    }
+    
+    
+//    func saveImage(image: UIImage, imageName:String ) {
+//    
+//        if let imageData = image.jpegData(compressionQuality: 0.8){
+//            do {
+//                let filePath = documentsPath.appendingPathComponent(imageName)
+//                
+//                try imageData.write(to: filePath)
+//                print("\(imageName) Foi salva com sucesso!!!!!!")
+//                
+//            } catch let error as NSError {
+//                print("\(imageName) nao pode ser salva devido ao erro\(error.localizedDescription)")
+//            }
+//        } else {
+//            print("Nao foi possivel converter a imagem")
+//        }
+//
+//    }
+        
+    
     // MARK: - CoreData Save
     
     @objc func saveTutorial(){
@@ -166,60 +216,86 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         if tutorials == nil{
             tutorials = Tutorials(context: contexo)
         }
-                
+
         if let tutorialFavorito = recuperaTutorial(){
-                        
+
             tutorials?.name = detalheTutorial.name
             tutorials?.textDetails = detalheTutorial.details
             tutorials?.imagesUrl = tutorialFavorito.imagesUrl as NSObject
-                        
-           // let imgObject = dataObject as NSObject
+            tutorials?.imageName = "temp"
             
+//            for imagesOfName in tutorialFavorito.imagesUrl {
+//                getImage(imagesOfName) { (image) in
+//                    self.saveImage(image: image, imageName: imagesOfName)
+//                }
+//            }
             
-            
-            let folderPath = "images"
-            
-            for namesOfImage in tutorialFavorito.imagesUrl{
-                
-                let reference = Storage.storage().reference(withPath: "\(folderPath)/\(namesOfImage)")
-
-                
-                reference.getData(maxSize: 1 * 1024 * 1024, completion: {(data, error)in
-                    print("Endereco da URL:\(String(describing: data))")
-                        if error != nil{
-                            print("Gerou erro para fazer download da imagem\(error as Any)")
-                        }else{
-                            if let imageData = data {
-                                guard let image = UIImage(data: imageData) else { return }
-                                self.listImagesToSave.append(image)
-                            }
-                        
-                       }
-                    
-                    self.tutorials?.images = self.listImagesToSave as NSObject
-
-                         do{
-                            try self.contexo.save()
-                             
-                            if let navigation = self.navigationController{
-                                 navigation.popViewController(animated: true)
-                             }
-
-                         }catch{
-                             print(error.localizedDescription)
-                         }
-                    
-                    })
-                
+            for nameOfImages in detalheTutorial.imagesUrl {
+                FireBase().getImage(nameOfImages) { (imageData) in
+                    ImageController().saveImage(image: imageData, imageName: nameOfImages)
+                }
             }
+             
             
-            
-            
-            
-        //    let img = detalheTutorial.imgData as NSObject?
-            
-     
-        }
+                
+                do{
+                    try self.contexo.save()
+
+                    if let navigation = self.navigationController{
+                        navigation.popViewController(animated: true)
+                        }
+
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+          }
+        
+//        if tutorials == nil{
+//            tutorials = Tutorials(context: contexo)
+//        }
+//
+//        if let tutorialFavorito = recuperaTutorial(){
+//
+//            tutorials?.name = detalheTutorial.name
+//            tutorials?.textDetails = detalheTutorial.details
+//            tutorials?.imagesUrl = tutorialFavorito.imagesUrl as NSObject
+//
+//            let folderPath = "images"
+//
+//            for namesOfImage in tutorialFavorito.imagesUrl{
+//
+//                let reference = Storage.storage().reference(withPath: "\(folderPath)/\(namesOfImage)")
+//
+//
+//                reference.getData(maxSize: 1 * 1024 * 1024, completion: {(data, error)in
+//                    print("Endereco da URL:\(String(describing: data))")
+//                        if error != nil{
+//                            print("Gerou erro para fazer download da imagem\(error as Any)")
+//                        }else{
+//                            if let imageData = data {
+//                                guard let image = UIImage(data: imageData) else { return }
+//                                self.listImagesToSave.append(image)
+//                            }
+//
+//                       }
+//
+//                    self.tutorials?.images = self.listImagesToSave as NSObject
+//
+//                         do{
+//                            try self.contexo.save()
+//
+//                            if let navigation = self.navigationController{
+//                                 navigation.popViewController(animated: true)
+//                             }
+//
+//                         }catch{
+//                             print(error.localizedDescription)
+//                         }
+//
+//                    })
+//            }
+//        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

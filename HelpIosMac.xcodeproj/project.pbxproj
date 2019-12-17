@@ -16,6 +16,8 @@
 		22B4ED7C235FD2D500D7DFFF /* DetailVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4ED7B235FD2D500D7DFFF /* DetailVideoViewController.swift */; };
 		22B4ED80235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4ED7F235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift */; };
 		22B4ED8223600CB100D7DFFF /* YoutubePlayer_in_WKWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B4ED8123600CB100D7DFFF /* YoutubePlayer_in_WKWebView.framework */; };
+		22FE7DDF23A94F35005149DE /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FE7DDE23A94F35005149DE /* ImageController.swift */; };
+		22FE7DE123A95A19005149DE /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FE7DE023A95A19005149DE /* ModelController.swift */; };
 		5055956C235140F8004A166C /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055956B235140F7004A166C /* FavoriteTableViewCell.swift */; };
 		50613AB8232D39F5000B27D8 /* CriarTutorialDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50613AB7232D39F5000B27D8 /* CriarTutorialDelegate.swift */; };
 		50825AEF23174592001040E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50825AEE23174592001040E7 /* AppDelegate.swift */; };
@@ -91,6 +93,8 @@
 		22B4ED7B235FD2D500D7DFFF /* DetailVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVideoViewController.swift; sourceTree = "<group>"; };
 		22B4ED7F235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVideoFavoriteViewController.swift; sourceTree = "<group>"; };
 		22B4ED8123600CB100D7DFFF /* YoutubePlayer_in_WKWebView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YoutubePlayer_in_WKWebView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		22FE7DDE23A94F35005149DE /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
+		22FE7DE023A95A19005149DE /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		49EFFFE2DD373D56720CDE5F /* Pods-HelpIosMac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpIosMac.debug.xcconfig"; path = "Target Support Files/Pods-HelpIosMac/Pods-HelpIosMac.debug.xcconfig"; sourceTree = "<group>"; };
 		4D344C8C44FB1520A851F0A2 /* Pods_HelpIosMac_HelpIosMacUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelpIosMac_HelpIosMacUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5055956B235140F7004A166C /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
@@ -266,6 +270,8 @@
 				508B1412232C5E08005F14AE /* DetalheFavoritoViewController.swift */,
 				22B4ED7B235FD2D500D7DFFF /* DetailVideoViewController.swift */,
 				22B4ED7F235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift */,
+				22FE7DDE23A94F35005149DE /* ImageController.swift */,
+				22FE7DE023A95A19005149DE /* ModelController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -596,10 +602,12 @@
 				50825AF123174592001040E7 /* ViewController.swift in Sources */,
 				50C601C8234EB281005DB696 /* CollectionViewCell.swift in Sources */,
 				50825AEF23174592001040E7 /* AppDelegate.swift in Sources */,
+				22FE7DDF23A94F35005149DE /* ImageController.swift in Sources */,
 				508B1414232C5E08005F14AE /* DetalheFavoritoViewController.swift in Sources */,
 				50613AB8232D39F5000B27D8 /* CriarTutorialDelegate.swift in Sources */,
 				50825B2B23174F0F001040E7 /* DetailsViewController.swift in Sources */,
 				5055956C235140F8004A166C /* FavoriteTableViewCell.swift in Sources */,
+				22FE7DE123A95A19005149DE /* ModelController.swift in Sources */,
 				22AC213323A2D15F00A92782 /* TutoImagem.swift in Sources */,
 				50825B5D2318B4DE001040E7 /* TutorialDAO.swift in Sources */,
 				225A50D0238C60B300C198CE /* FireBase.swift in Sources */,

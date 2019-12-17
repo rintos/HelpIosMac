@@ -27,6 +27,11 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
         return appDelegate.persistentContainer.viewContext
     }
     
+    let fileManager = FileManager.default
+    let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+
+    
+    
     //MARK: - View Life Cicle
     
     override func viewDidLoad() {
@@ -41,6 +46,26 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     //MARK: - Metodos
+    
+    func fetchImage(imageName: String) -> UIImage? {
+        let imagePath = documentsPath.appendingPathComponent(imageName).path
+        
+        guard fileManager.fileExists(atPath: imagePath) else {
+            print("Imagem nao existe no caminho: \(imagePath)")
+            
+            return nil
+        }
+        
+        if let imageData = UIImage(contentsOfFile: imagePath) {
+            print("Retornado a imagem com sucesso!!!")
+            return imageData
+        } else {
+            print("UIImage nao pode ser criada!!!")
+            
+            return nil
+        }
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "detalhe"){
@@ -92,13 +117,19 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
         
         cell.favoriteTitleLabel.text = listaTutorials.name
         cell.favoriteTextLabel.text = listaTutorials.textDetails
-
         
-        if let imagens = listaTutorials.images as? Array<UIImage>{
-            let image = imagens.first
-            cell.imageTutorial.image = image
-            print("imagem salva:\(String(describing: image))")
+         let listNames = listaTutorials.imagesUrl as! Array<String>
+         if let name = listNames.first {
+            if let image = fetchImage(imageName: name){
+                cell.imageTutorial.image = image
+            }
         }
+        
+//        if let imagens = listaTutorials.images as? Array<UIImage>{
+//            let image = imagens.first
+//            cell.imageTutorial.image = image
+//            print("imagem salva:\(String(describing: image))")
+//        }
         
         return cell
     }

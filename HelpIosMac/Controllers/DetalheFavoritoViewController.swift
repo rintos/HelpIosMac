@@ -114,20 +114,22 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let arrayImages = tutorial?.images else { return 0 }
-        let listImages = arrayImages as! Array<UIImage>
+        guard let arrayImages = tutorial?.imagesUrl else { return 0 }
+        let listNames = arrayImages as! Array<String>
 
-        count = listImages.count
-        return listImages.count
+        return listNames.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "images", for: indexPath) as! DetalhesCollectionViewCell
-        guard let arrayImages = tutorial?.images else { return cell }
-        let favoriteImages = arrayImages as! Array<UIImage>
-        let image = favoriteImages[indexPath.row]
+//        guard let arrayImages = tutorial?.images else { return cell }
+//        let favoriteImages = arrayImages as! Array<UIImage>
+//        let image = favoriteImages[indexPath.row]
+        let listNames = tutorial?.imagesUrl as! Array<String>
+        let listName = listNames[indexPath.row]
         
-        print("alterando index path\(count - indexPath.row))")
+        let image = ImageController().fetchImage(imageName: listName)
+        
         
         cell.imagensTutorial.image = image
         

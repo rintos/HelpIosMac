@@ -76,6 +76,31 @@ class FireBase: NSObject {
         
     }
     
+    func getImage(_ imageName: String, callback:@escaping(_ image: UIImage) -> Void ){
+
+     //   var images: Array<UIImage> = []
+        
+        let folderPath = "images"
+        
+        let reference = Storage.storage().reference(withPath: "\(folderPath)/\(imageName)")
+
+        reference.getData(maxSize: 1 * 1024 * 1024) { (data, erro) in
+            if erro != nil {
+                if let error = erro {
+                    print(error.localizedDescription)
+                }
+            } else {
+                if let data = data {
+                 //   images.append(UIImage(data: data)!)
+                    if let imageData = UIImage(data: data) {
+                        callback(imageData)
+                    }
+                }
+            }
+        }
+
+    }
+    
     
 //    func getImageToSave(_ folderPath: String = "images", listNameImage: Array<String> , completion:@escaping(_ listImage: [UIImage]) ->() , failure:@escaping(_ error: Error) -> (), tasks:@escaping(_ allTasks: [StorageDownloadTask] ) -> () ){
 //
