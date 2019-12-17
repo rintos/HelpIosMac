@@ -212,7 +212,6 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
                 
         guard let detalheTutorial = tutorialDetail else { return }
         
-
         if tutorials == nil{
             tutorials = Tutorials(context: contexo)
         }
@@ -223,78 +222,21 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
             tutorials?.textDetails = detalheTutorial.details
             tutorials?.imagesUrl = tutorialFavorito.imagesUrl as NSObject
             tutorials?.imageName = "temp"
-            
-//            for imagesOfName in tutorialFavorito.imagesUrl {
-//                getImage(imagesOfName) { (image) in
-//                    self.saveImage(image: image, imageName: imagesOfName)
-//                }
-//            }
-            
+
             for nameOfImages in detalheTutorial.imagesUrl {
                 FireBase().getImage(nameOfImages) { (imageData) in
                     ImageController().saveImage(image: imageData, imageName: nameOfImages)
                 }
             }
-             
-            
-                
-                do{
-                    try self.contexo.save()
-
-                    if let navigation = self.navigationController{
-                        navigation.popViewController(animated: true)
-                        }
-
-                    } catch {
-                        print(error.localizedDescription)
+            do{
+                try self.contexo.save()
+                if let navigation = self.navigationController{
+                    navigation.popViewController(animated: true)
                     }
+                } catch {
+                    print(error.localizedDescription)
+                }
           }
-        
-//        if tutorials == nil{
-//            tutorials = Tutorials(context: contexo)
-//        }
-//
-//        if let tutorialFavorito = recuperaTutorial(){
-//
-//            tutorials?.name = detalheTutorial.name
-//            tutorials?.textDetails = detalheTutorial.details
-//            tutorials?.imagesUrl = tutorialFavorito.imagesUrl as NSObject
-//
-//            let folderPath = "images"
-//
-//            for namesOfImage in tutorialFavorito.imagesUrl{
-//
-//                let reference = Storage.storage().reference(withPath: "\(folderPath)/\(namesOfImage)")
-//
-//
-//                reference.getData(maxSize: 1 * 1024 * 1024, completion: {(data, error)in
-//                    print("Endereco da URL:\(String(describing: data))")
-//                        if error != nil{
-//                            print("Gerou erro para fazer download da imagem\(error as Any)")
-//                        }else{
-//                            if let imageData = data {
-//                                guard let image = UIImage(data: imageData) else { return }
-//                                self.listImagesToSave.append(image)
-//                            }
-//
-//                       }
-//
-//                    self.tutorials?.images = self.listImagesToSave as NSObject
-//
-//                         do{
-//                            try self.contexo.save()
-//
-//                            if let navigation = self.navigationController{
-//                                 navigation.popViewController(animated: true)
-//                             }
-//
-//                         }catch{
-//                             print(error.localizedDescription)
-//                         }
-//
-//                    })
-//            }
-//        }
         
     }
     

@@ -47,26 +47,6 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
     
     //MARK: - Metodos
     
-    func fetchImage(imageName: String) -> UIImage? {
-        let imagePath = documentsPath.appendingPathComponent(imageName).path
-        
-        guard fileManager.fileExists(atPath: imagePath) else {
-            print("Imagem nao existe no caminho: \(imagePath)")
-            
-            return nil
-        }
-        
-        if let imageData = UIImage(contentsOfFile: imagePath) {
-            print("Retornado a imagem com sucesso!!!")
-            return imageData
-        } else {
-            print("UIImage nao pode ser criada!!!")
-            
-            return nil
-        }
-    }
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "detalhe"){
             detalheFavoritoController = (segue.destination as? DetalheFavoritoViewController)!
@@ -120,16 +100,10 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
         
          let listNames = listaTutorials.imagesUrl as! Array<String>
          if let name = listNames.first {
-            if let image = fetchImage(imageName: name){
+            if let image = ImageController().fetchImage(imageName: name){
                 cell.imageTutorial.image = image
             }
         }
-        
-//        if let imagens = listaTutorials.images as? Array<UIImage>{
-//            let image = imagens.first
-//            cell.imageTutorial.image = image
-//            print("imagem salva:\(String(describing: image))")
-//        }
         
         return cell
     }
@@ -138,7 +112,10 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
         if(editingStyle == .delete){
             
             guard let tutorialSelecionado = gerenciadorDeResultados?.fetchedObjects![indexPath.row] else {return}
-            
+            let names = tutorialSelecionado.imagesUrl as! Array<String>
+            for name in names {
+                ImageController().deleteImage(imageName: name)
+            }
             contexo.delete(tutorialSelecionado)
             
             do{
