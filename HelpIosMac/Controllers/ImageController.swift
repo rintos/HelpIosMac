@@ -67,6 +67,27 @@ class ImageController {
             print("Nao pode ser deletado a imagem: \(imageName): gerou erro: \(error)")
         }
     }
+    
+    func saveImageForShare(image: UIImage, imageName:String ) {
+        
+//        let date = String(Date.timeIntervalSinceReferenceDate)
+//        let imageNameForShare = date.replacingOccurrences(of: ".", with: "-") + imageName
+    
+        if let imageData = image.jpegData(compressionQuality: 0.8){
+            do {
+                let filePath = documentsPath.appendingPathComponent(imageName)
+                
+                try imageData.write(to: filePath)
+                print("\(imageName) Foi salva com sucesso!!!!!!")
+                
+            } catch let error as NSError {
+                print("\(imageName) nao pode ser salva devido ao erro\(error.localizedDescription)")
+            }
+        } else {
+            print("Nao foi possivel converter a imagem")
+        }
+
+    }
 
 
 }

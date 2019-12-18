@@ -26,13 +26,6 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         
     var tutorials:Tutorials?
     var detailVideo = DetailVideoViewController()
-    var listImagesToSave: Array<UIImage> = []
-    
-    //ImagePicker to save
-    //static var shared = ImageController()
-    let fileManager = FileManager.default
-    let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-
     
     var contexo:NSManagedObjectContext{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -73,30 +66,20 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         self.descriptionTextView.text = detalheTutorial.details
     }
     
-
-    func setupImage(_ fileName: String, completion:@escaping(_ image:UIImage) -> Void){
-//        FireBaseImages().getImageToSave(fileName: fileName, completion: { (image) in
-//            completion(image)
-//        }) { (error) in
-//            print(error)
-//        }
-    }
-
-    
     //retorna array de lista de imagens para compartilhar
-    func extraiImagens() -> Array<UIImage>{
-        
-        var imagemArray:Array<UIImage> = []
-        
-        if let imagens = tutorialDetail?.imagesUrl{
-            
-            for img in imagens{
-                imagemArray.append((UIImage(named: img))!)
-            }
-        }
-        
-        return imagemArray
-    }
+//    func extraiImagens() -> Array<UIImage>{
+//
+//        var imagemArray:Array<UIImage> = []
+//
+//        if let imagens = tutorialDetail?.imagesUrl{
+//
+//            for img in imagens{
+//                imagemArray.append((UIImage(named: img))!)
+//            }
+//        }
+//
+//        return imagemArray
+//    }
     
     //action que envia string do video para proxima tela
     @IBAction func sendLinkVideo(_ sender: Any) {
@@ -108,22 +91,37 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
 
     @IBAction func shareContent(_ sender: Any) {
                 
-        let imagensLista = extraiImagens()
+       // let imagensLista = extraiImagens()
+        var imagesArray: Array<UIImage> = []
+
         
-        let activityController = UIActivityViewController(activityItems: imagensLista as [Any], applicationActivities: nil)
-                        
-        activityController.completionWithItemsHandler = {(nil, completed, _, error)
-            in
-            if completed{
-                print("completou o Share")
-            }else{
-                print("cancelado o share Mano")
+        guard let namesList = tutorialDetail?.imagesUrl else { return }
+        
+        FireBase().getImageArray(namesList) { (images,name) in
+            ImageController().saveImageForShare(image: images,imageName: name)
+        }
+        
+        for names in namesList{
+            guard let image = ImageController().fetchImage(imageName: names) else {return}
+            imagesArray.append(image)
+        }
+        
+        let activityController = UIActivityViewController(activityItems: imagesArray as [Any], applicationActivities: [])
+                            
+            activityController.completionWithItemsHandler = {(nil, completed, _, error)
+                in
+                if completed{
+                    print("completou o Share")
+                }else{
+                    print("cancelado o share Mano")
+                }
             }
+            
+         present(activityController, animated: true){
+                print("apresentado meu share")
         }
+            
         
-        present(activityController, animated: true){
-            print("apresentado meu share")
-        }
     }
     
     @IBAction func compartilharTextoLinkVideo(_ sender: Any){
@@ -160,52 +158,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         }
         return nil
     }
-    
-//    func getImage(_ imageName: String, callback:@escaping(_ image: UIImage) -> Void ){
-//
-//     //   var images: Array<UIImage> = []
-//        
-//        let folderPath = "images"
-//        
-//        let reference = Storage.storage().reference(withPath: "\(folderPath)/\(imageName)")
-//
-//        reference.getData(maxSize: 1 * 1024 * 1024) { (data, erro) in
-//            if erro != nil {
-//                if let error = erro {
-//                    print(error.localizedDescription)
-//                }
-//            } else {
-//                if let data = data {
-//                 //   images.append(UIImage(data: data)!)
-//                    if let imageData = UIImage(data: data) {
-//                        callback(imageData)
-//                    }
-//                }
-//            }
-//        }
-//
-//    }
-    
-    
-//    func saveImage(image: UIImage, imageName:String ) {
-//    
-//        if let imageData = image.jpegData(compressionQuality: 0.8){
-//            do {
-//                let filePath = documentsPath.appendingPathComponent(imageName)
-//                
-//                try imageData.write(to: filePath)
-//                print("\(imageName) Foi salva com sucesso!!!!!!")
-//                
-//            } catch let error as NSError {
-//                print("\(imageName) nao pode ser salva devido ao erro\(error.localizedDescription)")
-//            }
-//        } else {
-//            print("Nao foi possivel converter a imagem")
-//        }
-//
-//    }
         
-    
     // MARK: - CoreData Save
     
     @objc func saveTutorial(){

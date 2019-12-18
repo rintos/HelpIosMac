@@ -23,7 +23,16 @@ class TutorialCollectionViewCell: UICollectionViewCell {
         
         tituloLabel.text = tutorial.name
         descricaoTextView.text = tutorial.details
-        imagemTutorial.layer.borderWidth = 0.5
+        imagemTutorial.layer.borderWidth = 2
+        imagemTutorial.layer.backgroundColor = UIColor.black.cgColor
+        imagemTutorial.layer.cornerRadius = 6.0
+        imagemTutorial.layer.masksToBounds = true
+        
+        tituloLabel.layer.cornerRadius = 6.0
+        tituloLabel.layer.masksToBounds = true
+        descricaoTextView.layer.cornerRadius = 6.0
+        descricaoTextView.layer.masksToBounds = true
+        
 
         guard let nameImage = tutorial.imagesUrl.first else { return }
 

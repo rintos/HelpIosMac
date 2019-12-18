@@ -42,6 +42,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         
         loadingSpinner?.startAnimating()
         
+        configLayoutSearch()
         setUpSerachBar()
         collectionViewTutorial.keyboardDismissMode = .onDrag
         
@@ -64,6 +65,11 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
 
     }
     
+    func configLayoutSearch(){
+        searchTutorial.layer.cornerRadius = 6.0
+        searchTutorial.layer.masksToBounds = true
+    }
+    
     func activityIndicator(){
         loadingSpinner?.hidesWhenStopped = true
     }
@@ -81,15 +87,6 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         
         
     }
-    
-    func setupImage(_ fileName: String, completion:@escaping(_ image:UIImage) -> Void){
-//        FireBaseImages().getImageToSave(fileName: fileName, completion: { (image) in
-//            completion(image)
-//        }) { (error) in
-//            print(error)
-//        }
-    }
-    
     
     private func setUpSerachBar(){
         searchTutorial.delegate = self
@@ -118,24 +115,6 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         detalheController.tutorialDetail = tutorial
         
     }
-    
-//    @objc func showTutorial( recognizer: UILongPressGestureRecognizer){
-//        if(recognizer.state == UIGestureRecognizer.State.began){
-//            let cell = recognizer.view as! TutorialCollectionViewCell
-//            if let indexPath = collectionViewTutorial.indexPath(for: cell){
-//                let row = indexPath.item
-//                let tutorial = currentList[row]
-//
-//                let detailsController = DetailsViewController()
-//                if let navigation = navigationController{
-//                    detailsController.tutorialDetail = tutorial
-//                    navigation.pushViewController(detailsController, animated: true)
-//                }
-//
-//              //  print(tutorial.name)
-//            }
-//        }
-//    }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else {

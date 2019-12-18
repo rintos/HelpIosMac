@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3BP-ju-kFG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3BP-ju-kFG">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,19 +16,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RAi-2K-q5v">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RAi-2K-q5v">
                                 <rect key="frame" x="0.0" y="44" width="320" height="475"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="pesquise" translatesAutoresizingMaskIntoConstraints="NO" id="ela-jc-lfe">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="GLV-de-AxQ"/>
                                         </constraints>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="pLM-t0-Sc7">
-                                        <rect key="frame" x="0.0" y="45" width="320" height="35"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="0.0" y="50" width="320" height="35"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="iM8-pl-Bkf"/>
@@ -36,8 +37,8 @@
                                         <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NOd-Lg-eOz">
-                                        <rect key="frame" x="0.0" y="80" width="320" height="395"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="0.0" y="90" width="320" height="385"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QMw-Gz-DgV">
                                             <size key="itemSize" width="250" height="350"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -65,13 +66,14 @@
                                                                 <constraint firstAttribute="height" constant="30" id="r2v-j6-GTj"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SXG-B9-Ef4">
-                                                            <rect key="frame" x="0.0" y="188.5" width="250" height="85.5"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <rect key="frame" x="0.0" y="182" width="250" height="92"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <string key="text">Obrigado Deus e Cristo Obrigado Deus e Cristo Obrigado Deus e Cristo Obrigado Deus e Cristo Obrigado Deus e Cristo Obrigado Deus e Cristo Obrigado Deus e Cristo </string>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
@@ -83,7 +85,7 @@
                                                     <constraint firstItem="SXG-B9-Ef4" firstAttribute="leading" secondItem="DPv-zQ-udx" secondAttribute="leading" id="Cps-Nc-g42"/>
                                                     <constraint firstItem="DCb-AA-cxZ" firstAttribute="leading" secondItem="DPv-zQ-udx" secondAttribute="leading" id="EA7-MN-vIE"/>
                                                     <constraint firstItem="k1D-VU-vUX" firstAttribute="leading" secondItem="DPv-zQ-udx" secondAttribute="leading" id="ESH-Ye-wXC"/>
-                                                    <constraint firstItem="SXG-B9-Ef4" firstAttribute="top" secondItem="k1D-VU-vUX" secondAttribute="bottom" constant="8.5" id="aJN-P9-8Td"/>
+                                                    <constraint firstItem="SXG-B9-Ef4" firstAttribute="top" secondItem="k1D-VU-vUX" secondAttribute="bottom" constant="2" id="aJN-P9-8Td"/>
                                                     <constraint firstAttribute="trailing" secondItem="k1D-VU-vUX" secondAttribute="trailing" id="cUI-UF-wh8"/>
                                                     <constraint firstAttribute="trailing" secondItem="DCb-AA-cxZ" secondAttribute="trailing" id="fmc-LV-Tb6"/>
                                                     <constraint firstAttribute="bottom" secondItem="SXG-B9-Ef4" secondAttribute="bottom" constant="1" id="hhZ-ZI-gQY"/>
@@ -100,9 +102,10 @@
                                         </cells>
                                     </collectionView>
                                 </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="RAi-2K-q5v" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="DjV-LD-I43"/>
@@ -153,7 +156,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iTP-bV-Nrq">
-                                                            <rect key="frame" x="0.0" y="0.0" width="312" height="259"/>
+                                                            <rect key="frame" x="9" y="-13" width="312" height="259"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                     </subviews>
@@ -416,8 +419,8 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="318" height="259"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jw9-V4-Bma">
-                                                            <rect key="frame" x="0.0" y="0.0" width="318" height="240"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jw9-V4-Bma">
+                                                            <rect key="frame" x="3" y="0.0" width="318" height="240"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="240" id="xsp-ap-tOt"/>
                                                             </constraints>

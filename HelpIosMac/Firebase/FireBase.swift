@@ -23,7 +23,6 @@ class FireBase: NSObject {
     var listImage: [UIImage] = []
     var ImagensDeUmObjeto: [UIImage] = []
 
-
     
     func getDadosFirebase(_ completion:@escaping(_ listaTutorial: Array<Tutorial>) -> ()) {
         referenceFirebase = Database.database().reference()
@@ -99,6 +98,39 @@ class FireBase: NSObject {
             }
         }
 
+    }
+    
+    func getImageArray(_ namesList: Array<String>, callback:@escaping(_ image: UIImage, _ name: String) -> Void ){
+        
+        let folderPath = "images"
+       // var imagesArray: Array<UIImage> = []
+        var namesArray: Array<String> = []
+
+        
+        for imageName in namesList {
+            
+            let reference = Storage.storage().reference(withPath: "\(folderPath)/\(imageName)")
+            
+            reference.getData(maxSize: 1 * 1024 * 1024) { (data, erro) in
+                if erro != nil {
+                    if let error = erro {
+                        print(error.localizedDescription)
+                    }
+                } else {
+                    let name = imageName
+                    if let data = data {
+                    if let imageData = UIImage(data: data) {
+                        callback(imageData,name)
+                      //  imagesArray.append(imageData)
+                        }
+                    }
+                }
+              //  callback(imagesArray)
+            }
+        }
+        
+
+        
     }
     
     
