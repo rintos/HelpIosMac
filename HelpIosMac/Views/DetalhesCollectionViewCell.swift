@@ -12,6 +12,6 @@ class DetalhesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imagensTutorial:UIImageView!
     
-
+    
     
 }

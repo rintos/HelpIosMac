@@ -10,15 +10,21 @@ import UIKit
 import Firebase
 import SDWebImage
 
-
 class TutorialCollectionViewCell: UICollectionViewCell {
  
     
     @IBOutlet weak var imagemTutorial:UIImageView!
     @IBOutlet weak var tituloLabel: UILabel!
     @IBOutlet weak var descricaoTextView: UITextView!
-
-        
+    
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    
+    func activitySpinner(){
+        spinner.hidesWhenStopped = true
+    }
+    
+    
     func configCollectionCell(_ tutorial: Tutorial){
         
         tituloLabel.text = tutorial.name
@@ -46,12 +52,16 @@ class TutorialCollectionViewCell: UICollectionViewCell {
                 if error != nil{
                     print("Gerou erro para mostrar a imagem\(error as Any)")
                 }else{
-              
-                    self.imagemTutorial.sd_setImage(with: url, completed: .none)
-              
+                    self.spinner.startAnimating()
+                    self.imagemTutorial.sd_setImage(with: url, placeholderImage:UIImage(named:"apple-icon") , completed: .none)
+                    //self.imagemTutorial.sd_setImage(with: url, completed: .none)
                }
+                self.spinner.stopAnimating()
+                self.activitySpinner()
+
             })
     
+
     }
     
     

@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Procura-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HelpIosMac" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,6 +77,11 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="dKq-5U-tN6">
+                                                            <rect key="frame" x="85" y="41" width="82" height="69"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </activityIndicatorView>
                                                     </subviews>
                                                 </view>
                                                 <constraints>
@@ -95,6 +100,7 @@
                                                 <connections>
                                                     <outlet property="descricaoTextView" destination="SXG-B9-Ef4" id="rhY-r5-Lhw"/>
                                                     <outlet property="imagemTutorial" destination="DCb-AA-cxZ" id="IOZ-K7-NxI"/>
+                                                    <outlet property="spinner" destination="dKq-5U-tN6" id="ScR-aW-vnt"/>
                                                     <outlet property="tituloLabel" destination="k1D-VU-vUX" id="KeP-cP-mC4"/>
                                                     <segue destination="xP2-O7-Dic" kind="show" identifier="showDetail" id="Sze-uq-8Wo"/>
                                                 </connections>
@@ -115,7 +121,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="icon_search" id="qTu-Rq-iUz"/>
+                    <tabBarItem key="tabBarItem" title="Procura" image="Apple-icon32" landscapeImage="apple-icon" largeContentSizeImage="Apple-icon-1" id="qTu-Rq-iUz"/>
                     <navigationItem key="navigationItem" id="ytW-ZL-3G9"/>
                     <connections>
                         <outlet property="collectionViewTutorial" destination="NOd-Lg-eOz" id="WJD-l7-lqJ"/>
@@ -159,10 +165,16 @@
                                                             <rect key="frame" x="9" y="-13" width="312" height="259"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="wYv-tM-6Zw">
+                                                            <rect key="frame" x="123" y="95" width="84" height="77"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </activityIndicatorView>
                                                     </subviews>
                                                 </view>
                                                 <connections>
                                                     <outlet property="imagesCollectionView" destination="iTP-bV-Nrq" id="4gv-pD-YEp"/>
+                                                    <outlet property="spinner" destination="wYv-tM-6Zw" id="SxY-oi-VnL"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -246,7 +258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xc-Qa-nlo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1974.375" y="129.92957746478874"/>
+            <point key="canvasLocation" x="1893.75" y="129.92957746478874"/>
         </scene>
         <!--Detail Video View Controller-->
         <scene sceneID="dKw-bW-PUz">
@@ -281,7 +293,7 @@
             </objects>
             <point key="canvasLocation" x="2979" y="130"/>
         </scene>
-        <!--Item-->
+        <!--Favoritos-->
         <scene sceneID="c2u-4L-p9D">
             <objects>
                 <tableViewController storyboardIdentifier="favorito" id="0ie-ye-hJb" customClass="FavoritosTableViewController" customModule="HelpIosMac" customModuleProvider="target" sceneMemberID="viewController">
@@ -346,7 +358,7 @@
                             <outlet property="delegate" destination="0ie-ye-hJb" id="wG3-1a-ULn"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" image="icon_package" id="ujv-S2-VLn"/>
+                    <tabBarItem key="tabBarItem" title="Favoritos" image="Favorites-icon32" landscapeImage="Favorites-icon64" largeContentSizeImage="Favorites-icon" id="ujv-S2-VLn"/>
                     <navigationItem key="navigationItem" id="RUy-S3-rHm"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEb-m7-i25" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -533,7 +545,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_package" width="25" height="25"/>
-        <image name="icon_search" width="25" height="25"/>
+        <image name="Apple-icon-1" width="512" height="512"/>
+        <image name="Apple-icon32" width="32" height="32"/>
+        <image name="Favorites-icon" width="512" height="512"/>
+        <image name="Favorites-icon32" width="32" height="32"/>
+        <image name="Favorites-icon64" width="64" height="64"/>
+        <image name="apple-icon" width="256" height="256"/>
     </resources>
 </document>

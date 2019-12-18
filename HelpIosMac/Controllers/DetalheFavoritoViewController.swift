@@ -30,12 +30,6 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         return appDelegate.persistentContainer.viewContext
     }
     
-    var count: Int = 0
-    
-    
-   // let listImage = TutorialDAO().returnListImages()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
@@ -77,9 +71,6 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     }
         
     func setupSubirCodigo(){
-        
-        
-        
         let barButton =  UIBarButtonItem(title: "Update", style: UIBarButtonItem.Style.done, target: self, action: #selector(salvarTurialGravado))
         navigationItem.rightBarButtonItem = barButton
         
@@ -88,7 +79,6 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
             self.textoTextView.text = tutorialFavorito.textDetails
             self.editarTextView.text = tutorialFavorito.makeTutorial        
         }
-
     }
     
     
@@ -101,15 +91,12 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         tutorial?.textDetails = self.textoTextView.text
         tutorial?.makeTutorial = self.editarTextView.text
     
-    
     do {
         try contexo.save()
         let alert = UIAlertController(title: "Favorito", message: "Anotação salva com sucesso.", preferredStyle: UIAlertController.Style.alert)
         let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: nil)
         alert.addAction(ok)
-        
         present(alert, animated: true)
-        //navigationController?.popToRootViewController(animated: true)
     } catch {
         print(error.localizedDescription)
     }
@@ -127,20 +114,13 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "images", for: indexPath) as! DetalhesCollectionViewCell
-//        guard let arrayImages = tutorial?.images else { return cell }
-//        let favoriteImages = arrayImages as! Array<UIImage>
-//        let image = favoriteImages[indexPath.row]
         let listNames = tutorial?.imagesUrl as! Array<String>
         let listName = listNames[indexPath.row]
         
         let image = ImageController().fetchImage(imageName: listName)
         
-        
         cell.imagensTutorial.image = image
-        
-      //  cell.labelRowNumber!.text = String(count - indexPath.row)
-
-        
+                
         return cell
     }
     

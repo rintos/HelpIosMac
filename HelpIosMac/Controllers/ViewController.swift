@@ -15,7 +15,6 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     @IBOutlet weak var searchTutorial: UISearchBar!
     
-    
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView?
     
     //MARK: Variavel
@@ -64,6 +63,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         }
 
     }
+    
     
     func configLayoutSearch(){
         searchTutorial.layer.cornerRadius = 6.0
