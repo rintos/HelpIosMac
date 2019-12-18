@@ -104,7 +104,12 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     
     do {
         try contexo.save()
-        navigationController?.popToRootViewController(animated: true)
+        let alert = UIAlertController(title: "Favorito", message: "Anotação salva com sucesso.", preferredStyle: UIAlertController.Style.alert)
+        let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: nil)
+        alert.addAction(ok)
+        
+        present(alert, animated: true)
+        //navigationController?.popToRootViewController(animated: true)
     } catch {
         print(error.localizedDescription)
     }

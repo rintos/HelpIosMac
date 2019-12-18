@@ -141,7 +141,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
             imagesArray.append(image)
         }
         
-        let activityController = UIActivityViewController(activityItems: imagesArray as [Any], applicationActivities: [])
+        let activityController = UIActivityViewController(activityItems: imagesArray as [Any], applicationActivities: nil)
                             
             activityController.completionWithItemsHandler = {(nil, completed, _, error)
                 in
@@ -219,9 +219,14 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
             }
             do{
                 try self.contexo.save()
-                if let navigation = self.navigationController{
-                    navigation.popViewController(animated: true)
-                    }
+                let alert = UIAlertController(title: "Tutorial", message: "Tutorial salvo com sucesso no dispositivo", preferredStyle: UIAlertController.Style.alert)
+                let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: nil)
+                alert.addAction(ok)
+                
+                present(alert, animated: true)
+//                if let navigation = self.navigationController{
+//                    navigation.popViewController(animated: true)
+//                    }
                 } catch {
                     print(error.localizedDescription)
                 }
