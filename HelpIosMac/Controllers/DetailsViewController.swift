@@ -57,7 +57,42 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
                         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+      //  verifica()
+    }
+    
     //MARK: - Metodos
+    
+    func verifica(){
+        
+        var verificaImagens: Array<UIImage> = []
+        guard let namesList = tutorialDetail?.imagesUrl else { return }
+
+        for names in namesList{
+            guard let image = ImageController().fetchImage(imageName: names) else {return}
+            verificaImagens.append(image)
+        }
+        
+        let verifica = namesList as! Array<String>
+        
+        if verificaImagens.count > 0 {
+            for name in namesList {
+                ImageController().deleteImage(imageName: name)
+                print("Deletado imagem encontrada")
+            }
+        }
+        
+        print("Tem Dados persistindo??\(verificaImagens)")
+    }
+    
+    func deleteImagesShare(_ namesOfImages: Array<String>){
+        
+        for names in namesOfImages {
+            ImageController().deleteImage(imageName: names)
+            print("imagem deletada\(names)")
+        }
+        
+    }
     
     
     func setupDadosView(){
@@ -118,7 +153,8 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
             }
             
          present(activityController, animated: true){
-                print("apresentado meu share")
+            print("apresentado meu share")
+            self.deleteImagesShare(namesList)
         }
             
         
