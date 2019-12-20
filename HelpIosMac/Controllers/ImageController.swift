@@ -89,6 +89,15 @@ class ImageController {
         }
     }
     
+    func deleteImagesShare(_ namesOfImages: Array<String>){
+        
+        for names in namesOfImages {
+            ImageController().deleteImage(imageName: names)
+            print("imagem deletada\(names)")
+        }
+    }
+    
+    
     func saveImageForShare(image: UIImage, imageName:String ) {
         
         let date = String(Date.timeIntervalSinceReferenceDate)
