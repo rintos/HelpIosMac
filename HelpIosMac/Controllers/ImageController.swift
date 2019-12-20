@@ -51,6 +51,27 @@ class ImageController {
         }
     }
     
+    func fetchImageArray(imageName: String) -> UIImage? {
+        let imagePath = documentsPath.appendingPathComponent(imageName).path
+        
+        guard fileManager.fileExists(atPath: imagePath) else {
+            print("Imagem nao existe no caminho: \(imagePath)")
+            
+            return nil
+        }
+        
+        if let imageData = UIImage(contentsOfFile: imagePath) {
+            print("Retornado a imagem com sucesso!!!")
+            return imageData
+        } else {
+            print("UIImage nao pode ser criada!!!")
+            
+            return nil
+        }
+    }
+    
+    
+    
 
     func deleteImage(imageName: String) {
         let imagePath = documentsPath.appendingPathComponent(imageName)
@@ -70,18 +91,40 @@ class ImageController {
     
     func saveImageForShare(image: UIImage, imageName:String ) {
         
-//        let date = String(Date.timeIntervalSinceReferenceDate)
-//        let imageNameForShare = date.replacingOccurrences(of: ".", with: "-") + imageName
+        let date = String(Date.timeIntervalSinceReferenceDate)
+        let imageNameForShare = date.replacingOccurrences(of: ".", with: "-") + imageName
     
         if let imageData = image.jpegData(compressionQuality: 0.8){
             do {
-                let filePath = documentsPath.appendingPathComponent(imageName)
+                let filePath = documentsPath.appendingPathComponent(imageNameForShare)
                 
                 try imageData.write(to: filePath)
-                print("\(imageName) Foi salva com sucesso!!!!!!")
+                print("\(imageNameForShare) Foi salva com sucesso!!!!!!")
                 
             } catch let error as NSError {
-                print("\(imageName) nao pode ser salva devido ao erro\(error.localizedDescription)")
+                print("\(imageNameForShare) nao pode ser salva devido ao erro\(error.localizedDescription)")
+            }
+        } else {
+            print("Nao foi possivel converter a imagem")
+        }
+
+    }
+    
+    func saveImageReturnName(image: UIImage, imageName:String, completion:@escaping(_ names: String) -> ()) {
+        
+        let date = String(Date.timeIntervalSinceReferenceDate)
+        let name = date.replacingOccurrences(of: ".", with: "-") + imageName
+        
+        if let imageData = image.jpegData(compressionQuality: 0.8){
+            do {
+                let filePath = documentsPath.appendingPathComponent(name)
+                
+                try imageData.write(to: filePath)
+                print("\(name) Foi salva com sucesso!!!!!!")
+                
+                 completion(name)
+            } catch let error as NSError {
+                print("\(name) nao pode ser salva devido ao erro\(error.localizedDescription)")
             }
         } else {
             print("Nao foi possivel converter a imagem")

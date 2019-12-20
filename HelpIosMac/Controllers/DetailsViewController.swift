@@ -26,6 +26,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         
     var tutorials:Tutorials?
     var detailVideo = DetailVideoViewController()
+    var listaDeImagens: Array<UIImage> = []
     
     var contexo:NSManagedObjectContext{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -123,40 +124,85 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
     }
     
     //funcao para compartilhar conteudos
-
-    @IBAction func shareContent(_ sender: Any) {
-                
-       // let imagensLista = extraiImagens()
-        var imagesArray: Array<UIImage> = []
-
-        
+    
+    func downloadRetornaDados(_ completion:@escaping(_ namesForshare: String) -> Void){
+        let imageController = ImageController()
         guard let namesList = tutorialDetail?.imagesUrl else { return }
+          
+          FireBase().getImageArray(namesList) { (images,name) in
+              imageController.saveImageReturnName(image: images, imageName: name) { (names) in
+                  print("nome de imagem salvo: \(names)")
+                completion( names)
+              }
+          }
+    }
+    
+    func makeShare(_ imagesArray: Array<UIImage>,_ namesList: [String] ){
         
-        FireBase().getImageArray(namesList) { (images,name) in
-            ImageController().saveImageForShare(image: images,imageName: name)
-        }
-        
-        for names in namesList{
-            guard let image = ImageController().fetchImage(imageName: names) else {return}
-            imagesArray.append(image)
-        }
+        print("array de imagem:\(imagesArray)")
         
         let activityController = UIActivityViewController(activityItems: imagesArray as [Any], applicationActivities: nil)
-                            
-            activityController.completionWithItemsHandler = {(nil, completed, _, error)
-                in
-                if completed{
-                    print("completou o Share")
-                }else{
-                    print("cancelado o share Mano")
+                                
+                activityController.completionWithItemsHandler = {(nil, completed, _, error)
+                    in
+                    if completed{
+                        print("completou o Share")
+                        self.deleteImagesShare(namesList)
+
+                    }else{
+                        print("cancelado o share Mano")
+                        self.deleteImagesShare(namesList)
+
+                    }
                 }
+                
+            present(activityController, animated: true){
+                print("apresentado meu share")
             }
+        
+
+        
+    }
+    
+    func getTotalImages(_ completion:@escaping(_ images:UIImage,_ names: String, _ cont: Int) -> Void) {
+        
+        var imagesLista: Array<UIImage> = []
+        var namesList: [String] = []
+        var cont: Int = 0
+        downloadRetornaDados { (namesForshare) in
+            cont += 1
+            print("nome de imagem salvo funcao getTotalImages:\(namesForshare) ")
+    //        namesList.append(namesForshare)
+            guard let image = ImageController().fetchImageArray(imageName: namesForshare) else {return}
+           // imagesLista.append(image)
+        //    print("conteudo imagem recuperada---> :\(image)")
             
-         present(activityController, animated: true){
-            print("apresentado meu share")
-            self.deleteImagesShare(namesList)
+            completion(image, namesForshare, cont)
         }
-            
+
+        
+    }
+    
+    
+
+    @IBAction func shareContent(_ sender: Any) {
+        
+        
+        guard let contagemImagens = tutorialDetail?.imagesUrl as? [String] else { return }
+        let contagem = contagemImagens.count
+        
+        var namesList: [String] = []
+        var imagesLista: Array<UIImage> = []
+        
+        getTotalImages { [weak self] (images, names, cont) in
+            imagesLista.append(images)
+            namesList.append(names)
+                if( cont == contagem){
+                    self!.makeShare(imagesLista, namesList)
+            }
+        }
+
+
         
     }
     
