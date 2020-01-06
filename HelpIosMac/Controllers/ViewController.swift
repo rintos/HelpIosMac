@@ -23,12 +23,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     var detalheController = DetailsViewController()
     var contentList: Array<Tutorial> = TutorialDAO().returnListTutorial()
     var currentList: Array<Tutorial> = TutorialDAO().returnListTutorial()
-    var tutorialsList: Array<Tutorials> = []
-    var listaImages: Array<UIImage> = []
-    var listaParaImagens: Array<Tutorial> = []
     
-    var listImagesArray: [UIImage] = []
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showDetail"){
             detalheController = (segue.destination as? DetailsViewController)!
@@ -53,7 +48,6 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
                // print(listaTutorial.details)
                 self.currentList.append(listaTutorial)
                 self.contentList.append(listaTutorial)
-                self.listaParaImagens.append(listaTutorial)
                 self.collectionViewTutorial.reloadData()
                 self.loadingSpinner?.stopAnimating()
 
@@ -74,17 +68,10 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         loadingSpinner?.hidesWhenStopped = true
     }
 
-    func recebeDadosFirebase(_ tutorial: Tutorial){
-        var listaTutorial: Array<Tutorial> = []
-        listaTutorial.append(tutorial)
-      //  print("contagem\(listaTutorial.count)")
-    }
-
     func setupDadosFirebase(_ callback:@escaping(_ listaTutorial: Array<Tutorial> ) -> () ){
         FireBase().getDadosFirebase({ (listaTutorial) in
             callback(listaTutorial)
         })
-        
         
     }
     

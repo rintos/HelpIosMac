@@ -26,7 +26,6 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         
     var tutorials:Tutorials?
     var detailVideo = DetailVideoViewController()
-    var listaDeImagens: Array<UIImage> = []
     
     var contexo:NSManagedObjectContext{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -45,28 +44,14 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         let barButton =  UIBarButtonItem(title: "Salvar", style: UIBarButtonItem.Style.done, target: self, action: #selector(saveTutorial))
         navigationItem.rightBarButtonItem = barButton
         
-        
         imagesCollectionView.dataSource = self
         imagesCollectionView.reloadData()
         
-        
         setupDadosView()
-        
-        print("Contagem de imagens passada entre telas: \(tutorialDetail?.imgData.count as Any)")
-        
-        print("Dados da imagem \(tutorialDetail?.imgData as Any)")
-                        
+    
     }
     
     //MARK: - Metodos
-    
-//    func deleteImagesShare(_ namesOfImages: Array<String>){
-//        
-//        for names in namesOfImages {
-//            ImageController().deleteImage(imageName: names)
-//            print("imagem deletada\(names)")
-//        }
-//    }
     
     func setupDadosView(){
         guard let detalheTutorial = tutorialDetail else { return }
@@ -78,100 +63,6 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
     @IBAction func sendLinkVideo(_ sender: Any) {
         guard let linkYoutube = tutorialDetail?.linkVideo else { return }
         detailVideo.urlVideo = linkYoutube
-    }
-    
-    //faz o download e salva no FileManager
-    func downloadRetornaDados(_ completion:@escaping(_ namesForshare: String) -> Void){
-        let imageController = ImageController()
-        guard let namesList = tutorialDetail?.imagesUrl else { return }
-          
-          FireBase().getImageArray(namesList) { (images,name) in
-              imageController.saveImageReturnName(image: images, imageName: name) { (names) in
-                  print("nome de imagem salvo: \(names)")
-                completion( names)
-              }
-          }
-    }
-    
-    //recupera imagens e nomes salvos
-    func getTotalImages(_ completion:@escaping(_ images:UIImage,_ names: String, _ cont: Int) -> Void) {
-
-        //contador para tratar ciclo de execucao do completion escaping
-        var cont: Int = 0
-        downloadRetornaDados { (namesForshare) in
-            cont += 1
-           // print("nome de imagem salvo funcao getTotalImages:\(namesForshare) ")
-            guard let image = ImageController().fetchImageArray(imageName: namesForshare) else {return}
-           // print("conteudo imagem recuperada---> :\(image)")
-            
-            completion(image, namesForshare, cont)
-        }
-    }
-    
-    //faz a logica de execucao do completion e passa dados para funcao makeShare
-    func setupShare(){
-        
-        guard let contagemImagens = tutorialDetail?.imagesUrl else { return }
-        let contagem = contagemImagens.count
-        
-        var namesList: [String] = []
-        var imagesLista: Array<UIImage> = []
-        
-        getTotalImages { [weak self] (images, names, cont) in
-            imagesLista.append(images)
-            namesList.append(names)
-                if( cont == contagem){
-                    self!.makeShare(imagesLista, namesList)
-            }
-        }
-    }
-    
-    //Recebe o Array de Imagens e Array da lista de nomes
-    //Compartilha  as imagens apos completada ou cancelado, exclui imagens
-    func makeShare(_ imagesArray: Array<UIImage>,_ namesList: [String] ){
-        print("array de imagem:\(imagesArray)")
-        
-        let activityController = UIActivityViewController(activityItems: imagesArray as [Any], applicationActivities: nil)
-                                
-                activityController.completionWithItemsHandler = {(nil, completed, _, error)
-                    in
-                    if completed{
-                        print("completou o Share")
-                        ImageController().self.deleteImagesShare(namesList)
-                    }else{
-                        print("cancelado o share Mano")
-                        ImageController().self.deleteImagesShare(namesList)
-                    }
-                }
-                
-            present(activityController, animated: true){
-                print("apresentado meu share")
-            }
-    }
-
-    @IBAction func shareContent(_ sender: Any) {
-        setupShare()
-    }
-    
-    @IBAction func compartilharTextoLinkVideo(_ sender: Any){
-        
-        guard let conteudoTutorial = tutorialDetail else { return }
-        let video = "https://www.youtube.com/watch?v=\(conteudoTutorial.linkVideo)"
-        
-        let activityController = UIActivityViewController(activityItems: [video as Any,conteudoTutorial.name as Any, conteudoTutorial.details as Any], applicationActivities: nil)
-        
-        activityController.completionWithItemsHandler = {(nil, completed, _, error)
-            in
-            if completed{
-                print("compartilhamento realizado com sucesso")
-            }else{
-                print("cancelado o compartilhamento")
-            }
-        }
-        
-        present(activityController, animated: true)
-        print("Compartilhamento apresentado com sucesso")
-        
     }
     
     @objc func recuperaTutorial()->Tutorial?{
@@ -244,8 +135,5 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         
         return cell
     }
-    
-    
-    
 
 }

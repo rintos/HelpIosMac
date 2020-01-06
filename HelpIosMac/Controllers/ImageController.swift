@@ -9,6 +9,15 @@
 import Foundation
 import UIKit
 
+extension Date {
+    func getCurrentTime() -> Int {
+        let date = Int64(self.timeIntervalSince1970 * 1000)
+        
+        return Int(date)
+    }
+    
+}
+
 class ImageController {
     static let shared = ImageController()
     let fileManager = FileManager.default
@@ -70,9 +79,6 @@ class ImageController {
         }
     }
     
-    
-    
-
     func deleteImage(imageName: String) {
         let imagePath = documentsPath.appendingPathComponent(imageName)
         
@@ -96,33 +102,15 @@ class ImageController {
             print("imagem deletada\(names)")
         }
     }
-    
-    
-    func saveImageForShare(image: UIImage, imageName:String ) {
         
-        let date = String(Date.timeIntervalSinceReferenceDate)
-        let imageNameForShare = date.replacingOccurrences(of: ".", with: "-") + imageName
-    
-        if let imageData = image.jpegData(compressionQuality: 0.8){
-            do {
-                let filePath = documentsPath.appendingPathComponent(imageNameForShare)
-                
-                try imageData.write(to: filePath)
-                print("\(imageNameForShare) Foi salva com sucesso!!!!!!")
-                
-            } catch let error as NSError {
-                print("\(imageNameForShare) nao pode ser salva devido ao erro\(error.localizedDescription)")
-            }
-        } else {
-            print("Nao foi possivel converter a imagem")
-        }
-
-    }
-    
     func saveImageReturnName(image: UIImage, imageName:String, completion:@escaping(_ names: String) -> ()) {
         
-        let date = String(Date.timeIntervalSinceReferenceDate)
-        let name = date.replacingOccurrences(of: ".", with: "-") + imageName
+      //  let date = String(Date.timeIntervalSinceReferenceDate)
+      //  let name = date.replacingOccurrences(of: ".", with: "-") + imageName
+        let date = Date().getCurrentTime()
+        let dateConverted: String = String(date)
+        
+        let name = dateConverted
         
         if let imageData = image.jpegData(compressionQuality: 0.8){
             do {

@@ -15,7 +15,6 @@ import NVActivityIndicatorView
 class CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imagesCollectionView: UIImageView!
-    
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     func activityIndicator(){
@@ -32,16 +31,20 @@ class CollectionViewCell: UICollectionViewCell {
             print("Endereco da URL:\(String(describing: url))")
                 if error != nil{
                     print("Gerou erro para mostrar a imagem\(error as Any)")
+                   let erro = error.unsafelyUnwrapped.localizedDescription
+                    print("---->>>\(erro)")
+                    if erro == error.unsafelyUnwrapped.localizedDescription {
+                        self.imagesCollectionView.image = UIImage(named: "Apple-icon-1" )
+                    }
+
                 }else{
+                    
                     self.spinner.startAnimating()
-                    self.imagesCollectionView.sd_setImage(with: url, placeholderImage: UIImage(named:"apple-icon"), completed: .none)
+                    self.imagesCollectionView.sd_setImage(with: url, placeholderImage: UIImage(named: "Apple-icon-1"), completed: .none)
                     //self.imagesCollectionView.sd_setImage(with: url, completed: .none)
                }
                 self.spinner.stopAnimating()
                 self.activityIndicator()
             })
-
     }
-
-    
 }

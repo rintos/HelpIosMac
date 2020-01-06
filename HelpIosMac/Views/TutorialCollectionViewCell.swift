@@ -51,6 +51,11 @@ class TutorialCollectionViewCell: UICollectionViewCell {
             print("Endereco da URL:\(String(describing: url))")
                 if error != nil{
                     print("Gerou erro para mostrar a imagem\(error as Any)")
+                    let erro = error.unsafelyUnwrapped.localizedDescription
+                     print("---->>>\(erro)")
+                     if erro == error.unsafelyUnwrapped.localizedDescription {
+                         self.imagemTutorial.image = UIImage(named: "Apple-icon-1" )
+                     }
                 }else{
                     self.spinner.startAnimating()
                     self.imagemTutorial.sd_setImage(with: url, placeholderImage:UIImage(named:"apple-icon") , completed: .none)

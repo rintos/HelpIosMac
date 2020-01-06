@@ -16,11 +16,7 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     @IBOutlet weak var textoTextView:UITextView!
     @IBOutlet weak var editarTextView:UITextView!
     @IBOutlet weak var tutorialScroll:UIScrollView!
-    
-    
-    
     @IBOutlet weak var imagensTutorialCollectionView: UICollectionView!
-    
     
     var tutorial:Tutorials?
 
@@ -71,7 +67,7 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     }
         
     func setupSubirCodigo(){
-        let barButton =  UIBarButtonItem(title: "Update", style: UIBarButtonItem.Style.done, target: self, action: #selector(salvarTurialGravado))
+        let barButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(shareImages))
         navigationItem.rightBarButtonItem = barButton
         
         if let tutorialFavorito = tutorial{
@@ -82,7 +78,7 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     }
     
     
-   @objc func salvarTurialGravado(){
+    func salvarTurialGravado(){
     
     if tutorial == nil {
         tutorial = Tutorials(context: contexo)
@@ -91,19 +87,16 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         tutorial?.textDetails = self.textoTextView.text
         tutorial?.makeTutorial = self.editarTextView.text
     
-    do {
-        try contexo.save()
-        let alert = UIAlertController(title: "Favorito", message: "Anotação salva com sucesso.", preferredStyle: UIAlertController.Style.alert)
-        let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: nil)
-        alert.addAction(ok)
-        present(alert, animated: true)
-    } catch {
-        print(error.localizedDescription)
+        do {
+            try contexo.save()
+            let alert = UIAlertController(title: "Favorito", message: "Anotação salva com sucesso.", preferredStyle: UIAlertController.Style.alert)
+            let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: nil)
+            alert.addAction(ok)
+            present(alert, animated: true)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
-
-    
-    }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let arrayImages = tutorial?.imagesUrl else { return 0 }
@@ -123,6 +116,39 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
                 
         return cell
     }
+ 
     
-
+    @IBAction func saveAnotation(_ sender: Any) {
+        salvarTurialGravado()
+    }
+    
+    @objc func shareImages(){
+        guard let nameImages = tutorial?.imagesUrl else { return }
+        let nameImagesList = nameImages as! Array<String>
+        var images:Array<UIImage> = []
+        
+        for name in nameImagesList {
+            guard let image = ImageController().fetchImage(imageName: name) else { return }
+            images.append(image)
+        }
+        
+        let activityController = UIActivityViewController(activityItems: images as [Any], applicationActivities: nil)
+                                
+                activityController.completionWithItemsHandler = {(nil, completed, _, error)
+                    in
+                    if completed{
+                        print("completou o Share")
+                        images.removeAll()
+                    }else{
+                        print("cancelado o share Mano")
+                        images.removeAll()
+                    }
+                }
+                
+            present(activityController, animated: true){
+                print("apresentado meu share")
+            }
+        
+    }
+    
 }

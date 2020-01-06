@@ -12,8 +12,6 @@ import CoreData
 
 class FavoritosTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
-    
-
     var lista = TutorialDAO().returnListTutorial()
     var conteudoTutorial: Tutorial? = nil
     var tutorialDetailsViewController:DetailsViewController?
@@ -30,8 +28,6 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
     let fileManager = FileManager.default
     let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
-    
-    
     //MARK: - View Life Cicle
     
     override func viewDidLoad() {
@@ -61,7 +57,6 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
         gerenciadorDeResultados = NSFetchedResultsController(fetchRequest: pesquisaTutorial, managedObjectContext: contexo, sectionNameKeyPath: nil, cacheName: nil)
         gerenciadorDeResultados?.delegate = self
         
-        
         do {
             try gerenciadorDeResultados?.performFetch()
         } catch  {
@@ -76,9 +71,6 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
         }
     }
     
-
-    
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -90,7 +82,6 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
         return listaTutorials
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FavoriteTableViewCell
         guard let listaTutorials = gerenciadorDeResultados?.fetchedObjects![indexPath.row] else { return cell }
@@ -127,14 +118,12 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
         }
     }
 
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let listaTutorials = gerenciadorDeResultados?.fetchedObjects![indexPath.row] else { return }
         detalheFavoritoController.tutorial = listaTutorials
 
         }
     
-        
     //MARK: - Fetched Results Controller Delegate
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {

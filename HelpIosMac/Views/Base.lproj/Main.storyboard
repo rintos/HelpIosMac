@@ -148,22 +148,21 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="239.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mGa-C0-9So">
-                                            <size key="itemSize" width="312" height="268.5"/>
+                                            <size key="itemSize" width="320" height="254"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageHome" id="t23-35-eVf" customClass="CollectionViewCell" customModule="HelpIosMac" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="-14.5" width="312" height="268.5"/>
+                                                <rect key="frame" x="0.0" y="-7.5" width="320" height="254"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="312" height="268.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="254"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iTP-bV-Nrq">
-                                                            <rect key="frame" x="9" y="-13" width="312" height="259"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iTP-bV-Nrq">
+                                                            <rect key="frame" x="0.0" y="12" width="320" height="230"/>
                                                         </imageView>
                                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="wYv-tM-6Zw">
                                                             <rect key="frame" x="123" y="95" width="84" height="77"/>
@@ -172,6 +171,13 @@
                                                         </activityIndicatorView>
                                                     </subviews>
                                                 </view>
+                                                <constraints>
+                                                    <constraint firstItem="iTP-bV-Nrq" firstAttribute="leading" secondItem="t23-35-eVf" secondAttribute="leading" id="3Dk-cD-kK9"/>
+                                                    <constraint firstAttribute="trailing" secondItem="iTP-bV-Nrq" secondAttribute="trailing" id="KkU-jQ-Tsh"/>
+                                                    <constraint firstAttribute="bottom" secondItem="iTP-bV-Nrq" secondAttribute="bottom" constant="12" id="U42-aj-Kzp"/>
+                                                    <constraint firstItem="iTP-bV-Nrq" firstAttribute="top" secondItem="t23-35-eVf" secondAttribute="top" constant="12" id="aN5-vL-uz6"/>
+                                                </constraints>
+                                                <size key="customSize" width="320" height="254"/>
                                                 <connections>
                                                     <outlet property="imagesCollectionView" destination="iTP-bV-Nrq" id="4gv-pD-YEp"/>
                                                     <outlet property="spinner" destination="wYv-tM-6Zw" id="SxY-oi-VnL"/>
@@ -190,47 +196,20 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KX4-mC-7iN">
-                                        <rect key="frame" x="0.0" y="284.5" width="320" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmV-Po-3K1">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
-                                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="150" id="Qdo-QM-dUU"/>
-                                                </constraints>
-                                                <state key="normal" title="Texto e Video">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="compartilharTextoLinkVideo:" destination="xP2-O7-Dic" eventType="touchUpInside" id="MsZ-vo-Ayn"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SS3-6a-H3g">
-                                                <rect key="frame" x="150" y="0.0" width="170" height="30"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="ShareContent">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="shareContent:" destination="xP2-O7-Dic" eventType="touchUpInside" id="PN9-lB-R6A"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4C-9j-iDp">
-                                        <rect key="frame" x="0.0" y="314.5" width="320" height="54.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4C-9j-iDp">
+                                        <rect key="frame" x="0.0" y="284.5" width="320" height="25"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Tela Video">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="vPx-KS-sTc"/>
+                                        </constraints>
+                                        <state key="normal" title="Play Video" image="play.rectangle" catalog="system"/>
                                         <connections>
                                             <action selector="sendLinkVideo:" destination="xP2-O7-Dic" eventType="touchUpInside" id="2rZ-QW-vYm"/>
                                             <segue destination="lNm-wa-nPN" kind="show" identifier="video" id="EU1-8r-2bU"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="X6E-P0-TTo">
-                                        <rect key="frame" x="0.0" y="369" width="320" height="155"/>
+                                        <rect key="frame" x="0.0" y="309.5" width="320" height="214.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -431,21 +410,16 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="318" height="259"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jw9-V4-Bma">
-                                                            <rect key="frame" x="3" y="0.0" width="318" height="240"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="240" id="xsp-ap-tOt"/>
-                                                            </constraints>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jw9-V4-Bma">
+                                                            <rect key="frame" x="0.0" y="15" width="318" height="229"/>
                                                         </imageView>
                                                     </subviews>
                                                 </view>
                                                 <constraints>
-                                                    <constraint firstItem="Jw9-V4-Bma" firstAttribute="leading" secondItem="Ocp-sN-pNP" secondAttribute="leading" id="03Y-F9-jeB"/>
-                                                    <constraint firstItem="Jw9-V4-Bma" firstAttribute="leading" secondItem="Ocp-sN-pNP" secondAttribute="leading" id="EDF-xr-SH8"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Jw9-V4-Bma" secondAttribute="trailing" id="Gty-aK-IhW"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Jw9-V4-Bma" secondAttribute="trailing" id="ZZy-Wb-ne6"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Jw9-V4-Bma" secondAttribute="trailing" id="jFN-uF-Qbq"/>
-                                                    <constraint firstItem="Jw9-V4-Bma" firstAttribute="top" secondItem="Ocp-sN-pNP" secondAttribute="top" id="lRA-Bc-AfW"/>
+                                                    <constraint firstItem="Jw9-V4-Bma" firstAttribute="top" secondItem="Ocp-sN-pNP" secondAttribute="top" constant="15" id="6w8-UK-dbX"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Jw9-V4-Bma" secondAttribute="bottom" constant="15" id="WRb-Rf-KDu"/>
+                                                    <constraint firstItem="Jw9-V4-Bma" firstAttribute="leading" secondItem="Ocp-sN-pNP" secondAttribute="leading" id="gjS-PA-okM"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Jw9-V4-Bma" secondAttribute="trailing" id="pBL-Aa-a0N"/>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="imagensTutorial" destination="Jw9-V4-Bma" id="cvk-W0-ZOP"/>
@@ -463,13 +437,13 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUh-Hr-oK2">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUh-Hr-oK2">
                                         <rect key="frame" x="0.0" y="289" width="320" height="20"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="IPC-WC-eDm"/>
                                         </constraints>
-                                        <state key="normal" title="Tela Video">
+                                        <state key="normal" title="Play Video" image="play.rectangle" catalog="system">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -487,12 +461,22 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" text="Criar Conteudo" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0vx-fo-LL7">
-                                        <rect key="frame" x="0.0" y="419" width="320" height="123"/>
+                                        <rect key="frame" x="0.0" y="419" width="320" height="93"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMk-a4-PNQ">
+                                        <rect key="frame" x="0.0" y="512" width="320" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Salvar">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveAnotation:" destination="1Ii-ew-2mF" eventType="touchUpInside" id="Dvv-IK-jl3"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -551,5 +535,6 @@
         <image name="Favorites-icon32" width="32" height="32"/>
         <image name="Favorites-icon64" width="64" height="64"/>
         <image name="apple-icon" width="256" height="256"/>
+        <image name="play.rectangle" catalog="system" width="64" height="46"/>
     </resources>
 </document>
