@@ -15,14 +15,12 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
     
     @IBOutlet weak var titleTextLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
-
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     
     //MARK: - Variaveis
     //Variaveis que recebem dados da ViewController
     var listImages = TutorialDAO().returnListImages()
     var tutorialDetail: Tutorial? // recebe o tutorial selecionado da viewConroller
-    var tutorialsDetails: Tutorials? // segundo que recebe o tutorial
         
     var tutorials:Tutorials?
     var detailVideo = DetailVideoViewController()
@@ -32,7 +30,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
       
         return appDelegate.persistentContainer.viewContext
     }
-    
+        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "video"){
             detailVideo = (segue.destination as? DetailVideoViewController)!
@@ -41,14 +39,15 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let barButton =  UIBarButtonItem(title: "Salvar", style: UIBarButtonItem.Style.done, target: self, action: #selector(saveTutorial))
+        
+        let barButton =  UIBarButtonItem(title: "Salvar", style: UIBarButtonItem.Style.done, target: self, action: #selector(realizaSalvamento))
         navigationItem.rightBarButtonItem = barButton
         
         imagesCollectionView.dataSource = self
         imagesCollectionView.reloadData()
         
         setupDadosView()
-    
+        
     }
     
     //MARK: - Metodos
@@ -65,60 +64,33 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         detailVideo.urlVideo = linkYoutube
     }
     
-    @objc func recuperaTutorial()->Tutorial?{
-                
-        if let titulo = titleTextLabel?.text{
-            if let texto = descriptionTextView?.text{
-                if let pathArrayImage = tutorialDetail?.imagesUrl {
-                    let tutorial = Tutorial(name: titulo, details: texto, imagesUrl: pathArrayImage, images: [])
-                    //  print("Sanvando os dados titulo: \(tutorial.name) texto: \(tutorial.details)")
-                    return tutorial
-                }
-            }
-        }
-        return nil
-    }
+    func recuperaTutorial()->Tutorial?{
         
+        guard let titulo = titleTextLabel?.text else { return nil }
+        guard let texto = descriptionTextView?.text else { return nil }
+        guard let pathArrayImage = tutorialDetail?.imagesUrl else { return nil }
+        guard let id = tutorialDetail?.id else { return nil }
+        
+        let tutorial = Tutorial(id: id, name: titulo, details: texto, imagesUrl: pathArrayImage, images: [])
+     
+        return tutorial
+    }
+    
     // MARK: - CoreData Save
     
-    @objc func saveTutorial(){
-                
-        guard let detalheTutorial = tutorialDetail else { return }
+    @objc func realizaSalvamento(){
         
-        if tutorials == nil{
-            contexo.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-            tutorials = Tutorials(context: contexo)
-        }
+        guard let tutorial = recuperaTutorial() else { return }
+        TutorialDAO().saveTutorial(tutorialSave: tutorial)
         
-        
-        if let tutorialFavorito = recuperaTutorial(){
+        let alert = UIAlertController(title: "Tutorial", message: "Tutorial salvo com sucesso no dispositivo", preferredStyle: UIAlertController.Style.alert)
+        let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: nil)
+            alert.addAction(ok)
             
-            tutorials?.name = detalheTutorial.name
-            tutorials?.textDetails = detalheTutorial.details
-            tutorials?.imagesUrl = tutorialFavorito.imagesUrl as NSObject
-            tutorials?.imageName = "temp"
-
-            for nameOfImages in detalheTutorial.imagesUrl {
-                FireBase().getImage(nameOfImages) { (imageData) in
-                    ImageController().saveImage(image: imageData, imageName: nameOfImages)
-                }
-            }
-            do{
-                try self.contexo.save()
-                let alert = UIAlertController(title: "Tutorial", message: "Tutorial salvo com sucesso no dispositivo", preferredStyle: UIAlertController.Style.alert)
-                let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: nil)
-                alert.addAction(ok)
-                
-                present(alert, animated: true)
-//                if let navigation = self.navigationController{
-//                    navigation.popViewController(animated: true)
-//                    }
-                } catch {
-                    print(error.localizedDescription)
-                }
-          }
-        
+        present(alert, animated: true)
     }
+      
+    //MARK: - Configurando CollectionView
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let images = tutorialDetail?.imagesUrl.count else { return 0 }

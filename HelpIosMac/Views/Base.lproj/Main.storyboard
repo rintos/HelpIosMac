@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Procura-->
+        <!--Service Help Mac & iOS-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HelpIosMac" customModuleProvider="target" sceneMemberID="viewController">
@@ -121,8 +121,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Procura" image="Apple-icon32" landscapeImage="apple-icon" largeContentSizeImage="Apple-icon-1" id="qTu-Rq-iUz"/>
-                    <navigationItem key="navigationItem" id="ytW-ZL-3G9"/>
+                    <tabBarItem key="tabBarItem" title="Recentes" image="folder.circle" catalog="system" landscapeImage="folder.circle" largeContentSizeImage="folder.circle" id="qTu-Rq-iUz">
+                        <color key="badgeColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="Service Help Mac &amp; iOS" largeTitleDisplayMode="always" id="ytW-ZL-3G9"/>
                     <connections>
                         <outlet property="collectionViewTutorial" destination="NOd-Lg-eOz" id="WJD-l7-lqJ"/>
                         <outlet property="loadingSpinner" destination="pLM-t0-Sc7" id="oyv-Ob-vmA"/>
@@ -202,7 +204,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="vPx-KS-sTc"/>
                                         </constraints>
-                                        <state key="normal" title="Play Video" image="play.rectangle" catalog="system"/>
+                                        <state key="normal" title=" ir para video" image="play.rectangle.fill" catalog="system"/>
                                         <connections>
                                             <action selector="sendLinkVideo:" destination="xP2-O7-Dic" eventType="touchUpInside" id="2rZ-QW-vYm"/>
                                             <segue destination="lNm-wa-nPN" kind="show" identifier="video" id="EU1-8r-2bU"/>
@@ -337,8 +339,8 @@
                             <outlet property="delegate" destination="0ie-ye-hJb" id="wG3-1a-ULn"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Favoritos" image="Favorites-icon32" landscapeImage="Favorites-icon64" largeContentSizeImage="Favorites-icon" id="ujv-S2-VLn"/>
-                    <navigationItem key="navigationItem" id="RUy-S3-rHm"/>
+                    <tabBarItem key="tabBarItem" title="Favoritos" image="star.fill" catalog="system" landscapeImage="star.fill" largeContentSizeImage="star.fill" id="ujv-S2-VLn"/>
+                    <navigationItem key="navigationItem" title="Favoritos" id="RUy-S3-rHm"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEb-m7-i25" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -443,7 +445,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="IPC-WC-eDm"/>
                                         </constraints>
-                                        <state key="normal" title="Play Video" image="play.rectangle" catalog="system">
+                                        <state key="normal" title="ir para video" image="play.rectangle.fill" catalog="system">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -529,12 +531,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Apple-icon-1" width="512" height="512"/>
-        <image name="Apple-icon32" width="32" height="32"/>
-        <image name="Favorites-icon" width="512" height="512"/>
-        <image name="Favorites-icon32" width="32" height="32"/>
-        <image name="Favorites-icon64" width="64" height="64"/>
-        <image name="apple-icon" width="256" height="256"/>
-        <image name="play.rectangle" catalog="system" width="64" height="46"/>
+        <image name="folder.circle" catalog="system" width="64" height="60"/>
+        <image name="play.rectangle.fill" catalog="system" width="64" height="46"/>
+        <image name="star.fill" catalog="system" width="64" height="58"/>
     </resources>
 </document>

@@ -13,8 +13,6 @@ import CoreData
 class FavoritosTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
     var lista = TutorialDAO().returnListTutorial()
-    var conteudoTutorial: Tutorial? = nil
-    var tutorialDetailsViewController:DetailsViewController?
     var detalheFavoritoController = DetalheFavoritoViewController()
     
     var gerenciadorDeResultados:NSFetchedResultsController<Tutorials>?
@@ -32,12 +30,23 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.topItem!.title = "Favoritos"
+        
         self.recuperaTutorials()
         
         let barButton =  UIBarButtonItem(title: "Home", style: UIBarButtonItem.Style.done, target: self, action: #selector(home))
         navigationItem.rightBarButtonItem = barButton
         
         self.tableView.reloadData()
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.navigationController?.navigationItem.titleView?.backgroundColor = .blue
+        self.navigationController?.navigationBar.topItem!.title = "Favoritos"
 
     }
     
@@ -77,14 +86,17 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows'
-        guard let listaTutorials = gerenciadorDeResultados?.fetchedObjects?.count else { return 0 }
-        return listaTutorials
+        let listaTutorials = TutorialDAO().recuperaTutorials()
+//        guard let listaTutorials = gerenciadorDeResultados?.fetchedObjects?.count else { return 0 }
+        return listaTutorials.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FavoriteTableViewCell
-        guard let listaTutorials = gerenciadorDeResultados?.fetchedObjects![indexPath.row] else { return cell }
+//        guard let listaTutorials = gerenciadorDeResultados?.fetchedObjects![indexPath.row] else { return cell }
+        let listaTutorial = TutorialDAO().recuperaTutorials()
+        let listaTutorials = listaTutorial[indexPath.row]
+
         
         cell.favoriteTitleLabel.text = listaTutorials.name
         cell.favoriteTextLabel.text = listaTutorials.textDetails
@@ -102,24 +114,21 @@ class FavoritosTableViewController: UITableViewController, NSFetchedResultsContr
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == .delete){
             
-            guard let tutorialSelecionado = gerenciadorDeResultados?.fetchedObjects![indexPath.row] else {return}
+//            guard let tutorialSelecionado = gerenciadorDeResultados?.fetchedObjects![indexPath.row] else {return}
+            let listaTutorial = TutorialDAO().recuperaTutorials()
+            let tutorialSelecionado = listaTutorial[indexPath.row]
             let names = tutorialSelecionado.imagesUrl as! Array<String>
             for name in names {
                 ImageController().deleteImage(imageName: name)
             }
-            contexo.delete(tutorialSelecionado)
-            
-            do{
-                try contexo.save()
-            }catch{
-                print(error.localizedDescription)
-            }
-            
+            TutorialDAO().deleteTutorial(tutorial: tutorialSelecionado)
         }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let listaTutorials = gerenciadorDeResultados?.fetchedObjects![indexPath.row] else { return }
+//        guard let listaTutorials = gerenciadorDeResultados?.fetchedObjects![indexPath.row] else { return }
+        let listaTutorial = TutorialDAO().recuperaTutorials()
+        let listaTutorials = listaTutorial[indexPath.row]
         detalheFavoritoController.tutorial = listaTutorials
 
         }

@@ -60,25 +60,6 @@ class ImageController {
         }
     }
     
-    func fetchImageArray(imageName: String) -> UIImage? {
-        let imagePath = documentsPath.appendingPathComponent(imageName).path
-        
-        guard fileManager.fileExists(atPath: imagePath) else {
-            print("Imagem nao existe no caminho: \(imagePath)")
-            
-            return nil
-        }
-        
-        if let imageData = UIImage(contentsOfFile: imagePath) {
-            print("Retornado a imagem com sucesso!!!")
-            return imageData
-        } else {
-            print("UIImage nao pode ser criada!!!")
-            
-            return nil
-        }
-    }
-    
     func deleteImage(imageName: String) {
         let imagePath = documentsPath.appendingPathComponent(imageName)
         
@@ -95,39 +76,4 @@ class ImageController {
         }
     }
     
-    func deleteImagesShare(_ namesOfImages: Array<String>){
-        
-        for names in namesOfImages {
-            ImageController().deleteImage(imageName: names)
-            print("imagem deletada\(names)")
-        }
-    }
-        
-    func saveImageReturnName(image: UIImage, imageName:String, completion:@escaping(_ names: String) -> ()) {
-        
-      //  let date = String(Date.timeIntervalSinceReferenceDate)
-      //  let name = date.replacingOccurrences(of: ".", with: "-") + imageName
-        let date = Date().getCurrentTime()
-        let dateConverted: String = String(date)
-        
-        let name = dateConverted
-        
-        if let imageData = image.jpegData(compressionQuality: 0.8){
-            do {
-                let filePath = documentsPath.appendingPathComponent(name)
-                
-                try imageData.write(to: filePath)
-                print("\(name) Foi salva com sucesso!!!!!!")
-                
-                 completion(name)
-            } catch let error as NSError {
-                print("\(name) nao pode ser salva devido ao erro\(error.localizedDescription)")
-            }
-        } else {
-            print("Nao foi possivel converter a imagem")
-        }
-
-    }
-
-
 }

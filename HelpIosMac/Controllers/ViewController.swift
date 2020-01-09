@@ -32,8 +32,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator()
         
+        activityIndicator()
         loadingSpinner?.startAnimating()
         
         configLayoutSearch()
@@ -45,7 +45,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         
          setupDadosFirebase { listaTutorials in
             for listaTutorial in listaTutorials {
-               // print(listaTutorial.details)
+                print("lista dados viewController:\(listaTutorial.details)")
                 self.currentList.append(listaTutorial)
                 self.contentList.append(listaTutorial)
                 self.collectionViewTutorial.reloadData()
@@ -58,6 +58,18 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.navigationController?.navigationItem.titleView?.backgroundColor = .blue
+        self.navigationController?.navigationBar.topItem!.title = "Help Mac & iOS"
+
+    }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+//    }
     
     func configLayoutSearch(){
         searchTutorial.layer.cornerRadius = 6.0

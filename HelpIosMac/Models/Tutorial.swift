@@ -10,6 +10,7 @@ import UIKit
 
 class Tutorial: NSObject {
 
+    let id: String
     let name: String
     let details: String
     let pathImage: String
@@ -20,7 +21,8 @@ class Tutorial: NSObject {
     var imgData: [UIImage] = []
 
     
-    init(name: String, details: String, pathImage: String = "", makeTutorial: String = "", imagesUrl: Array<String> = [], linkVideo: String = "", images: [NSObject] = [], imgData: [UIImage] = []){
+    init(id: String, name: String, details: String, pathImage: String = "", makeTutorial: String = "", imagesUrl: Array<String> = [], linkVideo: String = "", images: [NSObject] = [], imgData: [UIImage] = []){
+        self.id = id
         self.name = name
         self.details = details
         self.pathImage = pathImage

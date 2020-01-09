@@ -28,7 +28,7 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+                        
         imagensTutorialCollectionView.dataSource = self
         imagensTutorialCollectionView.reloadData()
         
@@ -109,6 +109,7 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "images", for: indexPath) as! DetalhesCollectionViewCell
         let listNames = tutorial?.imagesUrl as! Array<String>
         let listName = listNames[indexPath.row]
+        print("nome das imagens\(listName)")
         
         let image = ImageController().fetchImage(imageName: listName)
         

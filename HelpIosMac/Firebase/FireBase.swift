@@ -33,6 +33,7 @@ class FireBase: NSObject {
             var lista: Array<Tutorial> = []
             
             let dadosTutorial = dados.value as? [String: AnyObject]
+            guard let id = dadosTutorial?["id"] as? String else { return }
             guard let dadosTitle = dadosTutorial?["name"] as? String else { return }
             guard let dadosDetail = dadosTutorial?["details"] as? String else { return }
             guard let dadosImagesUrl = dadosTutorial?["imagesUrl"] as? [String] else { return }
@@ -41,9 +42,10 @@ class FireBase: NSObject {
             
             self.imageURL = dadosImagesUrl
             
-            let tutorial = Tutorial(name: dadosTitle, details: dadosDetail, pathImage: dadosPathImage, imagesUrl: dadosImagesUrl, linkVideo: dadosLinkVideo, images: [], imgData: [])
+            let tutorial = Tutorial(id: id, name: dadosTitle, details: dadosDetail, pathImage: dadosPathImage, imagesUrl: dadosImagesUrl, linkVideo: dadosLinkVideo, images: [], imgData: [])
             lista.append(tutorial)
             completion(lista)
+            print("Conteudo gerado pelo firebase\(lista)")
            // print("caminho gerado:\(self.imageURL)")
             
             
