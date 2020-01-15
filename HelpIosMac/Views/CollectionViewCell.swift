@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import SDWebImage
-import NVActivityIndicatorView
 
 
 class CollectionViewCell: UICollectionViewCell {

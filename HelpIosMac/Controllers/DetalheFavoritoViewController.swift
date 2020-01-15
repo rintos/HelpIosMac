@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Foundation
 
-class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var tituloLabel:UILabel!
     @IBOutlet weak var textoTextView:UITextView!
@@ -30,6 +30,7 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         super.viewDidLoad()
                         
         imagensTutorialCollectionView.dataSource = self
+        imagensTutorialCollectionView.delegate = self
         imagensTutorialCollectionView.reloadData()
         
         self.setupSubirCodigo()
@@ -117,7 +118,67 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
                 
         return cell
     }
+
+     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        var size = CGSize(width:0, height: 0)
+        
+           if UIDevice().userInterfaceIdiom == .phone
+                {
+                    switch UIScreen.main.nativeBounds.height
+                    {
+                    case 480:
+                        print("iPhone Classic")
+                    case 960:
+                        print("iPhone 4 or 4S")
+
+                    case 1136:
+                        print("iPhone 5 or 5S or 5C")
+                    size = UIDevice.current.userInterfaceIdiom == .phone ? CGSize(width: collectionView.bounds.width, height: 300) : CGSize(width: collectionView.bounds.width, height: 323)
+
+                    case 1334:
+                        print("iPhone 6 or 6S")
+                        size = UIDevice.current.userInterfaceIdiom == .phone ? CGSize(width: collectionView.bounds.width, height: 350) : CGSize(width: collectionView.bounds.width, height: 365)
+                    case 2208:
+                        print("iPhone 6+ or 6S+")
+                        print("iPhone 6 or 6S")
+                        size = UIDevice.current.userInterfaceIdiom == .phone ? CGSize(width: collectionView.bounds.width, height: 370) : CGSize(width: collectionView.bounds.width, height: 385)
+                    default:
+                          size = UIDevice.current.userInterfaceIdiom == .phone ? CGSize(width: collectionView.bounds.width, height: 416) : CGSize(width: collectionView.bounds.width, height: 350)
+                        print("Iphone 11")
+                   }
+               }
+
+              if UIDevice().userInterfaceIdiom == .pad
+              {
+                  if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad &&
+                        (UIScreen.main.bounds.size.height == 1366 || UIScreen.main.bounds.size.width == 1366))
+                  {
+                         print("iPad Pro : 12.9 inch")
+                  }
+                  else if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad &&
+                        (UIScreen.main.bounds.size.height == 1024 || UIScreen.main.bounds.size.width == 1024))
+                 {
+                        print("iPad 2")
+                        print("iPad Pro : 9.7 inch")
+                        print("iPad Air/iPad Air 2")
+                        print("iPad Retina")
+                    print("iPhone 6 or 6S")
+                    size = UIDevice.current.userInterfaceIdiom == .pad ? CGSize(width: collectionView.bounds.width, height: 680) : CGSize(width: collectionView.bounds.width, height: 700)
+                }
+                 else
+                 {
+                        print("iPad 3")
+                 }
+          }
+                
+        return size
+     }
  
+    
+
+
+    
     
     @IBAction func saveAnotation(_ sender: Any) {
         salvarTurialGravado()

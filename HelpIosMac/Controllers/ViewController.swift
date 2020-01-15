@@ -8,8 +8,7 @@
 
 import UIKit
 
-
-class ViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate,UISearchBarDelegate {
+class ViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate,UISearchBarDelegate, UICollectionViewDelegateFlowLayout {
         
     @IBOutlet weak var collectionViewTutorial:UICollectionView!
     
