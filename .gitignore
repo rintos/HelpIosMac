@@ -1,0 +1,8 @@
+# Xcode
+xcuserdata/
+project.xcworkspace/
+DerivedData/
+.xcuserstate
+
+# Cocoapods
+Pods/
