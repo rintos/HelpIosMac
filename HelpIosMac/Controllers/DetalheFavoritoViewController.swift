@@ -17,6 +17,9 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     @IBOutlet weak var editarTextView:UITextView!
     @IBOutlet weak var tutorialScroll:UIScrollView!
     @IBOutlet weak var imagensTutorialCollectionView: UICollectionView!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var goVideo: UIButton!
+    
     
     var tutorial:Tutorials?
 
@@ -34,6 +37,7 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         imagensTutorialCollectionView.reloadData()
         
         self.setupSubirCodigo()
+        configLayout()
         
         //configurando view com teclado
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -44,6 +48,23 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         //ao clicar esconde teclado
         view.addGestureRecognizer(tap)
+        
+    }
+    
+    
+    func configLayout(){
+        saveButton.layer.cornerRadius = 20
+        saveButton.layer.masksToBounds = true
+        editarTextView.layer.cornerRadius = 10
+        editarTextView.layer.masksToBounds = true
+        textoTextView.layer.cornerRadius = 10
+        textoTextView.layer.masksToBounds = true
+        goVideo.layer.cornerRadius = 10
+        goVideo.layer.masksToBounds = true
+        tituloLabel.layer.cornerRadius = 10
+        tituloLabel.layer.masksToBounds = true
+        imagensTutorialCollectionView.layer.cornerRadius = 5
+        imagensTutorialCollectionView.layer.masksToBounds = true
         
     }
     

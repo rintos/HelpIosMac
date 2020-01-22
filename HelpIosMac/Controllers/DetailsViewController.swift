@@ -16,6 +16,8 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
     @IBOutlet weak var titleTextLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var imagesCollectionView: UICollectionView!
+    @IBOutlet weak var goVideo: UIButton!
+    
     
     //MARK: - Variaveis
     //Variaveis que recebem dados da ViewController
@@ -48,10 +50,20 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         imagesCollectionView.reloadData()
         
         setupDadosView()
+        configLayout()
         
     }
     
     //MARK: - Metodos
+    
+    func configLayout(){
+        titleTextLabel.layer.cornerRadius = 10
+        titleTextLabel.layer.masksToBounds = true
+        goVideo.layer.cornerRadius = 10
+        goVideo.layer.masksToBounds = true
+        descriptionTextView.layer.cornerRadius = 10
+        descriptionTextView.layer.masksToBounds = true
+    }
     
     func setupDadosView(){
         guard let detalheTutorial = tutorialDetail else { return }
