@@ -12,7 +12,7 @@ import CoreData
 
 class FavoritosTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
-    var lista = TutorialDAO().returnListTutorial()
+  //  var lista = [TutorialDAO().returnListTutorial()]
     var detalheFavoritoController = DetalheFavoritoViewController()
     
     var gerenciadorDeResultados:NSFetchedResultsController<Tutorials>?

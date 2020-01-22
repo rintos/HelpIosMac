@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		225A50CE238C463E00C198CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 225A50CD238C463E00C198CE /* GoogleService-Info.plist */; };
 		225A50D0238C60B300C198CE /* FireBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A50CF238C60B300C198CE /* FireBase.swift */; };
-		22AC213323A2D15F00A92782 /* TutoImagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC213223A2D15F00A92782 /* TutoImagem.swift */; };
 		22B4ED7C235FD2D500D7DFFF /* DetailVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4ED7B235FD2D500D7DFFF /* DetailVideoViewController.swift */; };
 		22B4ED80235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4ED7F235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift */; };
 		22B4ED8223600CB100D7DFFF /* YoutubePlayer_in_WKWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B4ED8123600CB100D7DFFF /* YoutubePlayer_in_WKWebView.framework */; };
@@ -70,13 +69,11 @@
 /* Begin PBXFileReference section */
 		0FE16BB3199CCB8C6130B1E9 /* Pods-HelpIosMac-HelpIosMacUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpIosMac-HelpIosMacUITests.release.xcconfig"; path = "Target Support Files/Pods-HelpIosMac-HelpIosMacUITests/Pods-HelpIosMac-HelpIosMacUITests.release.xcconfig"; sourceTree = "<group>"; };
 		14A738D0205951CC1575137A /* Pods_HelpIosMacTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelpIosMacTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		220F0B5723726E3F00B3BC99 /* HelpIosMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelpIosMac.entitlements; sourceTree = "<group>"; };
 		220F0B5E2373A0DF00B3BC99 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		220F0B612373A0DF00B3BC99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		220F0B632373A0DF00B3BC99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		225A50CD238C463E00C198CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		225A50CF238C60B300C198CE /* FireBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBase.swift; sourceTree = "<group>"; };
-		22AC213223A2D15F00A92782 /* TutoImagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoImagem.swift; sourceTree = "<group>"; };
 		22B4ED7B235FD2D500D7DFFF /* DetailVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVideoViewController.swift; sourceTree = "<group>"; };
 		22B4ED7F235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVideoFavoriteViewController.swift; sourceTree = "<group>"; };
 		22B4ED8123600CB100D7DFFF /* YoutubePlayer_in_WKWebView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YoutubePlayer_in_WKWebView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +108,7 @@
 		7D0C0E13BD78A8466DB9CCB0 /* Pods-HelpIosMacTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpIosMacTests.debug.xcconfig"; path = "Target Support Files/Pods-HelpIosMacTests/Pods-HelpIosMacTests.debug.xcconfig"; sourceTree = "<group>"; };
 		80EF1FF77A1265C66D18B384 /* Pods-HelpIosMacTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpIosMacTests.release.xcconfig"; path = "Target Support Files/Pods-HelpIosMacTests/Pods-HelpIosMacTests.release.xcconfig"; sourceTree = "<group>"; };
 		8A399DEC83E77AE40617A5C4 /* Pods-HelpIosMac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpIosMac.release.xcconfig"; path = "Target Support Files/Pods-HelpIosMac/Pods-HelpIosMac.release.xcconfig"; sourceTree = "<group>"; };
+		9828D8A723D8E77100AD9B95 /* HelpIosMacDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelpIosMacDebug.entitlements; sourceTree = "<group>"; };
 		FEED26538698202EA98CF72A /* Pods-HelpIosMac-HelpIosMacUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpIosMac-HelpIosMacUITests.debug.xcconfig"; path = "Target Support Files/Pods-HelpIosMac-HelpIosMacUITests/Pods-HelpIosMac-HelpIosMacUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,13 +151,6 @@
 			path = ImageShare;
 			sourceTree = "<group>";
 		};
-		2219053A23A0748500C3911B /* Image */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Image;
-			sourceTree = "<group>";
-		};
 		225A50CC238C374A00C198CE /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,8 +185,7 @@
 		50825AED23174592001040E7 /* HelpIosMac */ = {
 			isa = PBXGroup;
 			children = (
-				2219053A23A0748500C3911B /* Image */,
-				220F0B5723726E3F00B3BC99 /* HelpIosMac.entitlements */,
+				9828D8A723D8E77100AD9B95 /* HelpIosMacDebug.entitlements */,
 				50825B26231748B5001040E7 /* Views */,
 				50825B242317488B001040E7 /* Models */,
 				50825B2523174899001040E7 /* Controllers */,
@@ -234,7 +224,6 @@
 				50825B5A2318B3C0001040E7 /* Tutorial.swift */,
 				50825B5C2318B4DE001040E7 /* TutorialDAO.swift */,
 				50613AB7232D39F5000B27D8 /* CriarTutorialDelegate.swift */,
-				22AC213223A2D15F00A92782 /* TutoImagem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -546,7 +535,6 @@
 				50613AB8232D39F5000B27D8 /* CriarTutorialDelegate.swift in Sources */,
 				50825B2B23174F0F001040E7 /* DetailsViewController.swift in Sources */,
 				5055956C235140F8004A166C /* FavoriteTableViewCell.swift in Sources */,
-				22AC213323A2D15F00A92782 /* TutoImagem.swift in Sources */,
 				50825B5D2318B4DE001040E7 /* TutorialDAO.swift in Sources */,
 				225A50D0238C60B300C198CE /* FireBase.swift in Sources */,
 				508B14112329E4C3005F14AE /* FavoritosTableViewController.swift in Sources */,
@@ -740,7 +728,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = HelpIosMac/HelpIosMac.entitlements;
+				CODE_SIGN_ENTITLEMENTS = HelpIosMac/HelpIosMacDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N66VHCWZLN;

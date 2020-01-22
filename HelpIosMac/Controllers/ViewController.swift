@@ -20,8 +20,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     var listFavorite: Array<Tutorial> = []
     var detalheController = DetailsViewController()
-    var contentList: Array<Tutorial> = TutorialDAO().returnListTutorial()
-    var currentList: Array<Tutorial> = TutorialDAO().returnListTutorial()
+    var contentList: Array<Tutorial> = []
+    var currentList: Array<Tutorial> = []
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showDetail"){

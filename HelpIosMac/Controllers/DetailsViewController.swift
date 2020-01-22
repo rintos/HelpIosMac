@@ -21,7 +21,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
     
     //MARK: - Variaveis
     //Variaveis que recebem dados da ViewController
-    var listImages = TutorialDAO().returnListImages()
+   // var listImages = TutorialDAO().returnListImages()
     var tutorialDetail: Tutorial? // recebe o tutorial selecionado da viewConroller
         
     var tutorials:Tutorials?
