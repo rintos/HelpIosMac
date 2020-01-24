@@ -8,76 +8,106 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 
 class FireBase: NSObject {
     
-    var referenceFirebase: DatabaseReference?
-    var textDatabaseHandler: DatabaseHandle?
-    var fireBaseReferente: DatabaseReference!
-    var database: Database!
+//    var referenceFirebase: DatabaseReference?
+//    var textDatabaseHandler: DatabaseHandle?
+//    var fireBaseReferente: DatabaseReference!
+//    var database: Database!
     var storage: Storage!
-    var imageURL: Array<String> = []
+   // var imageURL: Array<String> = []
     //var images
     var allTasks: [StorageDownloadTask] = []
     var nameOfImages: Array<String> = []
     var listImage: [UIImage] = []
     var ImagensDeUmObjeto: [UIImage] = []
 
-    
-    func getDadosFirebase(_ completion:@escaping(_ listaTutorial: Array<Tutorial>) -> ()) {
-        referenceFirebase = Database.database().reference()
-
-        textDatabaseHandler = referenceFirebase?.child("tutorials").observe(DataEventType.value, with: { dataSnapshot in
-        for dados in dataSnapshot.children.allObjects as! [DataSnapshot]{
-            
-            var lista: Array<Tutorial> = []
-            
-            let dadosTutorial = dados.value as? [String: AnyObject]
-            guard let id = dadosTutorial?["id"] as? String else { return }
-            guard let dadosTitle = dadosTutorial?["name"] as? String else { return }
-            guard let dadosDetail = dadosTutorial?["details"] as? String else { return }
-            guard let dadosImagesUrl = dadosTutorial?["imagesUrl"] as? [String] else { return }
-            guard let dadosLinkVideo = dadosTutorial?["linkVideo"] as? String else { return }
-            guard let dadosPathImage = dadosTutorial?["pathImage"] as? String else { return }
-            
-            self.imageURL = dadosImagesUrl
-            
-            let tutorial = Tutorial(id: id, name: dadosTitle, details: dadosDetail, pathImage: dadosPathImage, imagesUrl: dadosImagesUrl, linkVideo: dadosLinkVideo, images: [], imgData: [])
-            lista.append(tutorial)
-            completion(lista)
-            print("Conteudo gerado pelo firebase\(lista)")
-           // print("caminho gerado:\(self.imageURL)")
-            
-            
-            
-            let folderPath:String = "images"
-            
-            for nameOfImage in dadosImagesUrl {
-                
-                let reference = Storage.storage().reference(withPath: "\(folderPath)/\(nameOfImage)")
-
-                
-                reference.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
-
-                         if let error = error {
-                             print(error)
-                         } else {
-                             if let imageData =  data {
-                                 guard let image = UIImage(data: imageData ) else { return }
-                                 self.listImage.append(image)
-                                 
-                             }
-                         }
-                   //     callback(self.listImage)
-                     }
-                }
-                            
-            }
-        })
+    static func getDataFireStore(_ completion:@escaping(_ listTutorial: Array<Tutorial>) -> ()){
+        let db = Firestore.firestore()
+        var imageURL: Array<String> = []
+        var listTutorial: Array<Tutorial> = []
         
+        db.collection("tutorials").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                  //  print("\(document.documentID) => \(document.data())")
+                    
+                    let id = document.data()["id"] as? String ?? ""
+                    let title = document.data()["name"] as? String  ?? ""
+                    let detail = document.data()["details"] as? String ?? ""
+                    let linkVideo = document.data()["linkVideo"] as? String ?? ""
+                    let pathImage = document.data()["pathImage"] as? String ?? ""
+                    let images = document.data()["imagesUrl"]
+                    let image = images as? Array<String>  ?? []
+                    imageURL = image
+                    
+                    let tutorial = Tutorial(id: id, name: title, details: detail, pathImage: pathImage, imagesUrl: imageURL, linkVideo: linkVideo, images: [], imgData: [])
+                    listTutorial.append(tutorial)
+                }
+              //  print("lista de tutorial em array: \(listTutorial)")
+                completion(listTutorial)
+            }
+        }
     }
     
-    func getImage(_ imageName: String, callback:@escaping(_ image: UIImage) -> Void ){
+//    func getDadosFirebase(_ completion:@escaping(_ listaTutorial: Array<Tutorial>) -> ()) {
+//        referenceFirebase = Database.database().reference()
+//
+//        textDatabaseHandler = referenceFirebase?.child("tutorials").observe(DataEventType.value, with: { dataSnapshot in
+//        for dados in dataSnapshot.children.allObjects as! [DataSnapshot]{
+//
+//            var lista: Array<Tutorial> = []
+//
+//            let dadosTutorial = dados.value as? [String: AnyObject]
+//            guard let id = dadosTutorial?["id"] as? String else { return }
+//            guard let dadosTitle = dadosTutorial?["name"] as? String else { return }
+//            guard let dadosDetail = dadosTutorial?["details"] as? String else { return }
+//            guard let dadosImagesUrl = dadosTutorial?["imagesUrl"] as? [String] else { return }
+//            guard let dadosLinkVideo = dadosTutorial?["linkVideo"] as? String else { return }
+//            guard let dadosPathImage = dadosTutorial?["pathImage"] as? String else { return }
+//
+//            self.imageURL = dadosImagesUrl
+//
+//            let tutorial = Tutorial(id: id, name: dadosTitle, details: dadosDetail, pathImage: dadosPathImage, imagesUrl: dadosImagesUrl, linkVideo: dadosLinkVideo, images: [], imgData: [])
+//            lista.append(tutorial)
+//            completion(lista)
+//            print("Conteudo gerado pelo firebase\(lista)")
+//           // print("caminho gerado:\(self.imageURL)")
+//
+//
+//
+//            let folderPath:String = "images"
+//
+//            for nameOfImage in dadosImagesUrl {
+//
+//                let reference = Storage.storage().reference(withPath: "\(folderPath)/\(nameOfImage)")
+//
+//
+//                reference.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+//
+//                         if let error = error {
+//                             print(error)
+//                         } else {
+//                             if let imageData =  data {
+//                                 guard let image = UIImage(data: imageData ) else { return }
+//                                 self.listImage.append(image)
+//
+//                             }
+//                         }
+//                   //     callback(self.listImage)
+//                     }
+//                }
+//
+//            }
+//        })
+//
+//    }
+    
+    static func getImage(_ imageName: String, callback:@escaping(_ image: UIImage) -> Void ){
 
      //   var images: Array<UIImage> = []
         
@@ -102,7 +132,7 @@ class FireBase: NSObject {
 
     }
     
-    func getImageArray(_ namesList: Array<String>, callback:@escaping(_ image: UIImage, _ name: String) -> Void ){
+    static func getImageArray(_ namesList: Array<String>, callback:@escaping(_ image: UIImage, _ name: String) -> Void ){
         
         let folderPath = "images"
        // var imagesArray: Array<UIImage> = []

@@ -42,19 +42,23 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         collectionViewTutorial.dataSource = self
         collectionViewTutorial.delegate = self
         
-         setupDadosFirebase { listaTutorials in
-            for listaTutorial in listaTutorials {
-                print("lista dados viewController:\(listaTutorial.details)")
-                self.currentList.append(listaTutorial)
-                self.contentList.append(listaTutorial)
-                self.collectionViewTutorial.reloadData()
-                self.loadingSpinner?.stopAnimating()
+        setupDataFireBase()
+        
+//         setupDadosFirebase { listaTutorials in
+//            for listaTutorial in listaTutorials {
+//                print("lista dados viewController:\(listaTutorial.details)")
+//                self.currentList.append(listaTutorial)
+//                self.contentList.append(listaTutorial)
+//                self.collectionViewTutorial.reloadData()
+//                self.loadingSpinner?.stopAnimating()
+//
+//             //   print("contagem de namesofimage: \(listaTutorials.count)")
+//
+//            }
+//        }
 
-             //   print("contagem de namesofimage: \(listaTutorials.count)")
-                
-            }
-        }
 
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,13 +82,25 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     func activityIndicator(){
         loadingSpinner?.hidesWhenStopped = true
     }
-
-    func setupDadosFirebase(_ callback:@escaping(_ listaTutorial: Array<Tutorial> ) -> () ){
-        FireBase().getDadosFirebase({ (listaTutorial) in
-            callback(listaTutorial)
-        })
-        
+    
+    func setupDataFireBase(){
+        FireBase.getDataFireStore { listTutorial in
+            for tutorial in listTutorial {
+                print(tutorial)
+                self.currentList.append(tutorial)
+                self.contentList.append(tutorial)
+                self.collectionViewTutorial.reloadData()
+                self.loadingSpinner?.stopAnimating()
+            }
+        }
     }
+
+//    func setupDadosFirebase(_ callback:@escaping(_ listaTutorial: Array<Tutorial> ) -> () ){
+//        FireBase().getDadosFirebase({ (listaTutorial) in
+//            callback(listaTutorial)
+//        })
+//
+//    }
     
     private func setUpSerachBar(){
         searchTutorial.delegate = self

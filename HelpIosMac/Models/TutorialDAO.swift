@@ -66,7 +66,7 @@ class TutorialDAO: NSObject {
         tutorial?.setValue("temp", forKey: "imageName")
                 
         for nameOfImages in tutorialSave.imagesUrl {
-            FireBase().getImage(nameOfImages) { (imageData) in
+            FireBase.getImage(nameOfImages) { (imageData) in
                 ImageController().saveImage(image: imageData, imageName: nameOfImages)
                     }
             }
@@ -80,8 +80,10 @@ class TutorialDAO: NSObject {
     func atualizaContexto() {
         do {
             try contexto.save()
+            print("salvo com sucesso")
         } catch {
             print(error.localizedDescription)
+            print("erro para salvar")
         }
     }
 
