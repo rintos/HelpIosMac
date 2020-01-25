@@ -83,8 +83,9 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         guard let texto = descriptionTextView?.text else { return nil }
         guard let pathArrayImage = tutorialDetail?.imagesUrl else { return nil }
         guard let id = tutorialDetail?.id else { return nil }
+        guard let date = tutorialDetail?.created_at else { return nil }
         
-        let tutorial = Tutorial(id: id, name: titulo, details: texto, imagesUrl: pathArrayImage, images: [])
+        let tutorial = Tutorial(id: id, name: titulo, details: texto, imagesUrl: pathArrayImage, images: [], created_at: date)
      
         return tutorial
     }

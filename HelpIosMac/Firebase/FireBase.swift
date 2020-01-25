@@ -34,7 +34,7 @@ class FireBase: NSObject {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                  //  print("\(document.documentID) => \(document.data())")
+                 //   print("\(document.documentID) => Dados \(document.data())")
                     
                     let id = document.data()["id"] as? String ?? ""
                     let title = document.data()["name"] as? String  ?? ""
@@ -44,8 +44,10 @@ class FireBase: NSObject {
                     let images = document.data()["imagesUrl"]
                     let image = images as? Array<String>  ?? []
                     imageURL = image
+                    let timestamp: Timestamp = document.get("date") as! Timestamp
+                    let date: Date = timestamp.dateValue()
                     
-                    let tutorial = Tutorial(id: id, name: title, details: detail, pathImage: pathImage, imagesUrl: imageURL, linkVideo: linkVideo, images: [], imgData: [])
+                    let tutorial = Tutorial(id: id, name: title, details: detail, pathImage: pathImage, imagesUrl: imageURL, linkVideo: linkVideo, images: [], imgData: [], created_at: date)
                     listTutorial.append(tutorial)
                 }
               //  print("lista de tutorial em array: \(listTutorial)")

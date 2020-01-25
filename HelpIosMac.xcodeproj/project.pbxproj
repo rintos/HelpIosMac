@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		225A50CE238C463E00C198CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 225A50CD238C463E00C198CE /* GoogleService-Info.plist */; };
 		225A50D0238C60B300C198CE /* FireBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A50CF238C60B300C198CE /* FireBase.swift */; };
+		22808DC923DCAC90006618E8 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22808DC823DCAC90006618E8 /* ShareViewController.swift */; };
+		22808DCC23DCAC90006618E8 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22808DCA23DCAC90006618E8 /* MainInterface.storyboard */; };
+		22808DD023DCAC90006618E8 /* HelpMaciOS.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 22808DC623DCAC90006618E8 /* HelpMaciOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22B4ED7C235FD2D500D7DFFF /* DetailVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4ED7B235FD2D500D7DFFF /* DetailVideoViewController.swift */; };
 		22B4ED80235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4ED7F235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift */; };
 		22B4ED8223600CB100D7DFFF /* YoutubePlayer_in_WKWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B4ED8123600CB100D7DFFF /* YoutubePlayer_in_WKWebView.framework */; };
@@ -37,6 +40,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		22808DCE23DCAC90006618E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50825AE323174592001040E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22808DC523DCAC90006618E8;
+			remoteInfo = HelpMaciOS;
+		};
 		50825B03231745B0001040E7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 50825AE323174592001040E7 /* Project object */;
@@ -60,6 +70,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				22808DD023DCAC90006618E8 /* HelpMaciOS.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +85,11 @@
 		220F0B632373A0DF00B3BC99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		225A50CD238C463E00C198CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		225A50CF238C60B300C198CE /* FireBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBase.swift; sourceTree = "<group>"; };
+		22808DC623DCAC90006618E8 /* HelpMaciOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HelpMaciOS.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		22808DC823DCAC90006618E8 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		22808DCB23DCAC90006618E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		22808DCD23DCAC90006618E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22808DD423DCACAA006618E8 /* HelpMaciOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelpMaciOS.entitlements; sourceTree = "<group>"; };
 		22B4ED7B235FD2D500D7DFFF /* DetailVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVideoViewController.swift; sourceTree = "<group>"; };
 		22B4ED7F235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVideoFavoriteViewController.swift; sourceTree = "<group>"; };
 		22B4ED8123600CB100D7DFFF /* YoutubePlayer_in_WKWebView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YoutubePlayer_in_WKWebView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +129,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		22808DC323DCAC90006618E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50825AE823174592001040E7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -159,6 +182,17 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		22808DC723DCAC90006618E8 /* HelpMaciOS */ = {
+			isa = PBXGroup;
+			children = (
+				22808DD423DCACAA006618E8 /* HelpMaciOS.entitlements */,
+				22808DC823DCAC90006618E8 /* ShareViewController.swift */,
+				22808DCA23DCAC90006618E8 /* MainInterface.storyboard */,
+				22808DCD23DCAC90006618E8 /* Info.plist */,
+			);
+			path = HelpMaciOS;
+			sourceTree = "<group>";
+		};
 		50825AE223174592001040E7 = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +200,7 @@
 				50825B05231745B0001040E7 /* HelpIosMacTests */,
 				50825B10231745B0001040E7 /* HelpIosMacUITests */,
 				220F0B5D2373A0DF00B3BC99 /* ImageShare */,
+				22808DC723DCAC90006618E8 /* HelpMaciOS */,
 				50825AEC23174592001040E7 /* Products */,
 				9819AB23E4097AF6070B0D91 /* Pods */,
 				BFF37250F5EF477CADE15E81 /* Frameworks */,
@@ -178,6 +213,7 @@
 				50825AEB23174592001040E7 /* HelpIosMac.app */,
 				50825B02231745B0001040E7 /* HelpIosMacTests.xctest */,
 				50825B0D231745B0001040E7 /* HelpIosMacUITests.xctest */,
+				22808DC623DCAC90006618E8 /* HelpMaciOS.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -281,6 +317,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		22808DC523DCAC90006618E8 /* HelpMaciOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22808DD323DCAC90006618E8 /* Build configuration list for PBXNativeTarget "HelpMaciOS" */;
+			buildPhases = (
+				22808DC223DCAC90006618E8 /* Sources */,
+				22808DC323DCAC90006618E8 /* Frameworks */,
+				22808DC423DCAC90006618E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HelpMaciOS;
+			productName = HelpMaciOS;
+			productReference = 22808DC623DCAC90006618E8 /* HelpMaciOS.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		50825AEA23174592001040E7 /* HelpIosMac */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50825B16231745B0001040E7 /* Build configuration list for PBXNativeTarget "HelpIosMac" */;
@@ -295,6 +348,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				22808DCF23DCAC90006618E8 /* PBXTargetDependency */,
 			);
 			name = HelpIosMac;
 			productName = HelpIosMac;
@@ -349,10 +403,13 @@
 				KnownAssetTags = (
 					New,
 				);
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Rinver;
 				TargetAttributes = {
+					22808DC523DCAC90006618E8 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
 					50825AEA23174592001040E7 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1120;
@@ -385,11 +442,20 @@
 				50825AEA23174592001040E7 /* HelpIosMac */,
 				50825B01231745B0001040E7 /* HelpIosMacTests */,
 				50825B0C231745B0001040E7 /* HelpIosMacUITests */,
+				22808DC523DCAC90006618E8 /* HelpMaciOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		22808DC423DCAC90006618E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22808DCC23DCAC90006618E8 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50825AE923174592001040E7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -521,6 +587,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		22808DC223DCAC90006618E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22808DC923DCAC90006618E8 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50825AE723174592001040E7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -564,6 +638,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		22808DCF23DCAC90006618E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22808DC523DCAC90006618E8 /* HelpMaciOS */;
+			targetProxy = 22808DCE23DCAC90006618E8 /* PBXContainerItemProxy */;
+		};
 		50825B04231745B0001040E7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 50825AEA23174592001040E7 /* HelpIosMac */;
@@ -581,6 +660,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				220F0B612373A0DF00B3BC99 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		22808DCA23DCAC90006618E8 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22808DCB23DCAC90006618E8 /* Base */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -604,6 +691,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		22808DD123DCAC90006618E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = HelpMaciOS/HelpMaciOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N66VHCWZLN;
+				INFOPLIST_FILE = HelpMaciOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.vsantoryu.HelpIosMac.HelpMaciOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22808DD223DCAC90006618E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = HelpMaciOS/HelpMaciOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N66VHCWZLN;
+				INFOPLIST_FILE = HelpMaciOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.vsantoryu.HelpIosMac.HelpMaciOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		50825B14231745B0001040E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -857,6 +988,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		22808DD323DCAC90006618E8 /* Build configuration list for PBXNativeTarget "HelpMaciOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22808DD123DCAC90006618E8 /* Debug */,
+				22808DD223DCAC90006618E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		50825AE623174592001040E7 /* Build configuration list for PBXProject "HelpIosMac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

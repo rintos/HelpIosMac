@@ -19,9 +19,10 @@ class Tutorial: NSObject {
     let linkVideo: String
     var images: [NSObject]
     var imgData: [UIImage] = []
+    var created_at: Date
 
     
-    init(id: String, name: String, details: String, pathImage: String = "", makeTutorial: String = "", imagesUrl: Array<String> = [], linkVideo: String = "", images: [NSObject] = [], imgData: [UIImage] = []){
+    init(id: String, name: String, details: String, pathImage: String = "", makeTutorial: String = "", imagesUrl: Array<String> = [], linkVideo: String = "", images: [NSObject] = [], imgData: [UIImage] = [], created_at: Date){
         self.id = id
         self.name = name
         self.details = details
@@ -31,7 +32,9 @@ class Tutorial: NSObject {
         self.linkVideo = linkVideo
         self.images = images
         self.imgData = imgData
+        self.created_at = created_at
     }
+
     
     
 }

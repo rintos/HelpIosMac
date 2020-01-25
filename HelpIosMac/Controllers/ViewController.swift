@@ -22,6 +22,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     var detalheController = DetailsViewController()
     var contentList: Array<Tutorial> = []
     var currentList: Array<Tutorial> = []
+    var contentListTutorial: Array<Tutorial> = []
+    var currentListTutorial: Array<Tutorial> = []
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showDetail"){
@@ -84,15 +86,28 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     }
     
     func setupDataFireBase(){
+        
         FireBase.getDataFireStore { listTutorial in
             for tutorial in listTutorial {
-                print(tutorial)
                 self.currentList.append(tutorial)
                 self.contentList.append(tutorial)
                 self.collectionViewTutorial.reloadData()
                 self.loadingSpinner?.stopAnimating()
             }
+            
+            let sortedCurrentList = self.currentList.sorted { (date1, date2) -> Bool in
+                date1.created_at > date2.created_at
+            }
+            
+            let sortedContentList = self.contentList.sorted { (date1, date2) -> Bool in
+                date1.created_at > date2.created_at
+            }
+            
+            self.currentListTutorial = sortedCurrentList
+            self.contentListTutorial = sortedContentList
+            
         }
+        
     }
 
 //    func setupDadosFirebase(_ callback:@escaping(_ listaTutorial: Array<Tutorial> ) -> () ){
@@ -112,12 +127,12 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return currentList.count
+        return currentListTutorial.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! TutorialCollectionViewCell
-        let tutorial = currentList[indexPath.row]
+        let tutorial = currentListTutorial[indexPath.row]
         cell.configCollectionCell(tutorial)
         
         return cell
@@ -125,18 +140,18 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let tutorial = currentList[indexPath.item]
+        let tutorial = currentListTutorial[indexPath.item]
         detalheController.tutorialDetail = tutorial
         
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else {
-            currentList = contentList
+            currentListTutorial = contentListTutorial
             collectionViewTutorial.reloadData()
             return
         }
-        currentList = contentList.filter({ (conteudo) -> Bool in
+        currentListTutorial = contentListTutorial.filter({ (conteudo) -> Bool in
             (conteudo.details.lowercased().contains(searchText.lowercased()))
         })
         collectionViewTutorial.reloadData()

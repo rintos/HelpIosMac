@@ -8,7 +8,6 @@ target 'HelpIosMac' do
   # Pods for HelpIosMac
 
   pod 'Firebase/Storage'
-  pod 'Firebase/Database'
   pod 'Firebase'
   pod "YoutubePlayer-in-WKWebView", "~> 0.3.0"
   pod 'SDWebImage', '~> 5.0'
