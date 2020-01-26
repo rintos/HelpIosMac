@@ -19,6 +19,8 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     @IBOutlet weak var imagensTutorialCollectionView: UICollectionView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var goVideo: UIButton!
+    @IBOutlet weak var tutoPageControll: UIPageControl!
+    
     
     
     var tutorial:Tutorials?
@@ -48,7 +50,15 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         //ao clicar esconde teclado
         view.addGestureRecognizer(tap)
+            
+    }
+    
+    func convertStringImage () -> [String]? {
+        let convertedArray = tutorial?.imagesUrl as? Array<String> ?? [""]
+        let listImages = convertedArray
         
+        return listImages
+
     }
     
     
@@ -65,6 +75,11 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         tituloLabel.layer.masksToBounds = true
         imagensTutorialCollectionView.layer.cornerRadius = 5
         imagensTutorialCollectionView.layer.masksToBounds = true
+        
+        if let imageCount = convertStringImage() {
+            let imagescount = imageCount.count
+            tutoPageControll.numberOfPages = imagescount
+        }
         
     }
     
@@ -232,6 +247,17 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
                 print("apresentado meu share")
             }
         
+    }
+    
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        //Serve para atualizar a página selecionada no pageControl
+        tutoPageControll.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        //Serve para atualizar a página selecionada no pageControl
+        tutoPageControll.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
     }
     
 }

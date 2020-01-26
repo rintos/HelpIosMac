@@ -11,12 +11,14 @@ import CoreData
 import Firebase
 import SDWebImage
 
-class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
     @IBOutlet weak var titleTextLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     @IBOutlet weak var goVideo: UIButton!
+    @IBOutlet weak var tutoPageControll: UIPageControl!
+    
     
     
     //MARK: - Variaveis
@@ -63,6 +65,12 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         goVideo.layer.masksToBounds = true
         descriptionTextView.layer.cornerRadius = 10
         descriptionTextView.layer.masksToBounds = true
+        
+        if let numberOfImages = tutorialDetail?.imagesUrl.count {
+            tutoPageControll.numberOfPages = numberOfImages
+        }
+     //   tutoPageControll.hidesForSinglePage = true
+        
     }
     
     func setupDadosView(){
@@ -177,5 +185,18 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
                
        return size
     }
+    
+    
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        //Serve para atualizar a página selecionada no pageControl
+        tutoPageControll.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        //Serve para atualizar a página selecionada no pageControl
+        tutoPageControll.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
+    
 
 }
