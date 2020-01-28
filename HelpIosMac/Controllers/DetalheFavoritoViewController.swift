@@ -150,11 +150,6 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         
         cell.imagensTutorial.image = image
         
-//        //corrige iphone 11 pro max
-//        let frame = CGRect(x: 0, y: 0, width: self.view.frame.width + 60, height: self.view.frame.height)
-        
-        //cell.imagensTutorial.frame = frame
-        
         return cell
     }
 
