@@ -71,6 +71,8 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         }
      //   tutoPageControll.hidesForSinglePage = true
         
+        tutoPageControll.translatesAutoresizingMaskIntoConstraints = false
+        
     }
     
     func setupDadosView(){
@@ -126,14 +128,14 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         guard let namesOfImage = tutorialDetail?.imagesUrl[indexPath.row] else { return cell }
         
         cell.configCell(namesOfImage)
+     //   viewWillLayoutSubviews()
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
        var size = CGSize(width:0, height: 0)
-       
+
           if UIDevice().userInterfaceIdiom == .phone
                {
                    switch UIScreen.main.nativeBounds.height
@@ -182,21 +184,32 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
                        print("iPad 3")
                 }
          }
-               
+
        return size
     }
-    
+
+    //Corrige problema de tamamho da celular do scrollView com UIPageController
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 0
+    }
     
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        //Serve para atualizar a página selecionada no pageControl
         tutoPageControll.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
     }
-    
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        //Serve para atualizar a página selecionada no pageControl
-        tutoPageControll.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
-    }
-    
 
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        tutoPageControll.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
+    
+    //MARK:- For Display the page number in page controll of collection view Cell
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let visibleRect = CGRect(origin: self.imagesCollectionView.contentOffset, size: self.imagesCollectionView.bounds.size)
+//        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+//        if let visibleIndexPath = self.imagesCollectionView.indexPathForItem(at: visiblePoint) {
+//            self.tutoPageControll.currentPage = visibleIndexPath.row
+//        }
+//    }
+    
+    
 }

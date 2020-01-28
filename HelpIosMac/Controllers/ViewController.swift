@@ -157,7 +157,4 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         collectionViewTutorial.reloadData()
     }
     
-    
-    
 }
-

@@ -21,8 +21,6 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     @IBOutlet weak var goVideo: UIButton!
     @IBOutlet weak var tutoPageControll: UIPageControl!
     
-    
-    
     var tutorial:Tutorials?
 
     var contexo:NSManagedObjectContext{
@@ -151,7 +149,12 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         let image = ImageController().fetchImage(imageName: listName)
         
         cell.imagensTutorial.image = image
-                
+        
+//        //corrige iphone 11 pro max
+//        let frame = CGRect(x: 0, y: 0, width: self.view.frame.width + 60, height: self.view.frame.height)
+        
+        //cell.imagensTutorial.frame = frame
+        
         return cell
     }
 
@@ -212,7 +215,9 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
      }
  
     
-
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 
     
     
@@ -252,12 +257,15 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         //Serve para atualizar a página selecionada no pageControl
+      //  viewWillLayoutSubviews()
         tutoPageControll.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         //Serve para atualizar a página selecionada no pageControl
+       //viewWillLayoutSubviews()
         tutoPageControll.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
     }
-    
+
+
 }

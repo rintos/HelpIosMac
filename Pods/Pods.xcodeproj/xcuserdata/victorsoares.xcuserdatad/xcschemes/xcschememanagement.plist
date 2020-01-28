@@ -65,6 +65,11 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>FirebaseInstallations.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
 		<key>FirebaseInstanceID.xcscheme</key>
@@ -137,19 +142,24 @@
 			<key>orderHint</key>
 			<integer>24</integer>
 		</dict>
+		<key>PromisesObjC.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>25</integer>
+		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>25</integer>
+			<integer>26</integer>
 		</dict>
 		<key>YoutubePlayer-in-WKWebView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>26</integer>
+			<integer>27</integer>
 		</dict>
 		<key>abseil.xcscheme</key>
 		<dict>
