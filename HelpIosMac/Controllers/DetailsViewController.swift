@@ -128,8 +128,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         guard let namesOfImage = tutorialDetail?.imagesUrl[indexPath.row] else { return cell }
         
         cell.configCell(namesOfImage)
-     //   viewWillLayoutSubviews()
-        
+    
         return cell
     }
     

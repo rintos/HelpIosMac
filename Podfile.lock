@@ -166,6 +166,8 @@ PODS:
   - BoringSSL-GRPC/Interface (0.0.3)
   - Firebase (6.15.0):
     - Firebase/Core (= 6.15.0)
+  - Firebase/Analytics (6.15.0):
+    - Firebase/Core
   - Firebase/Core (6.15.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.2.1)
@@ -284,6 +286,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase
+  - Firebase/Analytics
   - Firebase/Core
   - Firebase/Firestore
   - Firebase/Storage
@@ -343,6 +346,6 @@ SPEC CHECKSUMS:
   SDWebImage: 4ca2dc4eefae4224bea8f504251cda485a363745
   YoutubePlayer-in-WKWebView: af2f5929fc78882d94bfdfeea999b661b78d9717
 
-PODFILE CHECKSUM: ebc6a066988a030b868b0775cafb6d208b3fd4b8
+PODFILE CHECKSUM: 621f7b6369f75acca49c652695ed43fb80150bf7
 
 COCOAPODS: 1.8.4

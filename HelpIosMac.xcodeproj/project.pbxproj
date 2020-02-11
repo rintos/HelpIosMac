@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		225A50CE238C463E00C198CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 225A50CD238C463E00C198CE /* GoogleService-Info.plist */; };
 		225A50D0238C60B300C198CE /* FireBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A50CF238C60B300C198CE /* FireBase.swift */; };
 		22808DC923DCAC90006618E8 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22808DC823DCAC90006618E8 /* ShareViewController.swift */; };
 		22808DCC23DCAC90006618E8 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22808DCA23DCAC90006618E8 /* MainInterface.storyboard */; };
@@ -35,6 +34,7 @@
 		50C601C6234D8263005DB696 /* DetalhesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C601C5234D8262005DB696 /* DetalhesCollectionViewCell.swift */; };
 		50C601C8234EB281005DB696 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C601C7234EB281005DB696 /* CollectionViewCell.swift */; };
 		5FF21760B7A9F85FE1422B4F /* Pods_HelpIosMacTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A738D0205951CC1575137A /* Pods_HelpIosMacTests.framework */; };
+		98E3363D23F33A19006E8BEB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 98E3363C23F33A19006E8BEB /* GoogleService-Info.plist */; };
 		C90C0F77FF5448C45EA00FA2 /* Pods_HelpIosMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B063C33863F3FD062BE1DF2 /* Pods_HelpIosMac.framework */; };
 		CD0C3E3FB6E61906FE9A5729 /* Pods_HelpIosMac_HelpIosMacUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D344C8C44FB1520A851F0A2 /* Pods_HelpIosMac_HelpIosMacUITests.framework */; };
 /* End PBXBuildFile section */
@@ -83,7 +83,6 @@
 		220F0B5E2373A0DF00B3BC99 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		220F0B612373A0DF00B3BC99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		220F0B632373A0DF00B3BC99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		225A50CD238C463E00C198CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		225A50CF238C60B300C198CE /* FireBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBase.swift; sourceTree = "<group>"; };
 		22808DC623DCAC90006618E8 /* HelpMaciOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HelpMaciOS.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		22808DC823DCAC90006618E8 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +124,8 @@
 		80EF1FF77A1265C66D18B384 /* Pods-HelpIosMacTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpIosMacTests.release.xcconfig"; path = "Target Support Files/Pods-HelpIosMacTests/Pods-HelpIosMacTests.release.xcconfig"; sourceTree = "<group>"; };
 		8A399DEC83E77AE40617A5C4 /* Pods-HelpIosMac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpIosMac.release.xcconfig"; path = "Target Support Files/Pods-HelpIosMac/Pods-HelpIosMac.release.xcconfig"; sourceTree = "<group>"; };
 		9828D8A723D8E77100AD9B95 /* HelpIosMacDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelpIosMacDebug.entitlements; sourceTree = "<group>"; };
+		98E3363C23F33A19006E8BEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		98EBBB9623E0C5F9003107E7 /* HelpIosMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelpIosMac.entitlements; sourceTree = "<group>"; };
 		FEED26538698202EA98CF72A /* Pods-HelpIosMac-HelpIosMacUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpIosMac-HelpIosMacUITests.debug.xcconfig"; path = "Target Support Files/Pods-HelpIosMac-HelpIosMacUITests/Pods-HelpIosMac-HelpIosMacUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,6 +222,7 @@
 		50825AED23174592001040E7 /* HelpIosMac */ = {
 			isa = PBXGroup;
 			children = (
+				98EBBB9623E0C5F9003107E7 /* HelpIosMac.entitlements */,
 				9828D8A723D8E77100AD9B95 /* HelpIosMacDebug.entitlements */,
 				50825B26231748B5001040E7 /* Views */,
 				50825B242317488B001040E7 /* Models */,
@@ -230,7 +232,7 @@
 				50825AF8231745AF001040E7 /* Assets.xcassets */,
 				50825AFA231745AF001040E7 /* LaunchScreen.storyboard */,
 				50825AFD231745AF001040E7 /* Info.plist */,
-				225A50CD238C463E00C198CE /* GoogleService-Info.plist */,
+				98E3363C23F33A19006E8BEB /* GoogleService-Info.plist */,
 				50825AF523174593001040E7 /* HelpIosMac.xcdatamodeld */,
 			);
 			path = HelpIosMac;
@@ -461,7 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50825AFC231745AF001040E7 /* LaunchScreen.storyboard in Resources */,
-				225A50CE238C463E00C198CE /* GoogleService-Info.plist in Resources */,
+				98E3363D23F33A19006E8BEB /* GoogleService-Info.plist in Resources */,
 				50825AF9231745AF001040E7 /* Assets.xcassets in Resources */,
 				50825AF423174592001040E7 /* Main.storyboard in Resources */,
 			);

@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>954109159369-p323om17ibjcl8g5r7055c69tr9997bk.apps.googleusercontent.com</string>
+	<string>528665354156-ecglkkgdgahoegcllgsmatomb64urg15.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.954109159369-p323om17ibjcl8g5r7055c69tr9997bk</string>
+	<string>com.googleusercontent.apps.528665354156-ecglkkgdgahoegcllgsmatomb64urg15</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDEIWe7WUbxr-ABJ3BDWP0bLWP0JosxU0k</string>
+	<string>AIzaSyBqjgKdPlsfM2A5kRTAVIPu1a_SEhgNGlE</string>
 	<key>GCM_SENDER_ID</key>
-	<string>954109159369</string>
+	<string>528665354156</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>br.com.vsantoryu.HelpIosMac</string>
 	<key>PROJECT_ID</key>
-	<string>helpiosmac</string>
+	<string>servicemacios-6c536</string>
 	<key>STORAGE_BUCKET</key>
-	<string>helpiosmac.appspot.com</string>
+	<string>servicemacios-6c536.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:954109159369:ios:e794ee03017e01afb06a18</string>
+	<string>1:528665354156:ios:d7998f1ca057720f32e409</string>
 	<key>DATABASE_URL</key>
-	<string>https://helpiosmac.firebaseio.com</string>
+	<string>https://servicemacios-6c536.firebaseio.com</string>
 </dict>
 </plist>

@@ -29,7 +29,9 @@ class FireBase: NSObject {
         var imageURL: Array<String> = []
         var listTutorial: Array<Tutorial> = []
         
-        db.collection("tutorials").getDocuments() { (querySnapshot, err) in
+        let collectionName = "tutorials"
+        
+        db.collection(collectionName).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -256,5 +258,11 @@ class FireBase: NSObject {
 //
 //        }
     
+    
+//    func autentica() {
+//        Auth.auth().signIn(withCustomToken: customToken ?? "") { (user, error) in
+//          // ...
+//        }
+//    }
 
 }

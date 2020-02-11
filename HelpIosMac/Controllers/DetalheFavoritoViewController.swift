@@ -263,4 +263,5 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     }
 
 
+
 }
