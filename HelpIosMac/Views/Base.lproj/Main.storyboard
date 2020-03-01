@@ -27,15 +27,33 @@
                                         </constraints>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="pLM-t0-Sc7">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IeK-Yt-JN8">
                                         <rect key="frame" x="0.0" y="50" width="320" height="35"/>
+                                        <subviews>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="pLM-t0-Sc7">
+                                                <rect key="frame" x="20" y="-2" width="280" height="37"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </activityIndicatorView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="resultado encontrado" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQD-dB-Wt2">
+                                                <rect key="frame" x="100" y="7" width="120" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="iM8-pl-Bkf"/>
+                                            <constraint firstAttribute="bottom" secondItem="pLM-t0-Sc7" secondAttribute="bottom" id="8M8-AB-FmQ"/>
+                                            <constraint firstAttribute="height" constant="35" id="Rcb-GP-L6k"/>
+                                            <constraint firstItem="SQD-dB-Wt2" firstAttribute="centerX" secondItem="IeK-Yt-JN8" secondAttribute="centerX" id="byc-gw-zVw"/>
+                                            <constraint firstItem="SQD-dB-Wt2" firstAttribute="top" secondItem="IeK-Yt-JN8" secondAttribute="top" constant="7" id="s4C-lb-SIp"/>
+                                            <constraint firstAttribute="trailing" secondItem="pLM-t0-Sc7" secondAttribute="trailing" constant="20" symbolic="YES" id="tuV-dg-Ils"/>
+                                            <constraint firstItem="pLM-t0-Sc7" firstAttribute="top" secondItem="IeK-Yt-JN8" secondAttribute="top" constant="-2" id="ucG-AZ-KWF"/>
+                                            <constraint firstItem="pLM-t0-Sc7" firstAttribute="leading" secondItem="IeK-Yt-JN8" secondAttribute="leading" constant="20" symbolic="YES" id="zbe-2P-rzU"/>
                                         </constraints>
-                                        <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </activityIndicatorView>
+                                    </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NOd-Lg-eOz">
                                         <rect key="frame" x="0.0" y="90" width="320" height="385"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -131,7 +149,9 @@
                     <connections>
                         <outlet property="collectionViewTutorial" destination="NOd-Lg-eOz" id="WJD-l7-lqJ"/>
                         <outlet property="loadingSpinner" destination="pLM-t0-Sc7" id="oyv-Ob-vmA"/>
+                        <outlet property="resultadoEncontradoLabel" destination="SQD-dB-Wt2" id="XJ5-Nw-ngf"/>
                         <outlet property="searchTutorial" destination="ela-jc-lfe" id="Fnw-Fm-7Yw"/>
+                        <outlet property="statusView" destination="IeK-Yt-JN8" id="d3W-ti-U1C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -166,7 +186,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="254"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iTP-bV-Nrq">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iTP-bV-Nrq">
                                                             <rect key="frame" x="0.0" y="35" width="320" height="184"/>
                                                         </imageView>
                                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="wYv-tM-6Zw">
@@ -428,7 +448,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="319" height="232"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jw9-V4-Bma">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jw9-V4-Bma">
                                                             <rect key="frame" x="8" y="53" width="303" height="111"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="Jw9-V4-Bma" secondAttribute="height" multiplier="303:116" id="bm4-tE-RAd"/>

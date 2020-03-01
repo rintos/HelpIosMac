@@ -140,7 +140,7 @@ class FireBase: NSObject {
         
         let folderPath = "images"
        // var imagesArray: Array<UIImage> = []
-        var namesArray: Array<String> = []
+        var _: Array<String> = []
 
         
         for imageName in namesList {
