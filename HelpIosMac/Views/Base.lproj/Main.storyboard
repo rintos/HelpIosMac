@@ -455,17 +455,14 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jw9-V4-Bma">
-                                                            <rect key="frame" x="8" y="53" width="303" height="111"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="Jw9-V4-Bma" secondAttribute="height" multiplier="303:116" id="bm4-tE-RAd"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="8" y="58" width="303" height="106"/>
                                                         </imageView>
                                                     </subviews>
                                                 </view>
                                                 <constraints>
                                                     <constraint firstItem="Jw9-V4-Bma" firstAttribute="leading" secondItem="Ocp-sN-pNP" secondAttribute="leadingMargin" id="HL5-vS-W3O"/>
                                                     <constraint firstItem="Jw9-V4-Bma" firstAttribute="trailing" secondItem="Ocp-sN-pNP" secondAttribute="trailingMargin" id="ccH-ZJ-1x3"/>
-                                                    <constraint firstItem="Jw9-V4-Bma" firstAttribute="top" secondItem="Ocp-sN-pNP" secondAttribute="topMargin" constant="45" id="gM9-PF-tGm"/>
+                                                    <constraint firstItem="Jw9-V4-Bma" firstAttribute="top" secondItem="Ocp-sN-pNP" secondAttribute="topMargin" constant="50" id="gM9-PF-tGm"/>
                                                     <constraint firstAttribute="bottomMargin" secondItem="Jw9-V4-Bma" secondAttribute="bottom" constant="60" id="tFF-KH-cLA"/>
                                                 </constraints>
                                                 <size key="customSize" width="319" height="232"/>

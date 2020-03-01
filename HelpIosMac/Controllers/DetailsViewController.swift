@@ -72,7 +72,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
     func setupDadosView(){
         guard let detalheTutorial = tutorialDetail else { return }
         self.titleTextLabel.text = detalheTutorial.name
-        self.descriptionTextView.text = detalheTutorial.details
+        self.descriptionTextView.text = Tutorial.organizaTexto(detalheTutorial.details)
     }
         
     func recuperaTutorial()->Tutorial?{

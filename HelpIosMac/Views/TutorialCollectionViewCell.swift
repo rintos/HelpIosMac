@@ -24,11 +24,11 @@ class TutorialCollectionViewCell: UICollectionViewCell {
         spinner.hidesWhenStopped = true
     }
     
-    
     func configCollectionCell(_ tutorial: Tutorial){
         
         tituloLabel.text = tutorial.name
-        descricaoTextView.text = tutorial.details
+        descricaoTextView.text = Tutorial.organizaTexto(tutorial.details)
+       // descricaoTextView.text = tutorial.details
         imagemTutorial.layer.borderWidth = 2
         imagemTutorial.layer.backgroundColor = UIColor.black.cgColor
         imagemTutorial.layer.cornerRadius = 6.0
@@ -70,4 +70,11 @@ class TutorialCollectionViewCell: UICollectionViewCell {
     }
     
     
+}
+
+
+extension String {
+    var lines: [String] {
+        return self.components(separatedBy: "\n")
+    }
 }

@@ -34,7 +34,46 @@ class Tutorial: NSObject {
         self.imgData = imgData
         self.created_at = created_at
     }
+    
+    
+    
+       static func organizaTexto (_ details: String) -> String{
+            var retornaQuebra = details
+            var cont: Int = 0
+            for item in retornaQuebra {
+                
+                switch item {
+                case "2":
+                    //cont += 1
+                    retornaQuebra.insert("\n", at: retornaQuebra.index(retornaQuebra.startIndex, offsetBy: cont))
+                    retornaQuebra.insert("\n", at: retornaQuebra.index(retornaQuebra.startIndex, offsetBy: cont))
+                case "3":
+                    cont += 1
+                    retornaQuebra.insert("\n", at: retornaQuebra.index(retornaQuebra.startIndex, offsetBy: cont))
+                    retornaQuebra.insert("\n", at: retornaQuebra.index(retornaQuebra.startIndex, offsetBy: cont))
+                case "4":
+                    cont += 2
+                    retornaQuebra.insert("\n", at: retornaQuebra.index(retornaQuebra.startIndex, offsetBy: cont))
+                    retornaQuebra.insert("\n", at: retornaQuebra.index(retornaQuebra.startIndex, offsetBy: cont))
+                case "5":
+                    cont += 3
+                    retornaQuebra.insert("\n", at: retornaQuebra.index(retornaQuebra.startIndex, offsetBy: cont))
+                    retornaQuebra.insert("\n", at: retornaQuebra.index(retornaQuebra.startIndex, offsetBy: cont))
+                case "6":
+                    cont += 4
+                    retornaQuebra.insert("\n", at: retornaQuebra.index(retornaQuebra.startIndex, offsetBy: cont))
+                    retornaQuebra.insert("\n", at: retornaQuebra.index(retornaQuebra.startIndex, offsetBy: cont))
+                case "7":
+                    cont += 5
+                    retornaQuebra.insert("\n", at: retornaQuebra.index(retornaQuebra.startIndex, offsetBy: cont))
+                    retornaQuebra.insert("\n", at: retornaQuebra.index(retornaQuebra.startIndex, offsetBy: cont))
+                default:
+                    break
+                }
+                
+                cont += 1
+            }
 
-    
-    
+            return retornaQuebra
+        }
 }
