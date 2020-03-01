@@ -243,8 +243,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title=" ir para video" image="play.rectangle.fill" catalog="system"/>
                                         <connections>
-                                            <action selector="sendLinkVideo:" destination="xP2-O7-Dic" eventType="touchUpInside" id="2rZ-QW-vYm"/>
-                                            <segue destination="lNm-wa-nPN" kind="show" identifier="video" id="EU1-8r-2bU"/>
+                                            <action selector="showVideo:" destination="xP2-O7-Dic" eventType="touchUpInside" id="4CO-pA-0Sr"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="X6E-P0-TTo">
@@ -283,16 +282,26 @@
         <!--Detail Video View Controller-->
         <scene sceneID="dKw-bW-PUz">
             <objects>
-                <viewController id="lNm-wa-nPN" customClass="DetailVideoViewController" customModule="HelpIosMac" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailVideoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lNm-wa-nPN" customClass="DetailVideoViewController" customModule="HelpIosMac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Wc-He-Iwx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7e-VS-Rhp" customClass="WKYTPlayerView">
-                                <rect key="frame" x="0.0" y="84" width="320" height="266"/>
+                                <rect key="frame" x="0.0" y="40" width="320" height="266"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video não disponivel no momento." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r4q-4t-PWj">
+                                        <rect key="frame" x="28.5" y="79" width="263" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Z7e-VS-Rhp" secondAttribute="height" multiplier="160:133" id="1Z8-H8-C7M"/>
+                                    <constraint firstItem="r4q-4t-PWj" firstAttribute="top" secondItem="Z7e-VS-Rhp" secondAttribute="top" constant="79" id="eiW-vM-ASb"/>
+                                    <constraint firstItem="r4q-4t-PWj" firstAttribute="centerX" secondItem="Z7e-VS-Rhp" secondAttribute="centerX" id="gBi-0y-WdN"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -307,6 +316,7 @@
                     <navigationItem key="navigationItem" id="ue0-aV-Goh"/>
                     <connections>
                         <outlet property="playerView" destination="Z7e-VS-Rhp" id="BTg-4P-kft"/>
+                        <outlet property="statusVideoLabel" destination="r4q-4t-PWj" id="UGY-wS-sbh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9hQ-Fr-bwH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -504,7 +514,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="qVu-FL-sh2" kind="show" id="6U0-Da-f1M"/>
+                                            <action selector="showVideo:" destination="1Ii-ew-2mF" eventType="touchUpInside" id="j8D-7c-sgp"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Conteudo tutorial" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sG3-hn-Nw1">
@@ -568,7 +578,6 @@
                     </view>
                     <connections>
                         <outlet property="editarTextView" destination="0vx-fo-LL7" id="ocr-Qb-BXP"/>
-                        <outlet property="goVideo" destination="AUh-Hr-oK2" id="Grk-ZC-XEm"/>
                         <outlet property="imagensTutorialCollectionView" destination="NpI-tO-zWx" id="gK7-Mq-M7b"/>
                         <outlet property="saveButton" destination="cMk-a4-PNQ" id="gRY-HT-Hja"/>
                         <outlet property="textoTextView" destination="sG3-hn-Nw1" id="H2m-Iu-mgh"/>
@@ -583,16 +592,25 @@
         <!--Detail Video Favorite View Controller-->
         <scene sceneID="vc1-Uq-sPA">
             <objects>
-                <viewController id="qVu-FL-sh2" customClass="DetailVideoFavoriteViewController" customModule="HelpIosMac" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailVideoFavoriteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qVu-FL-sh2" customClass="DetailVideoFavoriteViewController" customModule="HelpIosMac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P0V-lT-ycj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bi5-AO-nqh" customClass="WKYTPlayerView">
-                                <rect key="frame" x="0.0" y="84" width="320" height="264"/>
+                                <rect key="frame" x="0.0" y="40" width="320" height="308"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video não disponivel no momento." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9n-Fi-bo7">
+                                        <rect key="frame" x="28.5" y="88" width="263" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Bi5-AO-nqh" secondAttribute="height" multiplier="40:33" id="6As-iH-cfm"/>
+                                    <constraint firstItem="f9n-Fi-bo7" firstAttribute="centerX" secondItem="Bi5-AO-nqh" secondAttribute="centerX" id="Fdm-T7-xEq"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -601,18 +619,20 @@
                             <constraint firstItem="Bi5-AO-nqh" firstAttribute="leading" secondItem="8Vw-Gg-ZaW" secondAttribute="leading" id="9N7-tW-Ge2"/>
                             <constraint firstItem="Bi5-AO-nqh" firstAttribute="top" secondItem="8Vw-Gg-ZaW" secondAttribute="top" constant="40" id="LwI-wG-arA"/>
                             <constraint firstItem="8Vw-Gg-ZaW" firstAttribute="bottom" secondItem="Bi5-AO-nqh" secondAttribute="bottom" constant="220" id="omK-31-bF9"/>
+                            <constraint firstItem="f9n-Fi-bo7" firstAttribute="top" secondItem="8Vw-Gg-ZaW" secondAttribute="top" constant="128" id="pdc-WV-2Sv"/>
                             <constraint firstItem="Bi5-AO-nqh" firstAttribute="trailing" secondItem="8Vw-Gg-ZaW" secondAttribute="trailing" id="wWh-nB-Z7n"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Vw-Gg-ZaW"/>
                     </view>
                     <navigationItem key="navigationItem" id="Y8q-db-oHs"/>
                     <connections>
+                        <outlet property="statusVideoLabel" destination="f9n-Fi-bo7" id="AC0-5a-Fuo"/>
                         <outlet property="videoView" destination="Bi5-AO-nqh" id="fRU-L9-mAA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tjg-aV-6hw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2882" y="961"/>
+            <point key="canvasLocation" x="2881.875" y="960.21126760563379"/>
         </scene>
     </scenes>
     <resources>

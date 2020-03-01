@@ -34,13 +34,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
       
         return appDelegate.persistentContainer.viewContext
     }
-        
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "video"){
-            detailVideo = (segue.destination as? DetailVideoViewController)!
-        }
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,12 +75,6 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         self.descriptionTextView.text = detalheTutorial.details
     }
         
-    //action que envia string do video para proxima tela
-    @IBAction func sendLinkVideo(_ sender: Any) {
-        guard let linkYoutube = tutorialDetail?.linkVideo else { return }
-        detailVideo.urlVideo = linkYoutube
-    }
-    
     func recuperaTutorial()->Tutorial?{
         
         guard let titulo = titleTextLabel?.text else { return nil }
@@ -210,5 +198,12 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
 //        }
 //    }
     
+    
+    
+    @IBAction func showVideo(_ sender: Any) {
+        let videoDetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailVideoViewController") as! DetailVideoViewController
+        videoDetailController.tutorialVideo = tutorialDetail
+        navigationController?.pushViewController(videoDetailController, animated: true)
+    }
     
 }
