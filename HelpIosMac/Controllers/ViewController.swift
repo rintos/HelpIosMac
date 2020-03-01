@@ -93,7 +93,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     func activityIndicator(){
         loadingSpinner?.hidesWhenStopped = true
-      //  statusView.isHidden = true
+        statusView.isHidden = true
     }
     
     func setupDataFireBase(){
