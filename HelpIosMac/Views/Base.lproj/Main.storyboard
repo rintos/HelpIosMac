@@ -372,17 +372,20 @@
                                                 <constraint firstAttribute="width" constant="140" id="fvn-et-UBC"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBc-2K-z8o">
-                                            <rect key="frame" x="163" y="25" width="137" height="44"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBc-2K-z8o">
+                                            <rect key="frame" x="157" y="10" width="143" height="69"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="2Bk-zY-bbN"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="heightClass=regular-widthClass=regular">
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="24"/>
+                                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="24"/>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Texto" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIJ-Xn-tGv">
-                                            <rect key="frame" x="167" y="79" width="143" height="61"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Texto" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIJ-Xn-tGv">
+                                            <rect key="frame" x="157" y="79" width="153" height="66"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="PiX-pg-a7b"/>
                                             </constraints>
@@ -398,13 +401,13 @@
                                         <constraint firstItem="uaB-l2-O4N" firstAttribute="leading" secondItem="Ntf-Sa-og9" secondAttribute="leading" constant="2" id="BVa-xP-ulz"/>
                                         <constraint firstItem="BIJ-Xn-tGv" firstAttribute="top" secondItem="Ntf-Sa-og9" secondAttribute="top" constant="79" id="EBL-ys-uvL"/>
                                         <constraint firstAttribute="bottom" secondItem="uaB-l2-O4N" secondAttribute="bottom" constant="22.5" id="VZd-RK-ARK"/>
-                                        <constraint firstItem="BIJ-Xn-tGv" firstAttribute="top" secondItem="sBc-2K-z8o" secondAttribute="bottom" constant="10" id="adC-xT-8eV"/>
-                                        <constraint firstItem="sBc-2K-z8o" firstAttribute="leading" secondItem="uaB-l2-O4N" secondAttribute="trailing" constant="21" id="ckt-pV-q77"/>
-                                        <constraint firstItem="BIJ-Xn-tGv" firstAttribute="leading" secondItem="uaB-l2-O4N" secondAttribute="trailing" constant="25" id="div-IW-LJ0"/>
+                                        <constraint firstItem="BIJ-Xn-tGv" firstAttribute="top" secondItem="sBc-2K-z8o" secondAttribute="bottom" id="adC-xT-8eV"/>
+                                        <constraint firstItem="sBc-2K-z8o" firstAttribute="leading" secondItem="uaB-l2-O4N" secondAttribute="trailing" constant="15" id="ckt-pV-q77"/>
+                                        <constraint firstItem="BIJ-Xn-tGv" firstAttribute="leading" secondItem="uaB-l2-O4N" secondAttribute="trailing" constant="15" id="div-IW-LJ0"/>
                                         <constraint firstAttribute="trailing" secondItem="BIJ-Xn-tGv" secondAttribute="trailing" constant="10" id="ihD-kf-tIX"/>
-                                        <constraint firstItem="sBc-2K-z8o" firstAttribute="top" secondItem="Ntf-Sa-og9" secondAttribute="top" constant="25" id="jRq-K2-nBO"/>
+                                        <constraint firstItem="sBc-2K-z8o" firstAttribute="top" secondItem="Ntf-Sa-og9" secondAttribute="top" constant="10" id="jRq-K2-nBO"/>
                                         <constraint firstAttribute="trailing" secondItem="sBc-2K-z8o" secondAttribute="trailing" constant="20" id="s81-ZX-AoR"/>
-                                        <constraint firstAttribute="bottom" secondItem="BIJ-Xn-tGv" secondAttribute="bottom" constant="10" id="vpU-Kq-gRY"/>
+                                        <constraint firstAttribute="bottom" secondItem="BIJ-Xn-tGv" secondAttribute="bottom" constant="5" id="vpU-Kq-gRY"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
