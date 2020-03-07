@@ -23,7 +23,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="GLV-de-AxQ"/>
+                                            <constraint firstAttribute="height" constant="45" id="GLV-de-AxQ">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="90"/>
+                                            </constraint>
                                         </constraints>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
@@ -31,6 +33,11 @@
                                         <rect key="frame" x="0.0" y="50" width="320" height="37"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="nz0-xZ-xbd">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="79"/>
+                                            </constraint>
+                                        </constraints>
                                         <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IeK-Yt-JN8">
@@ -45,7 +52,9 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="Rcb-GP-L6k"/>
+                                            <constraint firstAttribute="height" constant="35" id="Rcb-GP-L6k">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="70"/>
+                                            </constraint>
                                             <constraint firstItem="SQD-dB-Wt2" firstAttribute="centerX" secondItem="IeK-Yt-JN8" secondAttribute="centerX" id="byc-gw-zVw"/>
                                             <constraint firstItem="SQD-dB-Wt2" firstAttribute="top" secondItem="IeK-Yt-JN8" secondAttribute="top" constant="7" id="s4C-lb-SIp"/>
                                         </constraints>
@@ -73,38 +82,44 @@
                                                                 <constraint firstAttribute="height" constant="170" id="zD2-nE-o5a"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titulo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1D-VU-vUX">
-                                                            <rect key="frame" x="0.0" y="185" width="290" height="30"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titulo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1D-VU-vUX">
+                                                            <rect key="frame" x="0.0" y="190" width="290" height="30"/>
                                                             <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="r2v-j6-GTj"/>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="r2v-j6-GTj"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="heightClass=regular-widthClass=regular">
+                                                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="25"/>
+                                                            </variation>
                                                         </label>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SXG-B9-Ef4">
-                                                            <rect key="frame" x="0.0" y="217" width="290" height="57"/>
+                                                            <rect key="frame" x="0.0" y="225" width="290" height="49"/>
                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <string key="text">Obrigado Deus e Cristo Obrigado Deus e Cristo Obrigado Deus e Cristo Obrigado Deus e Cristo Obrigado Deus e Cristo Obrigado Deus e Cristo Obrigado Deus e Cristo </string>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                            <variation key="heightClass=regular-widthClass=regular">
+                                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="22"/>
+                                                            </variation>
                                                         </textView>
                                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="dKq-5U-tN6">
-                                                            <rect key="frame" x="104" y="40" width="82" height="104"/>
+                                                            <rect key="frame" x="104" y="40" width="82" height="109"/>
                                                             <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </activityIndicatorView>
                                                     </subviews>
                                                 </view>
                                                 <constraints>
                                                     <constraint firstItem="DCb-AA-cxZ" firstAttribute="top" secondItem="DPv-zQ-udx" secondAttribute="top" constant="15" id="4qu-Bp-UJu"/>
-                                                    <constraint firstItem="k1D-VU-vUX" firstAttribute="top" secondItem="DCb-AA-cxZ" secondAttribute="bottom" id="8CM-HC-Fpx"/>
+                                                    <constraint firstItem="k1D-VU-vUX" firstAttribute="top" secondItem="DCb-AA-cxZ" secondAttribute="bottom" constant="5" id="8CM-HC-Fpx"/>
                                                     <constraint firstItem="SXG-B9-Ef4" firstAttribute="leading" secondItem="DPv-zQ-udx" secondAttribute="leading" id="Cps-Nc-g42"/>
                                                     <constraint firstItem="DCb-AA-cxZ" firstAttribute="leading" secondItem="DPv-zQ-udx" secondAttribute="leading" id="EA7-MN-vIE"/>
                                                     <constraint firstItem="k1D-VU-vUX" firstAttribute="leading" secondItem="DPv-zQ-udx" secondAttribute="leading" id="ESH-Ye-wXC"/>
                                                     <constraint firstAttribute="trailingMargin" secondItem="dKq-5U-tN6" secondAttribute="trailing" constant="96" id="MQG-zj-E23"/>
-                                                    <constraint firstItem="SXG-B9-Ef4" firstAttribute="top" secondItem="k1D-VU-vUX" secondAttribute="bottom" constant="2" id="aJN-P9-8Td"/>
+                                                    <constraint firstItem="SXG-B9-Ef4" firstAttribute="top" secondItem="k1D-VU-vUX" secondAttribute="bottom" constant="5" id="aJN-P9-8Td"/>
                                                     <constraint firstItem="k1D-VU-vUX" firstAttribute="top" secondItem="dKq-5U-tN6" secondAttribute="bottom" constant="41" id="bko-VL-tLz"/>
                                                     <constraint firstAttribute="trailing" secondItem="k1D-VU-vUX" secondAttribute="trailing" id="cUI-UF-wh8"/>
                                                     <constraint firstAttribute="trailing" secondItem="DCb-AA-cxZ" secondAttribute="trailing" id="fmc-LV-Tb6"/>
@@ -216,19 +231,24 @@
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="B21-vE-mKN">
                                         <rect key="frame" x="0.0" y="222" width="310" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="HKe-Tf-MVP"/>
+                                            <constraint firstAttribute="height" constant="20" id="HKe-Tf-MVP">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="35"/>
+                                            </constraint>
                                         </constraints>
                                     </pageControl>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ab-lg-Wzd">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ab-lg-Wzd">
                                         <rect key="frame" x="0.0" y="247" width="310" height="25"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="Ld7-aK-ASO"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="Ld7-aK-ASO"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                        </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4C-9j-iDp">
                                         <rect key="frame" x="0.0" y="277" width="310" height="25"/>
@@ -238,15 +258,21 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title=" ir para video" image="play.rectangle.fill" catalog="system"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        </variation>
                                         <connections>
                                             <action selector="showVideo:" destination="xP2-O7-Dic" eventType="touchUpInside" id="4CO-pA-0Sr"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="X6E-P0-TTo">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6E-P0-TTo">
                                         <rect key="frame" x="0.0" y="307" width="310" height="212"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="22"/>
+                                        </variation>
                                     </textView>
                                 </subviews>
                                 <constraints>
@@ -287,10 +313,13 @@
                                 <rect key="frame" x="0.0" y="40" width="320" height="266"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video não disponivel no momento." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r4q-4t-PWj">
-                                        <rect key="frame" x="28.5" y="79" width="263" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="21" y="79" width="278" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -342,11 +371,14 @@
                                                 <constraint firstAttribute="width" constant="140" id="fvn-et-UBC"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBc-2K-z8o">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBc-2K-z8o">
                                             <rect key="frame" x="163" y="25" width="137" height="44"/>
-                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=regular">
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="24"/>
+                                            </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Texto" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIJ-Xn-tGv">
                                             <rect key="frame" x="167" y="79" width="143" height="61"/>
@@ -356,6 +388,9 @@
                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=regular">
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                            </variation>
                                         </label>
                                     </subviews>
                                     <constraints>
@@ -454,7 +489,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="319" height="232"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jw9-V4-Bma">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jw9-V4-Bma">
                                                             <rect key="frame" x="8" y="58" width="303" height="106"/>
                                                         </imageView>
                                                     </subviews>
@@ -463,7 +498,7 @@
                                                     <constraint firstItem="Jw9-V4-Bma" firstAttribute="leading" secondItem="Ocp-sN-pNP" secondAttribute="leadingMargin" id="HL5-vS-W3O"/>
                                                     <constraint firstItem="Jw9-V4-Bma" firstAttribute="trailing" secondItem="Ocp-sN-pNP" secondAttribute="trailingMargin" id="ccH-ZJ-1x3"/>
                                                     <constraint firstItem="Jw9-V4-Bma" firstAttribute="top" secondItem="Ocp-sN-pNP" secondAttribute="topMargin" constant="50" id="gM9-PF-tGm"/>
-                                                    <constraint firstAttribute="bottomMargin" secondItem="Jw9-V4-Bma" secondAttribute="bottom" constant="60" id="tFF-KH-cLA"/>
+                                                    <constraint firstAttribute="bottomMargin" relation="lessThanOrEqual" secondItem="Jw9-V4-Bma" secondAttribute="bottom" constant="60" id="tFF-KH-cLA"/>
                                                 </constraints>
                                                 <size key="customSize" width="319" height="232"/>
                                                 <connections>
@@ -485,16 +520,24 @@
                                 <subviews>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="yWX-IL-SRv">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="13" id="D37-3m-UgE">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="35"/>
+                                            </constraint>
+                                        </constraints>
                                     </pageControl>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zsw-xg-mi2">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zsw-xg-mi2">
                                         <rect key="frame" x="0.0" y="15" width="300" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="wfJ-wz-vDY"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="wfJ-wz-vDY"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                        </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUh-Hr-oK2">
                                         <rect key="frame" x="0.0" y="47" width="300" height="25"/>
@@ -503,14 +546,18 @@
                                             <constraint firstAttribute="height" constant="25" id="IPC-WC-eDm"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <state key="normal" title="ir para video" image="play.rectangle.fill" catalog="system">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        </variation>
                                         <connections>
                                             <action selector="showVideo:" destination="1Ii-ew-2mF" eventType="touchUpInside" id="j8D-7c-sgp"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Conteudo tutorial" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sG3-hn-Nw1">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Conteudo tutorial" translatesAutoresizingMaskIntoConstraints="NO" id="sG3-hn-Nw1">
                                         <rect key="frame" x="0.0" y="74" width="300" height="100"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -519,8 +566,11 @@
                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="22"/>
+                                        </variation>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" text="Criar Conteudo" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0vx-fo-LL7">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" text="Criar Conteudo" translatesAutoresizingMaskIntoConstraints="NO" id="0vx-fo-LL7">
                                         <rect key="frame" x="0.0" y="176" width="300" height="80"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -528,7 +578,10 @@
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="22"/>
+                                        </variation>
                                     </textView>
                                 </subviews>
                                 <constraints>
@@ -540,10 +593,15 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMk-a4-PNQ">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                        <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Salvar">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        </variation>
                                         <connections>
                                             <action selector="saveAnotation:" destination="1Ii-ew-2mF" eventType="touchUpInside" id="Dvv-IK-jl3"/>
                                         </connections>
@@ -594,10 +652,13 @@
                                 <rect key="frame" x="0.0" y="40" width="320" height="308"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video não disponivel no momento." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9n-Fi-bo7">
-                                        <rect key="frame" x="28.5" y="88" width="263" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="21" y="88" width="278" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
