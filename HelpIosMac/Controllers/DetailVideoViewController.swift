@@ -13,14 +13,28 @@ import Foundation
 class DetailVideoViewController: UIViewController {
 
     @IBOutlet weak var playerView:WKYTPlayerView!
+    @IBOutlet weak var statusVideoLabel: UILabel!
     
-    var urlVideo = ""
+    
+    //MARK: - Atributes
+    
+    var tutorialVideo:Tutorial?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        playerView.load(withVideoId: urlVideo)
-        // Do any additional setup after loading the view.
+
+        displayVideo()
     }
-    
+
+    func displayVideo() {
+        guard let urlVideo = tutorialVideo?.linkVideo else { return  }
+        if urlVideo.count > 1 {
+            statusVideoLabel.isHidden = true
+            playerView.load(withVideoId: urlVideo)
+        } else {
+            statusVideoLabel.isHidden = false
+            statusVideoLabel.text = "Video não disponivel no momento."
+        }
+    }
+
 }

@@ -18,7 +18,6 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
     @IBOutlet weak var tutorialScroll:UIScrollView!
     @IBOutlet weak var imagensTutorialCollectionView: UICollectionView!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var goVideo: UIButton!
     @IBOutlet weak var tutoPageControll: UIPageControl!
     
     var tutorial:Tutorials?
@@ -67,8 +66,6 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         editarTextView.layer.masksToBounds = true
         textoTextView.layer.cornerRadius = 10
         textoTextView.layer.masksToBounds = true
-        goVideo.layer.cornerRadius = 10
-        goVideo.layer.masksToBounds = true
         tituloLabel.layer.cornerRadius = 10
         tituloLabel.layer.masksToBounds = true
         imagensTutorialCollectionView.layer.cornerRadius = 5
@@ -147,7 +144,7 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         print("nome das imagens\(listName)")
         
         let image = ImageController().fetchImage(imageName: listName)
-        
+         
         cell.imagensTutorial.image = image
         
         return cell
@@ -264,4 +261,14 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
 
 
 
+    @IBAction func showVideo(_ sender: Any) {
+        print("Ola Video")
+        
+        let videoViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailVideoFavoriteViewController") as! DetailVideoFavoriteViewController
+        videoViewController.tutorialVideo = tutorial
+        navigationController?.pushViewController(videoViewController, animated: true)
+        
+    }
+    
+    
 }

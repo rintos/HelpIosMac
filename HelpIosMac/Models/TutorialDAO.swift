@@ -45,7 +45,7 @@ class TutorialDAO: NSObject {
     func saveTutorial(tutorialSave: Tutorial){
         
         var tutorial:NSManagedObject?
-        guard let id = UUID(uuidString: tutorialSave.id as! String) else { return }
+        guard let id = UUID(uuidString: tutorialSave.id ) else { return }
         
         let tutos = recuperaTutorials().filter() { $0.id == id }
         

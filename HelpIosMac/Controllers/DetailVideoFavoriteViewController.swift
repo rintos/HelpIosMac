@@ -12,13 +12,34 @@ import YoutubePlayer_in_WKWebView
 class DetailVideoFavoriteViewController: UIViewController {
     
     @IBOutlet weak var videoView:WKYTPlayerView!
-
+    @IBOutlet weak var statusVideoLabel: UILabel!
+    
+    //MARK: - Atributos
+    
+    var tutorialVideo:Tutorials?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        videoView.load(withVideoId: "Mc0TMWYTU_k")
-
-        // Do any additional setup after loading the view.
+        
+        displayVideo()
     }
+    
+    // MARK: - Metodos
+    
+    func displayVideo() {
+        guard let video = tutorialVideo?.linkVideo else { return }
+        
+        if video.count > 1 {
+            statusVideoLabel.isHidden = true
+            videoView.load(withVideoId: video)
+        } else {
+            statusVideoLabel.isHidden = false
+            statusVideoLabel.text = "Video não disponivel no momento."
+        }
+        
+    }
+    
     
 
 }

@@ -16,6 +16,11 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView?
     
+    @IBOutlet weak var resultadoEncontradoLabel: UILabel!
+    
+    @IBOutlet weak var statusView: UIView!
+    
+    
     //MARK: Variavel
     
     var listFavorite: Array<Tutorial> = []
@@ -33,6 +38,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        statusView.isHidden = false
         
         activityIndicator()
         loadingSpinner?.startAnimating()
@@ -45,6 +51,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         collectionViewTutorial.delegate = self
         
         setupDataFireBase()
+        
+        resultadoEncontradoLabel.isHidden = true
         
 //         setupDadosFirebase { listaTutorials in
 //            for listaTutorial in listaTutorials {
@@ -76,6 +84,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
 //        self.navigationController?.setNavigationBarHidden(false, animated: animated)
 //    }
     
+    // MARK: - Metodos
+    
     func configLayoutSearch(){
         searchTutorial.layer.cornerRadius = 6.0
         searchTutorial.layer.masksToBounds = true
@@ -83,6 +93,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     func activityIndicator(){
         loadingSpinner?.hidesWhenStopped = true
+        statusView.isHidden = true
     }
     
     func setupDataFireBase(){
@@ -92,7 +103,6 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
                 self.currentList.append(tutorial)
                 self.contentList.append(tutorial)
                 self.collectionViewTutorial.reloadData()
-                self.loadingSpinner?.stopAnimating()
             }
             
             let sortedCurrentList = self.currentList.sorted { (date1, date2) -> Bool in
@@ -107,6 +117,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             self.contentListTutorial = sortedContentList
             
         }
+        
+        self.loadingSpinner?.stopAnimating()
         
     }
 
@@ -146,6 +158,15 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchBar.text == ""{
+            statusView.isHidden = true
+            resultadoEncontradoLabel.isHidden = true
+        } else {
+            statusView.isHidden = false
+            resultadoEncontradoLabel.isHidden = false
+        }
+        
         guard !searchText.isEmpty else {
             currentListTutorial = contentListTutorial
             collectionViewTutorial.reloadData()
@@ -154,6 +175,17 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         currentListTutorial = contentListTutorial.filter({ (conteudo) -> Bool in
             (conteudo.details.lowercased().contains(searchText.lowercased()))
         })
+        
+        let resultadoLabel = String(currentListTutorial.count)
+        
+        if currentListTutorial.count == 1 {
+             resultadoEncontradoLabel.text = "\(resultadoLabel) resultado encontrado."
+         } else if currentListTutorial.count > 1 {
+             resultadoEncontradoLabel.text = "\(resultadoLabel) resultados encontrados."
+         } else {
+             resultadoEncontradoLabel.text = "não foi encontrado tutorial "
+         }
+ 
         collectionViewTutorial.reloadData()
     }
     
