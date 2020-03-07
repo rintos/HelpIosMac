@@ -84,13 +84,14 @@
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titulo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1D-VU-vUX">
                                                             <rect key="frame" x="0.0" y="190" width="290" height="30"/>
-                                                            <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="r2v-j6-GTj"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
+                                                            <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <variation key="heightClass=regular-widthClass=regular">
                                                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="25"/>
                                                             </variation>
@@ -489,8 +490,13 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="319" height="232"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jw9-V4-Bma">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jw9-V4-Bma">
                                                             <rect key="frame" x="8" y="58" width="303" height="106"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="106" id="3LY-gJ-1Yu">
+                                                                    <variation key="heightClass=regular-widthClass=regular" constant="220"/>
+                                                                </constraint>
+                                                            </constraints>
                                                         </imageView>
                                                     </subviews>
                                                 </view>
@@ -498,7 +504,7 @@
                                                     <constraint firstItem="Jw9-V4-Bma" firstAttribute="leading" secondItem="Ocp-sN-pNP" secondAttribute="leadingMargin" id="HL5-vS-W3O"/>
                                                     <constraint firstItem="Jw9-V4-Bma" firstAttribute="trailing" secondItem="Ocp-sN-pNP" secondAttribute="trailingMargin" id="ccH-ZJ-1x3"/>
                                                     <constraint firstItem="Jw9-V4-Bma" firstAttribute="top" secondItem="Ocp-sN-pNP" secondAttribute="topMargin" constant="50" id="gM9-PF-tGm"/>
-                                                    <constraint firstAttribute="bottomMargin" relation="lessThanOrEqual" secondItem="Jw9-V4-Bma" secondAttribute="bottom" constant="60" id="tFF-KH-cLA"/>
+                                                    <constraint firstAttribute="bottomMargin" secondItem="Jw9-V4-Bma" secondAttribute="bottom" constant="60" id="tFF-KH-cLA"/>
                                                 </constraints>
                                                 <size key="customSize" width="319" height="232"/>
                                                 <connections>
@@ -585,7 +591,7 @@
                                     </textView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="256" id="GxL-gz-wtD"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="256" id="GxL-gz-wtD"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="I27-k0-Jvc">

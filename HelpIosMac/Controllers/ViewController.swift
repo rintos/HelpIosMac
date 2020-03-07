@@ -38,7 +38,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  statusView.isHidden = true
+        statusView.isHidden = false
         
         activityIndicator()
         loadingSpinner?.startAnimating()
@@ -103,7 +103,6 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
                 self.currentList.append(tutorial)
                 self.contentList.append(tutorial)
                 self.collectionViewTutorial.reloadData()
-                self.loadingSpinner?.stopAnimating()
             }
             
             let sortedCurrentList = self.currentList.sorted { (date1, date2) -> Bool in
@@ -118,6 +117,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             self.contentListTutorial = sortedContentList
             
         }
+        
+        self.loadingSpinner?.stopAnimating()
         
     }
 

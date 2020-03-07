@@ -58,7 +58,7 @@ class TutorialCollectionViewCell: UICollectionViewCell {
                      }
                 }else{
                     self.spinner.startAnimating()
-                    self.imagemTutorial.sd_setImage(with: url, placeholderImage:UIImage(named:"apple-icon") , completed: .none)
+                    self.imagemTutorial.sd_setImage(with: url, completed: .none)
                     //self.imagemTutorial.sd_setImage(with: url, completed: .none)
                }
                 self.spinner.stopAnimating()

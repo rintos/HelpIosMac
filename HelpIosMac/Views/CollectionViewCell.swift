@@ -39,7 +39,7 @@ class CollectionViewCell: UICollectionViewCell {
                 }else{
                     
                     self.spinner.startAnimating()
-                    self.imagesCollectionView.sd_setImage(with: url, placeholderImage: UIImage(named: "Apple-icon-1"), completed: .none)
+                    self.imagesCollectionView.sd_setImage(with: url, completed: .none)
                     //self.imagesCollectionView.sd_setImage(with: url, completed: .none)
                }
                 self.spinner.stopAnimating()

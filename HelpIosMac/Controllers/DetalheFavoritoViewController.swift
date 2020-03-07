@@ -144,7 +144,7 @@ class DetalheFavoritoViewController: UIViewController, UICollectionViewDataSourc
         print("nome das imagens\(listName)")
         
         let image = ImageController().fetchImage(imageName: listName)
-        
+         
         cell.imagensTutorial.image = image
         
         return cell
