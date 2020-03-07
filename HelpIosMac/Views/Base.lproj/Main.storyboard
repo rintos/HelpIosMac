@@ -124,7 +124,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Recentes" image="folder.circle" catalog="system" landscapeImage="folder.circle" largeContentSizeImage="folder.circle" id="qTu-Rq-iUz">
+                    <tabBarItem key="tabBarItem" title="Recentes" image="magnifyingglass" catalog="system" landscapeImage="magnifyingglass" largeContentSizeImage="magnifyingglass" id="qTu-Rq-iUz">
                         <color key="badgeColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Service Help Mac &amp; iOS" largeTitleDisplayMode="always" id="ytW-ZL-3G9"/>
@@ -596,7 +596,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="folder.circle" catalog="system" width="64" height="60"/>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="play.rectangle.fill" catalog="system" width="64" height="46"/>
         <image name="star.fill" catalog="system" width="64" height="58"/>
     </resources>
