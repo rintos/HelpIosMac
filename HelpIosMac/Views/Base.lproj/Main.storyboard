@@ -29,19 +29,8 @@
                                         </constraints>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="pLM-t0-Sc7">
-                                        <rect key="frame" x="0.0" y="50" width="320" height="37"/>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="37" id="nz0-xZ-xbd">
-                                                <variation key="heightClass=regular-widthClass=regular" constant="79"/>
-                                            </constraint>
-                                        </constraints>
-                                        <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </activityIndicatorView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IeK-Yt-JN8">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="35"/>
+                                        <rect key="frame" x="0.0" y="50" width="320" height="35"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="resultado encontrado" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQD-dB-Wt2">
                                                 <rect key="frame" x="100" y="7" width="120" height="14.5"/>
@@ -60,7 +49,7 @@
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NOd-Lg-eOz">
-                                        <rect key="frame" x="0.0" y="132" width="320" height="343"/>
+                                        <rect key="frame" x="0.0" y="90" width="320" height="385"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QMw-Gz-DgV">
                                             <size key="itemSize" width="290" height="350"/>
@@ -111,6 +100,15 @@
                                                             <rect key="frame" x="104" y="40" width="82" height="109"/>
                                                             <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </activityIndicatorView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verifique sua conexão com a internet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTH-QG-8Ft">
+                                                            <rect key="frame" x="0.0" y="100" width="290" height="75"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="75" id="j8d-vb-onQ"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                 </view>
                                                 <constraints>
@@ -119,21 +117,26 @@
                                                     <constraint firstItem="SXG-B9-Ef4" firstAttribute="leading" secondItem="DPv-zQ-udx" secondAttribute="leading" id="Cps-Nc-g42"/>
                                                     <constraint firstItem="DCb-AA-cxZ" firstAttribute="leading" secondItem="DPv-zQ-udx" secondAttribute="leading" id="EA7-MN-vIE"/>
                                                     <constraint firstItem="k1D-VU-vUX" firstAttribute="leading" secondItem="DPv-zQ-udx" secondAttribute="leading" id="ESH-Ye-wXC"/>
+                                                    <constraint firstItem="nTH-QG-8Ft" firstAttribute="centerY" secondItem="DPv-zQ-udx" secondAttribute="centerY" id="FHT-Gh-SpF"/>
                                                     <constraint firstAttribute="trailingMargin" secondItem="dKq-5U-tN6" secondAttribute="trailing" constant="96" id="MQG-zj-E23"/>
                                                     <constraint firstItem="SXG-B9-Ef4" firstAttribute="top" secondItem="k1D-VU-vUX" secondAttribute="bottom" constant="5" id="aJN-P9-8Td"/>
                                                     <constraint firstItem="k1D-VU-vUX" firstAttribute="top" secondItem="dKq-5U-tN6" secondAttribute="bottom" constant="41" id="bko-VL-tLz"/>
                                                     <constraint firstAttribute="trailing" secondItem="k1D-VU-vUX" secondAttribute="trailing" id="cUI-UF-wh8"/>
+                                                    <constraint firstAttribute="trailing" secondItem="nTH-QG-8Ft" secondAttribute="trailing" id="chQ-xc-jCr"/>
                                                     <constraint firstAttribute="trailing" secondItem="DCb-AA-cxZ" secondAttribute="trailing" id="fmc-LV-Tb6"/>
                                                     <constraint firstAttribute="bottom" secondItem="SXG-B9-Ef4" secondAttribute="bottom" constant="1" id="hhZ-ZI-gQY"/>
                                                     <constraint firstItem="dKq-5U-tN6" firstAttribute="leading" secondItem="DPv-zQ-udx" secondAttribute="leadingMargin" constant="96" id="hy9-1A-lg9"/>
                                                     <constraint firstAttribute="trailing" secondItem="SXG-B9-Ef4" secondAttribute="trailing" id="kvC-kP-yZz"/>
                                                     <constraint firstItem="dKq-5U-tN6" firstAttribute="top" secondItem="DPv-zQ-udx" secondAttribute="topMargin" constant="32" id="mol-DZ-8ht"/>
+                                                    <constraint firstItem="nTH-QG-8Ft" firstAttribute="leading" secondItem="DPv-zQ-udx" secondAttribute="leading" id="o3M-4h-x0v"/>
+                                                    <constraint firstItem="nTH-QG-8Ft" firstAttribute="top" secondItem="DPv-zQ-udx" secondAttribute="top" constant="100" id="q3z-yp-yTa"/>
                                                 </constraints>
                                                 <size key="customSize" width="290" height="275"/>
                                                 <connections>
                                                     <outlet property="descricaoTextView" destination="SXG-B9-Ef4" id="rhY-r5-Lhw"/>
                                                     <outlet property="imagemTutorial" destination="DCb-AA-cxZ" id="IOZ-K7-NxI"/>
                                                     <outlet property="spinner" destination="dKq-5U-tN6" id="ScR-aW-vnt"/>
+                                                    <outlet property="statusInternetLabel" destination="nTH-QG-8Ft" id="urO-yl-n5K"/>
                                                     <outlet property="tituloLabel" destination="k1D-VU-vUX" id="KeP-cP-mC4"/>
                                                     <segue destination="xP2-O7-Dic" kind="show" identifier="showDetail" id="Sze-uq-8Wo"/>
                                                 </connections>
@@ -160,7 +163,6 @@
                     <navigationItem key="navigationItem" title="Service Help Mac &amp; iOS" largeTitleDisplayMode="always" id="ytW-ZL-3G9"/>
                     <connections>
                         <outlet property="collectionViewTutorial" destination="NOd-Lg-eOz" id="WJD-l7-lqJ"/>
-                        <outlet property="loadingSpinner" destination="pLM-t0-Sc7" id="oyv-Ob-vmA"/>
                         <outlet property="resultadoEncontradoLabel" destination="SQD-dB-Wt2" id="XJ5-Nw-ngf"/>
                         <outlet property="searchTutorial" destination="ela-jc-lfe" id="Fnw-Fm-7Yw"/>
                         <outlet property="statusView" destination="IeK-Yt-JN8" id="d3W-ti-U1C"/>

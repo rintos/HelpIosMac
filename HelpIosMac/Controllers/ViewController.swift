@@ -7,15 +7,14 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class ViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate,UISearchBarDelegate, UICollectionViewDelegateFlowLayout {
         
     @IBOutlet weak var collectionViewTutorial:UICollectionView!
     
     @IBOutlet weak var searchTutorial: UISearchBar!
-    
-    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView?
-    
+        
     @IBOutlet weak var resultadoEncontradoLabel: UILabel!
     
     @IBOutlet weak var statusView: UIView!
@@ -38,11 +37,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        statusView.isHidden = false
-        
-        activityIndicator()
-        loadingSpinner?.startAnimating()
-        
+        loaderStatus()
+        statusView.isHidden = true
         configLayoutSearch()
         setUpSerachBar()
         collectionViewTutorial.keyboardDismissMode = .onDrag
@@ -86,23 +82,37 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     // MARK: - Metodos
     
+    func loaderStatus(){
+        let indicator = MBProgressHUD.showAdded(to: self.view, animated: true)
+        indicator.label.text = "Carregando"
+        indicator.isUserInteractionEnabled = false
+        indicator.detailsLabel.text = "carregando detalhes"
+        indicator.customView?.contentMode = .scaleAspectFit
+      //  indicator.backgroundView.isHidden = true
+        indicator.show(animated: true)
+    }
+    
+    func hideStatus() {
+        MBProgressHUD.hide(for: self.view, animated: true)
+    }
+    
     func configLayoutSearch(){
         searchTutorial.layer.cornerRadius = 6.0
         searchTutorial.layer.masksToBounds = true
     }
     
-    func activityIndicator(){
-        loadingSpinner?.hidesWhenStopped = true
-        statusView.isHidden = true
-    }
     
     func setupDataFireBase(){
         
-        FireBase.getDataFireStore { listTutorial in
+        FireBase.getDataFireStore { listTutorial, erro in
             for tutorial in listTutorial {
                 self.currentList.append(tutorial)
                 self.contentList.append(tutorial)
                 self.collectionViewTutorial.reloadData()
+            }
+            
+            if erro != nil {
+                print("-------->\(String(describing: erro?.localizedDescription))")
             }
             
             let sortedCurrentList = self.currentList.sorted { (date1, date2) -> Bool in
@@ -116,9 +126,10 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             self.currentListTutorial = sortedCurrentList
             self.contentListTutorial = sortedContentList
             
+            self.hideStatus()
+            
         }
         
-        self.loadingSpinner?.stopAnimating()
         
     }
 

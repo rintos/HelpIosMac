@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseDatabase
+
 
 class FireBase: NSObject {
     
@@ -24,16 +26,20 @@ class FireBase: NSObject {
     var listImage: [UIImage] = []
     var ImagensDeUmObjeto: [UIImage] = []
 
-    static func getDataFireStore(_ completion:@escaping(_ listTutorial: Array<Tutorial>) -> ()){
+    static func getDataFireStore(_ completion:@escaping(_ listTutorial: Array<Tutorial>, _ error: Error?) -> ()){
         let db = Firestore.firestore()
         var imageURL: Array<String> = []
         var listTutorial: Array<Tutorial> = []
-        
+                
         let collectionName = "tutorials"
         
-        db.collection(collectionName).getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
+        
+        
+        db.collection(collectionName).getDocuments() { (querySnapshot, erro) in
+            if let erro = erro {
+                print("Error getting documents: \(erro)")
+                completion([],erro)
+                
             } else {
                 for document in querySnapshot!.documents {
                  //   print("\(document.documentID) => Dados \(document.data())")
@@ -53,10 +59,25 @@ class FireBase: NSObject {
                     listTutorial.append(tutorial)
                 }
               //  print("lista de tutorial em array: \(listTutorial)")
-                completion(listTutorial)
+                completion(listTutorial, nil)
             }
         }
     }
+    
+    static func verifyInternet(_ completionHandler: @escaping (_ statusInternet: Bool) ->() ) {
+        
+        let connectedRef = Database.database().reference(withPath: ".info/connected")
+        connectedRef.observe(.value, with: { snapshot in
+            if let connected = snapshot.value as? Bool, connected {
+                print("Connected")
+                completionHandler(true)
+            } else {
+                print("Not connected")
+                completionHandler(false)
+            }
+        })
+    }
+    
     
 //    func getDadosFirebase(_ completion:@escaping(_ listaTutorial: Array<Tutorial>) -> ()) {
 //        referenceFirebase = Database.database().reference()

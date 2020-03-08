@@ -14,7 +14,8 @@ target 'HelpIosMac' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Analytics'
-
+  pod 'MBProgressHUD'
+  pod "Firebase/Database"
 
 
   target 'HelpIosMacTests' do

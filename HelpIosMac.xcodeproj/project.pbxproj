@@ -222,6 +222,7 @@
 		50825AED23174592001040E7 /* HelpIosMac */ = {
 			isa = PBXGroup;
 			children = (
+				989A537D241467DD00F05102 /* Extensions */,
 				98EBBB9623E0C5F9003107E7 /* HelpIosMac.entitlements */,
 				9828D8A723D8E77100AD9B95 /* HelpIosMacDebug.entitlements */,
 				50825B26231748B5001040E7 /* Views */,
@@ -303,6 +304,13 @@
 				80EF1FF77A1265C66D18B384 /* Pods-HelpIosMacTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		989A537D241467DD00F05102 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BFF37250F5EF477CADE15E81 /* Frameworks */ = {

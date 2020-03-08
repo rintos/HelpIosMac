@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import SDWebImage
 
 class TutorialCollectionViewCell: UICollectionViewCell {
  
@@ -18,13 +17,20 @@ class TutorialCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var descricaoTextView: UITextView!
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    
+    @IBOutlet weak var statusInternetLabel: UILabel!
     
     func activitySpinner(){
         spinner.hidesWhenStopped = true
     }
     
+    
+    
     func configCollectionCell(_ tutorial: Tutorial){
+        
+        FireBase.verifyInternet({ (stat) in
+            self.statusInternetLabel.isHidden = stat
+
+        })
         
         tituloLabel.text = tutorial.name
         descricaoTextView.text = Tutorial.organizaTexto(tutorial.details)
@@ -50,7 +56,7 @@ class TutorialCollectionViewCell: UICollectionViewCell {
             reference.downloadURL(completion: {(url, error)in
             print("Endereco da URL:\(String(describing: url))")
                 if error != nil{
-                    print("Gerou erro para mostrar a imagem\(error as Any)")
+                    print("--------> Gerou erro para mostrar a imagem\(error as Any)")
                     let erro = error.unsafelyUnwrapped.localizedDescription
                      print("---->>>\(erro)")
                      if erro == error.unsafelyUnwrapped.localizedDescription {
@@ -59,6 +65,7 @@ class TutorialCollectionViewCell: UICollectionViewCell {
                 }else{
                     self.spinner.startAnimating()
                     self.imagemTutorial.sd_setImage(with: url , completed: .none)
+                    
                     //self.imagemTutorial.sd_setImage(with: url, completed: .none)
                }
                 self.spinner.stopAnimating()
