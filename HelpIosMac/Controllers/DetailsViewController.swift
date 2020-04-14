@@ -35,6 +35,9 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         return appDelegate.persistentContainer.viewContext
     }
 
+    var tutorialZoom:TutorialItemProtocol!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -174,6 +177,16 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
 
        return size
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let images = tutorialDetail?.imagesUrl[indexPath.row] {
+//            let viewImage = showViewController(storyboard: "Main", identifier: "ImageZoomViewController") as! ImageZoomViewController
+                showImage(image: images)
+
+        }
+
+
+    }
 
     //Corrige problema de tamamho da celular do scrollView com UIPageController
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -205,5 +218,28 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIImag
         videoDetailController.tutorialVideo = tutorialDetail
         navigationController?.pushViewController(videoDetailController, animated: true)
     }
+    
+}
+
+
+extension DetailsViewController: TutorialItemProtocol {
+    
+    
+    func showImage(image: String) {
+        
+        let viewImage = goToViewWithPushNavController(storyboard: "Main", identifier: "ImageZoomViewController", animated: true) as! ImageZoomViewController
+        viewImage.img = image
+    }
+    
+//     let popOverVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageZoomViewController") as! ImageZoomViewController
+//
+//        popOverVc.img = image
+//
+//        self.addChild(popOverVc)
+//        self.view.addSubview(popOverVc.view)
+//        popOverVc.didMove(toParent: self)
+//    }
+    
+    
     
 }

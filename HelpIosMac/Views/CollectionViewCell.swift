@@ -10,6 +10,10 @@ import UIKit
 import Firebase
 import SDWebImage
 
+protocol TutorialItemProtocol {
+    func showImage(image: String)
+}
+
 
 class CollectionViewCell: UICollectionViewCell {
     
@@ -52,6 +56,12 @@ class CollectionViewCell: UICollectionViewCell {
 //           let frame = CGRect(x: 10, y: 10, width: self.frame.width - 20, height: 300)
 //           self.imagesCollectionView.frame = frame
     }
+ 
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imagesCollectionView
+    }
+    
 }
 
 

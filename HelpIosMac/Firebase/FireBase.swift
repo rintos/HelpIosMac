@@ -64,20 +64,6 @@ class FireBase: NSObject {
         }
     }
     
-    static func verifyInternet(_ completionHandler: @escaping (_ statusInternet: Bool) ->() ) {
-        
-        let connectedRef = Database.database().reference(withPath: ".info/connected")
-        connectedRef.observe(.value, with: { snapshot in
-            if let connected = snapshot.value as? Bool, connected {
-                print("Connected")
-                completionHandler(true)
-            } else {
-                print("Not connected")
-                completionHandler(false)
-            }
-        })
-    }
-    
     
 //    func getDadosFirebase(_ completion:@escaping(_ listaTutorial: Array<Tutorial>) -> ()) {
 //        referenceFirebase = Database.database().reference()

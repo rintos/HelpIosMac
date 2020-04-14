@@ -34,7 +34,12 @@
 		50C601C6234D8263005DB696 /* DetalhesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C601C5234D8262005DB696 /* DetalhesCollectionViewCell.swift */; };
 		50C601C8234EB281005DB696 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C601C7234EB281005DB696 /* CollectionViewCell.swift */; };
 		5FF21760B7A9F85FE1422B4F /* Pods_HelpIosMacTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A738D0205951CC1575137A /* Pods_HelpIosMacTests.framework */; };
+		982BDBF524460C9200F8FDF3 /* TutorialPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982BDBF424460C9200F8FDF3 /* TutorialPresenter.swift */; };
+		982BDBF724460CCB00F8FDF3 /* TutorialProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982BDBF624460CCB00F8FDF3 /* TutorialProtocol.swift */; };
+		9871E6362444C08700CB9AC1 /* ImageZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871E6352444C08700CB9AC1 /* ImageZoomViewController.swift */; };
 		98E3363D23F33A19006E8BEB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 98E3363C23F33A19006E8BEB /* GoogleService-Info.plist */; };
+		98F58B3E243F8D8D00D723F7 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F58B3D243F8D8D00D723F7 /* Connectivity.swift */; };
+		98F58B41243FA42B00D723F7 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F58B40243FA42B00D723F7 /* UIViewController.swift */; };
 		C90C0F77FF5448C45EA00FA2 /* Pods_HelpIosMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B063C33863F3FD062BE1DF2 /* Pods_HelpIosMac.framework */; };
 		CD0C3E3FB6E61906FE9A5729 /* Pods_HelpIosMac_HelpIosMacUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D344C8C44FB1520A851F0A2 /* Pods_HelpIosMac_HelpIosMacUITests.framework */; };
 /* End PBXBuildFile section */
@@ -124,8 +129,13 @@
 		80EF1FF77A1265C66D18B384 /* Pods-HelpIosMacTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpIosMacTests.release.xcconfig"; path = "Target Support Files/Pods-HelpIosMacTests/Pods-HelpIosMacTests.release.xcconfig"; sourceTree = "<group>"; };
 		8A399DEC83E77AE40617A5C4 /* Pods-HelpIosMac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpIosMac.release.xcconfig"; path = "Target Support Files/Pods-HelpIosMac/Pods-HelpIosMac.release.xcconfig"; sourceTree = "<group>"; };
 		9828D8A723D8E77100AD9B95 /* HelpIosMacDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelpIosMacDebug.entitlements; sourceTree = "<group>"; };
+		982BDBF424460C9200F8FDF3 /* TutorialPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPresenter.swift; sourceTree = "<group>"; };
+		982BDBF624460CCB00F8FDF3 /* TutorialProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialProtocol.swift; sourceTree = "<group>"; };
+		9871E6352444C08700CB9AC1 /* ImageZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageZoomViewController.swift; sourceTree = "<group>"; };
 		98E3363C23F33A19006E8BEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		98EBBB9623E0C5F9003107E7 /* HelpIosMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelpIosMac.entitlements; sourceTree = "<group>"; };
+		98F58B3D243F8D8D00D723F7 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
+		98F58B40243FA42B00D723F7 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		FEED26538698202EA98CF72A /* Pods-HelpIosMac-HelpIosMacUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpIosMac-HelpIosMacUITests.debug.xcconfig"; path = "Target Support Files/Pods-HelpIosMac-HelpIosMacUITests/Pods-HelpIosMac-HelpIosMacUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,6 +232,10 @@
 		50825AED23174592001040E7 /* HelpIosMac */ = {
 			isa = PBXGroup;
 			children = (
+				982BDBF324460C6A00F8FDF3 /* Presenter */,
+				98F58B3F243FA41500D723F7 /* New Group1 */,
+				98F58B3C243F8D6600D723F7 /* Manager */,
+				9880051D24157A8700908006 /* New Group */,
 				989A537D241467DD00F05102 /* Extensions */,
 				98EBBB9623E0C5F9003107E7 /* HelpIosMac.entitlements */,
 				9828D8A723D8E77100AD9B95 /* HelpIosMacDebug.entitlements */,
@@ -277,6 +291,7 @@
 				22B4ED7B235FD2D500D7DFFF /* DetailVideoViewController.swift */,
 				22B4ED7F235FD8F200D7DFFF /* DetailVideoFavoriteViewController.swift */,
 				22FE7DDE23A94F35005149DE /* ImageController.swift */,
+				9871E6352444C08700CB9AC1 /* ImageZoomViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -306,11 +321,43 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		989A537D241467DD00F05102 /* Extensions */ = {
+		982BDBF324460C6A00F8FDF3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				982BDBF424460C9200F8FDF3 /* TutorialPresenter.swift */,
+				982BDBF624460CCB00F8FDF3 /* TutorialProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9880051D24157A8700908006 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
 			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		989A537D241467DD00F05102 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				98F58B40243FA42B00D723F7 /* UIViewController.swift */,
+			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		98F58B3C243F8D6600D723F7 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				98F58B3D243F8D8D00D723F7 /* Connectivity.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		98F58B3F243FA41500D723F7 /* New Group1 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group1";
 			sourceTree = "<group>";
 		};
 		BFF37250F5EF477CADE15E81 /* Frameworks */ = {
@@ -611,13 +658,18 @@
 			files = (
 				50825AF723174593001040E7 /* HelpIosMac.xcdatamodeld in Sources */,
 				22B4ED7C235FD2D500D7DFFF /* DetailVideoViewController.swift in Sources */,
+				98F58B3E243F8D8D00D723F7 /* Connectivity.swift in Sources */,
+				98F58B41243FA42B00D723F7 /* UIViewController.swift in Sources */,
 				50825AF123174592001040E7 /* ViewController.swift in Sources */,
 				50C601C8234EB281005DB696 /* CollectionViewCell.swift in Sources */,
 				50825AEF23174592001040E7 /* AppDelegate.swift in Sources */,
+				982BDBF524460C9200F8FDF3 /* TutorialPresenter.swift in Sources */,
+				9871E6362444C08700CB9AC1 /* ImageZoomViewController.swift in Sources */,
 				22FE7DDF23A94F35005149DE /* ImageController.swift in Sources */,
 				508B1414232C5E08005F14AE /* DetalheFavoritoViewController.swift in Sources */,
 				50613AB8232D39F5000B27D8 /* CriarTutorialDelegate.swift in Sources */,
 				50825B2B23174F0F001040E7 /* DetailsViewController.swift in Sources */,
+				982BDBF724460CCB00F8FDF3 /* TutorialProtocol.swift in Sources */,
 				5055956C235140F8004A166C /* FavoriteTableViewCell.swift in Sources */,
 				50825B5D2318B4DE001040E7 /* TutorialDAO.swift in Sources */,
 				225A50D0238C60B300C198CE /* FireBase.swift in Sources */,

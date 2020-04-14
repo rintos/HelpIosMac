@@ -17,7 +17,9 @@ class TutorialCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var descricaoTextView: UITextView!
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var statusInternetLabel: UILabel!
+    
+    var celulaInternetStatus: Bool = true
+
     
     func activitySpinner(){
         spinner.hidesWhenStopped = true
@@ -26,11 +28,6 @@ class TutorialCollectionViewCell: UICollectionViewCell {
     
     
     func configCollectionCell(_ tutorial: Tutorial){
-        
-        FireBase.verifyInternet({ (stat) in
-            self.statusInternetLabel.isHidden = stat
-
-        })
         
         tituloLabel.text = tutorial.name
         descricaoTextView.text = Tutorial.organizaTexto(tutorial.details)
@@ -57,6 +54,7 @@ class TutorialCollectionViewCell: UICollectionViewCell {
             print("Endereco da URL:\(String(describing: url))")
                 if error != nil{
                     print("--------> Gerou erro para mostrar a imagem\(error as Any)")
+                    self.celulaInternetStatus = false
                     let erro = error.unsafelyUnwrapped.localizedDescription
                      print("---->>>\(erro)")
                      if erro == error.unsafelyUnwrapped.localizedDescription {

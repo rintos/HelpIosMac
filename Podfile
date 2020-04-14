@@ -16,6 +16,7 @@ target 'HelpIosMac' do
   pod 'Firebase/Analytics'
   pod 'MBProgressHUD'
   pod "Firebase/Database"
+  pod 'Alamofire'
 
 
   target 'HelpIosMacTests' do

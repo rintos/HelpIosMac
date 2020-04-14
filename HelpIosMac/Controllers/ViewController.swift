@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
 
 class ViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate,UISearchBarDelegate, UICollectionViewDelegateFlowLayout {
         
@@ -19,6 +18,9 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     @IBOutlet weak var statusView: UIView!
     
+    var internetStatus: Bool = true
+    
+    
     
     //MARK: Variavel
     
@@ -28,6 +30,10 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     var currentList: Array<Tutorial> = []
     var contentListTutorial: Array<Tutorial> = []
     var currentListTutorial: Array<Tutorial> = []
+    let conexao = Connectivity()
+    
+    var presenter:TutorialPresenter!
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showDetail"){
@@ -37,34 +43,18 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loaderStatus()
+        
+        
         statusView.isHidden = true
         configLayoutSearch()
         setUpSerachBar()
-        collectionViewTutorial.keyboardDismissMode = .onDrag
         
-        collectionViewTutorial.dataSource = self
-        collectionViewTutorial.delegate = self
+        configPresenter()
         
-        setupDataFireBase()
-        
+        configCollectionView()
+    
         resultadoEncontradoLabel.isHidden = true
-        
-//         setupDadosFirebase { listaTutorials in
-//            for listaTutorial in listaTutorials {
-//                print("lista dados viewController:\(listaTutorial.details)")
-//                self.currentList.append(listaTutorial)
-//                self.contentList.append(listaTutorial)
-//                self.collectionViewTutorial.reloadData()
-//                self.loadingSpinner?.stopAnimating()
-//
-//             //   print("contagem de namesofimage: \(listaTutorials.count)")
-//
-//            }
-//        }
-
-
-        
+        internetStatusConnection()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +62,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         self.navigationController?.navigationItem.titleView?.backgroundColor = .blue
         self.navigationController?.navigationBar.topItem!.title = "Help Mac & iOS"
-
+       // verificaInternet()
     }
     
 //    override func viewWillDisappear(_ animated: Bool) {
@@ -82,18 +72,24 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     // MARK: - Metodos
     
-    func loaderStatus(){
-        let indicator = MBProgressHUD.showAdded(to: self.view, animated: true)
-        indicator.label.text = "Carregando"
-        indicator.isUserInteractionEnabled = false
-        indicator.detailsLabel.text = "carregando detalhes"
-        indicator.customView?.contentMode = .scaleAspectFit
-      //  indicator.backgroundView.isHidden = true
-        indicator.show(animated: true)
+    func configPresenter() {
+        self.showProgressIndicator()
+        presenter = TutorialPresenter()
+        presenter.attatchView(view: self)
+        presenter.loadTutorialsFromFireBase()
     }
     
-    func hideStatus() {
-        MBProgressHUD.hide(for: self.view, animated: true)
+    func configCollectionView(){
+        collectionViewTutorial.keyboardDismissMode = .onDrag
+        collectionViewTutorial.dataSource = self
+        collectionViewTutorial.delegate = self
+     //   self.hideStatus()
+    }
+    
+    func internetStatusConnection() {
+        if !conexao.internet(){
+            print("Sem internet")
+        }
     }
     
     func configLayoutSearch(){
@@ -101,52 +97,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         searchTutorial.layer.masksToBounds = true
     }
     
-    
-    func setupDataFireBase(){
-        
-        FireBase.getDataFireStore { listTutorial, erro in
-            for tutorial in listTutorial {
-                self.currentList.append(tutorial)
-                self.contentList.append(tutorial)
-                self.collectionViewTutorial.reloadData()
-            }
-            
-            if erro != nil {
-                print("-------->\(String(describing: erro?.localizedDescription))")
-            }
-            
-            let sortedCurrentList = self.currentList.sorted { (date1, date2) -> Bool in
-                date1.created_at > date2.created_at
-            }
-            
-            let sortedContentList = self.contentList.sorted { (date1, date2) -> Bool in
-                date1.created_at > date2.created_at
-            }
-            
-            self.currentListTutorial = sortedCurrentList
-            self.contentListTutorial = sortedContentList
-            
-            self.hideStatus()
-            
-        }
-        
-        
-    }
-
-//    func setupDadosFirebase(_ callback:@escaping(_ listaTutorial: Array<Tutorial> ) -> () ){
-//        FireBase().getDadosFirebase({ (listaTutorial) in
-//            callback(listaTutorial)
-//        })
-//
-//    }
-    
     private func setUpSerachBar(){
         searchTutorial.delegate = self
-    }
-    
-    func addTutorial(_ tutorial: Tutorial) {
-        listFavorite.append(tutorial)
-        collectionViewTutorial.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -157,6 +109,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! TutorialCollectionViewCell
         let tutorial = currentListTutorial[indexPath.row]
         cell.configCollectionCell(tutorial)
+        internetStatus = cell.celulaInternetStatus
         
         return cell
     
@@ -201,3 +154,4 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     }
     
 }
+
