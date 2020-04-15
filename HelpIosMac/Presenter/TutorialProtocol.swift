@@ -34,12 +34,17 @@ extension ViewController: TutorialProtocol {
             self.currentListTutorial = sortedCurrentList
             self.contentListTutorial = sortedContentList
         
+        self.collectionViewTutorial.reloadData()
+        
         self.hideProgressIndicator()
+        self.refreshControl.endRefreshing()
+    
     }
     
     func onError(error: Error?) {
         
         print("-------->\(String(describing: error?.localizedDescription))")
+        self.refreshControl.endRefreshing()
 
     }
     

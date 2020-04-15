@@ -48,8 +48,14 @@
                                             <constraint firstItem="SQD-dB-Wt2" firstAttribute="top" secondItem="IeK-Yt-JN8" secondAttribute="top" constant="7" id="s4C-lb-SIp"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verificar conexão com a internet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osM-6O-BWi">
+                                        <rect key="frame" x="0.0" y="90" width="414" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NOd-Lg-eOz">
-                                        <rect key="frame" x="0.0" y="90" width="414" height="635"/>
+                                        <rect key="frame" x="0.0" y="115.33333333333331" width="414" height="609.66666666666674"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QMw-Gz-DgV">
                                             <size key="itemSize" width="290" height="350"/>
@@ -151,6 +157,7 @@
                         <outlet property="collectionViewTutorial" destination="NOd-Lg-eOz" id="WJD-l7-lqJ"/>
                         <outlet property="resultadoEncontradoLabel" destination="SQD-dB-Wt2" id="XJ5-Nw-ngf"/>
                         <outlet property="searchTutorial" destination="ela-jc-lfe" id="Fnw-Fm-7Yw"/>
+                        <outlet property="statusInternet" destination="osM-6O-BWi" id="kZM-h3-c4O"/>
                         <outlet property="statusView" destination="IeK-Yt-JN8" id="d3W-ti-U1C"/>
                     </connections>
                 </viewController>
@@ -682,12 +689,12 @@
         <scene sceneID="vc1-Uq-sPA">
             <objects>
                 <viewController storyboardIdentifier="DetailVideoFavoriteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qVu-FL-sh2" customClass="DetailVideoFavoriteViewController" customModule="HelpIosMac" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="P0V-lT-ycj">
+                    <view key="view" contentMode="scaleToFill" id="P0V-lT-ycj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bi5-AO-nqh" customClass="WKYTPlayerView">
-                                <rect key="frame" x="0.0" y="40" width="414" height="476"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bi5-AO-nqh" customClass="WKYTPlayerView">
+                                <rect key="frame" x="0.0" y="84" width="414" height="558"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video não disponivel no momento." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9n-Fi-bo7">
                                         <rect key="frame" x="68" y="88" width="278" height="21"/>

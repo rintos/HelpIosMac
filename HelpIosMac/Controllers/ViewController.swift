@@ -17,10 +17,11 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     @IBOutlet weak var resultadoEncontradoLabel: UILabel!
     
     @IBOutlet weak var statusView: UIView!
+    @IBOutlet weak var statusInternet: UILabel!
     
     var internetStatus: Bool = true
     
-    
+    var refreshControl = UIRefreshControl()
     
     //MARK: Variavel
     
@@ -44,6 +45,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        statusInternet.isHidden = true
         
         statusView.isHidden = true
         configLayoutSearch()
@@ -62,7 +64,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         self.navigationController?.navigationItem.titleView?.backgroundColor = .blue
         self.navigationController?.navigationBar.topItem!.title = "Help Mac & iOS"
-       // verificaInternet()
+        internetStatusConnection()
     }
     
 //    override func viewWillDisappear(_ animated: Bool) {
@@ -71,6 +73,11 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
 //    }
     
     // MARK: - Metodos
+    
+    @objc func refreshStatus(){
+        internetStatusConnection()
+        presenter.loadTutorialsFromFireBase()
+    }
     
     func configPresenter() {
         self.showProgressIndicator()
@@ -83,12 +90,16 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         collectionViewTutorial.keyboardDismissMode = .onDrag
         collectionViewTutorial.dataSource = self
         collectionViewTutorial.delegate = self
+        refreshControl.addTarget(self, action: #selector(refreshStatus), for: UIControl.Event.valueChanged)
+        collectionViewTutorial.addSubview(refreshControl)
      //   self.hideStatus()
     }
     
     func internetStatusConnection() {
-        if !conexao.internet(){
-            print("Sem internet")
+        if conexao.internet(){
+            statusInternet.isHidden = true
+        } else {
+            statusInternet.isHidden = false
         }
     }
     
